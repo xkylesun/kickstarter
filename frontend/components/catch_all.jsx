@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-import image404 from "./images/image404.jpg";
-
 
 const CatchAll = () => {
     return (

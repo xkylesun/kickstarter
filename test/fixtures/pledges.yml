@@ -1,16 +1,13 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: pledges
 #
 #  id              :bigint           not null, primary key
-#  name            :string           not null
-#  email           :string           not null
-#  password_digest :string           not null
-#  session_token   :string           not null
+#  backer_id       :integer          not null
+#  pledge_level_id :integer          not null
+#  quantity        :integer          not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  biography       :string
-#  avatar          :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
