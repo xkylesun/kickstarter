@@ -12,13 +12,14 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
+# tested success 1/7/2020
 
 class PledgeLevel < ApplicationRecord
-    validates :quantity, :rate, :title, :description, :delivery_date, presence: true
+    validates :rate, :title, :description, :delivery_date, presence: true
     validates :quantity, :rate, numericality: {greater_than: 0}
 
     belongs_to :project
-
     has_many :pledges
+
     has_many :backers, through: :pledges, source: :backer
 end

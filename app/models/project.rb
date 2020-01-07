@@ -13,11 +13,13 @@
 #  thumbnail  :string
 #  video_link :string
 #
+# tested success 1/7/2020
+
 
 class Project < ApplicationRecord
     validates :title, :category, :due_date, :body, presence: true
 
-    belongs_to :creator, foreign_key: :creator_id, class_name: :user
+    belongs_to :creator, foreign_key: :creator_id, class_name: :User
 
     has_many :pledge_levels
     has_many :backers, through: :pledge_levels, source: :backers
