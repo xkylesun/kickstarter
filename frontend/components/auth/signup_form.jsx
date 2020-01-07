@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 export default class SignupForm extends React.Component {
     constructor(props) {
@@ -15,15 +16,15 @@ export default class SignupForm extends React.Component {
     handleInput(type) {
         return (event) => {
             this.setState({
-                [type]: event.target.value
+                [type]: event.currentTarget.value
             })
         };
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.createNewUser(this.state)
-            .then(() => this.props.history.push("./chirps"))
+        this.props.signup(this.state)
+            .then(() => this.props.history.push("/"))
     }
 
     render() {
@@ -32,14 +33,14 @@ export default class SignupForm extends React.Component {
                 <h2>Sign Up</h2>
                 <section className="switch-to-login">
                     <p>Have an account?</p>
-                    <a href="/login">Log in</a>
+                    <Link to="/login">Log in</Link>
                 </section>
 
                 <form>
                     <input
                         type="text"
-                        placeholder="name"
-                        value={this.state.username}
+                        placeholder="Name"
+                        value={this.state.name}
                         onChange={this.handleInput("name")} />
 
                     <input

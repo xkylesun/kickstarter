@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 export default class SignUp extends React.Component {
     constructor(props) {
@@ -21,7 +22,8 @@ export default class SignUp extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.createNewUser(this.state)
+        this.props.login(this.state)
+            .then(() => this.props.history.push("/"))
             // .then(() => this.props.history.push("./profile"))
     }
 
@@ -49,7 +51,7 @@ export default class SignUp extends React.Component {
 
                 <section className="switch-to-signup">
                     <p>New to Jumpstarter?</p>
-                    <a href="/signup">Sign Up</a>
+                    <Link to="/signup">Sign up</Link>
                 </section>
             </div>)
     };

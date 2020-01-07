@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // test - success on 2020/1/6
-import * as APIUtil from "./utils/session"
-window.login = APIUtil.login;
-window.signup = APIUtil.signup;
-window.update = APIUtil.update;
-window.logout = APIUtil.logout;
+// import * as APIUtil from "./utils/session"
+// window.login = APIUtil.login;
+// window.signup = APIUtil.signup;
+// window.update = APIUtil.update;
+// window.logout = APIUtil.logout;
