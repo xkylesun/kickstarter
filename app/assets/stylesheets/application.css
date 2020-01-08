@@ -78,7 +78,7 @@ body {
 
 .auth-content-frame {
     border: 1px solid #DCDEDD;
-    height: 455px;
+    /* height: 455px; */
     width: 338px;
     padding: 30px 20px;
     margin: 80px auto;
@@ -148,6 +148,7 @@ body {
 
 .display-error ul li{ 
     font-size: 16px;
+    margin: 10px;
 }
 
 #navbar-frame {

@@ -31,6 +31,7 @@ export default class SignUp extends React.Component {
     }
 
     renderErrors() {
+        if (this.props.errors.length === 0) return null;
         return (
             <section className="display-error">
                 <ul>
