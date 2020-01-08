@@ -7,10 +7,13 @@ export default class SignupForm extends React.Component {
         this.state = {
             name: "",
             email: "",
-            password: ""
+            reEmail: "",
+            password: "",
+            rePassword: "",
+            errors: this.props.errors,
         }
-        // this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.check = this.check.bind(this);
     }
 
     handleInput(type) {
@@ -23,16 +26,22 @@ export default class SignupForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.signup(this.state)
-            .then(() => this.props.history.push("/"))
+        this.props.signup({
+            name: this.state.name,
+            email: this.state.email, 
+            password: this.state.password
+        })
+        .then(
+            () => this.props.history.push("/"),
+            this.check)
     }
 
     renderErrors() {
-        if (this.props.errors.length === 0) return null;
+        if (this.state.errors.length === 0) return null;
         return (
             <section className="display-error">
                 <ul>
-                    {this.props.errors.map((error, i) => (
+                    {this.state.errors.map((error, i) => (
                         <li key={`error-${i}`}>
                             {error}
                         </li>
@@ -40,6 +49,25 @@ export default class SignupForm extends React.Component {
                 </ul>
             </section>
         );
+    }
+
+    reEnter (itemId) {
+        return () => {
+            document.getElementById(itemId).classList.remove("hidden");
+        };
+    };
+    
+    check() {
+        let errors = [...this.props.errors];
+        if (this.state.email !== this.state.reEmail){
+            errors.push("Email confirmation doesn't match Email")
+        } 
+
+        if (this.state.password !== this.state.rePassword){
+            errors.push("Password confirmation doesn't match Password")
+        }
+        this.setState({errors: errors});
+        setTimeout(()=> console.dir(this.state),1000)
     }
 
     render() {
@@ -67,14 +95,38 @@ export default class SignupForm extends React.Component {
                             type="email"
                             placeholder="Email"
                             value={this.state.email}
-                            onChange={this.handleInput("email")} />
+                            onChange={(e)=>{
+                                this.handleInput("email")(e);
+                                this.reEnter("re-email")();
+                            }}
+                        />
+
+                        <input
+                            className="form-input hidden"
+                            id="re-email"
+                            type="email"
+                            placeholder="Re-enter email"
+                            value={this.state.reEmail}
+                            onChange={this.handleInput("reEmail")} />
 
                         <input
                             className="form-input"
                             type="password"
                             placeholder="Password"
                             value={this.state.password}
-                            onChange={this.handleInput("password")} />
+                            onChange={(e) => {
+                                this.handleInput("password")(e);
+                                this.reEnter("re-password")();
+                            }}
+                            />
+
+                        <input
+                            className="form-input hidden"
+                            id="re-password"
+                            type="password"
+                            placeholder="Re-enter Password"
+                            value={this.state.rePassword}
+                            onChange={this.handleInput("rePassword")} />
 
                         <button className="btn btn-green" onClick={this.handleSubmit}>Create account</button>
                         <p id="auth-disclaimer">By signing up, you agree to our terms of use, privacy policy, and cookie policy.</p>
