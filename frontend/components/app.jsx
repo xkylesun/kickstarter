@@ -12,7 +12,6 @@ import UserProfileContainer from "./user/user_profile_container";
 
 const App = () => (
     <div>
-        <h1>Jumpstarter</h1>
         <NavbarContainer />
         <Switch>
             <Route exact path="/" component={Home} />

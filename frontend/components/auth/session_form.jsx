@@ -6,8 +6,8 @@ export default class SignUp extends React.Component {
         super(props);
         this.state = {
             email: "",
-            password: ""
-        }
+            password: "",
+        };
         // this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoUser = this.demoUser.bind(this);
@@ -15,54 +15,71 @@ export default class SignUp extends React.Component {
 
     handleInput(type) {
         return (event) => {
-            this.setState({
+            this.setState({ 
                 [type]: event.target.value
             })
         };
     }
 
     handleSubmit(event) {
+        console.dir(this.state)
         event.preventDefault();
         this.props.login(this.state)
-            .then(() => this.props.history.push("/"))
+            .then(() => this.props.history.push("/"));
             // .then(() => this.props.history.push("./profile"))
+        setTimeout(()=> console.dir(this.props),1000)
+    }
+
+    renderErrors() {
+        return (
+            <section className="display-error">
+                <ul>
+                    {this.props.errors.map((error, i) => (
+                        <li key={`error-${i}`}>
+                            {error}
+                        </li>
+                    ))}
+                </ul>
+            </section>
+        );
     }
 
     render() {
         return (
-            <div className="session-form">
-                <h2>Log in</h2>
-                <form>
-                    <input
-                            type="text"
+            <div className="auth-content-frame">
+                <section>
+                    <p className="form-title">Log in</p>
+                    {this.renderErrors()}
+                    <form onSubmit={this.handleSubmit}>
+                        <input
+                            className="form-input"
+                            type="email"
                             value={this.state.email}
                             placeholder="Email"
                             onChange={this.handleInput("email")} />
 
-                    <input
+                        <input
+                            className="form-input"
                             type="password"
                             value={this.state.password}
                             placeholder="Password"
                             onChange={this.handleInput("password")} />
 
-                    <button onClick={this.handleSubmit}>
-                        Login
-                    </button>
+                        <button className="btn btn-green" type="submit">Log in</button>
 
-                    <button onClick={this.demoUser}> 
-                        Demo User
-                    </button>
-                </form>
+                        <button className="btn btn-blue" onClick={this.demoUser}>Demo User</button>
+                    </form>
+                </section>
 
-                <section className="switch-to-signup">
-                    <p>New to Jumpstarter?</p>
+                <section className="switch-to-frame">
+                    New to Jumpstarter?
                     <Link to="/signup">Sign up</Link>
                 </section>
             </div>)
     };
 
     demoUser(){
-        this.setState({email: "test04@gmail.com", password: "password"});
+        this.setState({email: "demo_user@email.com", password: "password"});
         setTimeout(() => this.props.login(this.state), 1000);
     }
 };

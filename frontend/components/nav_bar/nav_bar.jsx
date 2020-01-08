@@ -9,15 +9,14 @@ const Navbar = (props) => {
     );
     // console.dir(props)
     return (
-        <div id="navbar">
-            NAV BAR
+        <div id="navbar-frame">
             <br></br>
-            <ul className="nav-left">
+            <ul className="navbar nav-left">
                 <Link to="/">Explore</Link>
                 <Link to="/start">Start a project</Link>
             </ul>
-            <Link to="/">Kickstarter</Link>
-            <ul className="nav-right">
+            <Link to="/">Jumpstarter</Link>
+            <ul className="navbar nav-right">
                 <a href="#">Search</a>
                 {userComp}
             </ul>

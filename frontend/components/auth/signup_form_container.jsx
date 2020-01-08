@@ -5,7 +5,7 @@ import SignupForm from "./signup_form";
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        errors: state.errors.login,
+        errors: state.errors.session.responseJSON || [],
     }
 }
 

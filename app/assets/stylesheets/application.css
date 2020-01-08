@@ -13,3 +13,153 @@
  *= require_tree .
  *= require_self
  */
+
+
+ /* css reset start */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* css reset end */
+
+body {
+    font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
+    /* font-weight: 400; */
+    color: #282828;
+    background: #f7f7f6;
+
+}
+
+.auth-content-frame {
+    border: 1px solid #DCDEDD;
+    height: 455px;
+    width: 338px;
+    padding: 30px 20px;
+    margin: 80px auto;
+    font-size: 14px;
+    background: white;
+
+}
+
+.form-title {
+    margin: 6px 0 20px 0;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.form-input {
+    border: 1px solid #DCDEDD;
+    height: 16px;
+    width: 312px;
+    padding: 12px;
+    margin: 10px 0 10px 0;
+    font-size: inherit;
+}
+
+.btn{
+    background-color: #009E74;
+    color: #FFFFFF !important;
+    height: 42px;
+    width: 100%;
+    padding: 0 18px;
+    box-shadow: 0 2px 4px rgba(40,40,40,0.17);
+    cursor: pointer;
+    transition: all 0.25s ease-in-out !important;
+    text-align: center;
+    margin: 20px 0 20px 0;
+    font-size: inherit;
+    font-weight: 200;
+}
+
+.btn-green:hover {
+    background-color: #037362;
+}
+
+.btn-blue {
+    background-color: #39579A;
+}
+
+.btn-blue:hover {
+    background-color: #344E86;
+}
+
+.switch-to-frame {
+    /* height: 21px; */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+}
+
+.display-error {
+    background: #fd003b;
+    color: white;
+    font-size: 100%;
+    padding: 10px 20px;
+
+}
+
+.display-error ul li{ 
+    font-size: 16px;
+}
+
+#navbar-frame {
+    /* width: 100%; */
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 66px;
+    background: white;
+}
+
+.nav-left {
+    position: absolute;
+}
