@@ -22,5 +22,6 @@ class Project < ApplicationRecord
     belongs_to :creator, foreign_key: :creator_id, class_name: :User
 
     has_many :pledge_levels
-    has_many :backers, through: :pledge_levels, source: :backers
+    has_many :pledges, through: :pledge_levels, source: :pledges
+    has_many :backers, through: :pledges, source: :backer
 end

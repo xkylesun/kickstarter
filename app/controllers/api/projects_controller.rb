@@ -26,16 +26,20 @@ class Api::ProjectsController < ApplicationController
   end
   
   def index
-    start = params[:project][:start] || 0;
-    @projects = Project.order("created_at desc").offset(start).limit(6)
-    # @pledges = Project.joins()
+    start = 0
+    @projects = Project.order("created_at desc").offset(start).limit(6).includes(:creator, :pledges)
+    @users = @projects.map {|project| project.creator}
+    # @pledges = @projects.map {|project| project.pledges}.flatten
+
+    render :index
+
   end
   
   def destroy
     @project = selected_project
     if @project
       @project.destroy
-      render :show
+      render json: {projectId: @project.id}
     else
       render json: ['Could not locate project'], status: 400
     end
@@ -48,7 +52,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def selected_project
-    Project.find(params[:project][:id])
+    Project.find(params[:id])
   end
 end
 

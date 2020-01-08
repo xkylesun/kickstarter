@@ -15,8 +15,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // test - success on 2020/1/6
-// import * as APIUtil from "./utils/session"
-// window.login = APIUtil.login;
-// window.signup = APIUtil.signup;
-// window.update = APIUtil.update;
-// window.logout = APIUtil.logout;
+// import * as SessionUtil from "./utils/session"
+// window.login = SessionUtil.login;
+// window.signup = SessionUtil.signup;
+// window.update = SessionUtil.update;
+// window.logout = SessionUtil.logout;
+
+// test
+import * as ProjectUtil from "./utils/project_util"
+window.fetchProjects = ProjectUtil.fetchProjects;
+window.fetchProject = ProjectUtil.fetchProject;
+window.createProject = ProjectUtil.createProject;
+window.updateProject = ProjectUtil.updateProject;
+window.deleteProject = ProjectUtil.deleteProject;

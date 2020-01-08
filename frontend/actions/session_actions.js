@@ -1,4 +1,4 @@
-import * as APIUtil from "../utils/session"
+import * as SessionUtil from "../utils/session_util"
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
@@ -24,25 +24,25 @@ const receiveErrors = errors => {
     }
 }
 
-export const signup = formUser => dispatch => APIUtil.signup(formUser)
+export const signup = formUser => dispatch => SessionUtil.signup(formUser)
     .then(
         user => dispatch(receiveCurrentUser(user)), 
         errors => dispatch(receiveErrors(errors))
         );
 
-export const login = formUser => dispatch => APIUtil.login(formUser)
+export const login = formUser => dispatch => SessionUtil.login(formUser)
     .then(
         user => dispatch(receiveCurrentUser(user)),
         errors => dispatch(receiveErrors(errors))
         );
 
-export const update = formUser => dispatch => APIUtil.update(formUser)
+export const update = formUser => dispatch => SessionUtil.update(formUser)
     .then(
         user => dispatch(receiveCurrentUser(user)),
         errors => dispatch(receiveErrors(errors))
     );
 
-export const logout = () => dispatch => APIUtil.logout()
+export const logout = () => dispatch => SessionUtil.logout()
     .then(
         () => dispatch(logoutCurrentUser()),
         errors => dispatch(receiveErrors(errors))

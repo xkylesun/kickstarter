@@ -10,6 +10,7 @@ export default class SignUp extends React.Component {
         }
         // this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoUser = this.demoUser.bind(this);
     }
 
     handleInput(type) {
@@ -47,6 +48,10 @@ export default class SignUp extends React.Component {
                     <button onClick={this.handleSubmit}>
                         Login
                     </button>
+
+                    <button onClick={this.demoUser}> 
+                        Demo User
+                    </button>
                 </form>
 
                 <section className="switch-to-signup">
@@ -55,4 +60,9 @@ export default class SignUp extends React.Component {
                 </section>
             </div>)
     };
+
+    demoUser(){
+        this.setState({email: "test04@gmail.com", password: "password"});
+        setTimeout(() => this.props.login(this.state), 1000);
+    }
 };

@@ -7,16 +7,20 @@ const Navbar = (props) => {
     ) : (
     <Link to="/login">Log in</Link>
     );
-    console.dir(props)
+    // console.dir(props)
     return (
-        <div>
+        <div id="navbar">
             NAV BAR
             <br></br>
-            <Link to="/">Explore</Link>
-            <Link to="/start">Start a project</Link>
+            <ul className="nav-left">
+                <Link to="/">Explore</Link>
+                <Link to="/start">Start a project</Link>
+            </ul>
             <Link to="/">Kickstarter</Link>
-            <a href="#">Search</a>
-            {userComp}
+            <ul className="nav-right">
+                <a href="#">Search</a>
+                {userComp}
+            </ul>
         </div>)
 }
 

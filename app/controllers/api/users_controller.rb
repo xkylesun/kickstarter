@@ -22,6 +22,7 @@ class Api::UsersController < ApplicationController
   
   def show
     @user = selected_user
+    @project = @user.backed_projects
   end
   
   def index
