@@ -32,7 +32,7 @@ Pledge.create!([
   {backer_id: 4, pledge_level_id: 1, amount: 500},
   {backer_id: 4, pledge_level_id: 3, amount: 1000},
   {backer_id: 4, pledge_level_id: 4, amount: 100},
-  {backer_id: 4, pledge_level_id: 1, amount: 450},
+  {backer_id: 4, pledge_level_id: 2, amount: 450},
   {backer_id: 5, pledge_level_id: 4, amount: 600},
   {backer_id: 5, pledge_level_id: 5, amount: 1000},
   {backer_id: 5, pledge_level_id: 6, amount: 1200}

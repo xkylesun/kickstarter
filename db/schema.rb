@@ -33,8 +33,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_172300) do
     t.integer "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["backer_id"], name: "index_pledges_on_backer_id"
-    t.index ["pledge_level_id"], name: "index_pledges_on_pledge_level_id"
+    t.index ["backer_id", "pledge_level_id"], name: "index_pledges_on_backer_id_and_pledge_level_id", unique: true
   end
 
   create_table "projects", force: :cascade do |t|

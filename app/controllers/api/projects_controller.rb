@@ -12,7 +12,6 @@ class Api::ProjectsController < ApplicationController
       end.sum
     end
  
-    # render json: @funding_by_projects
     render :index
   end
 
@@ -20,9 +19,15 @@ class Api::ProjectsController < ApplicationController
     @project = selected_project
     @user = @project.creator
     @pledge_levels = @project.pledge_levels
-    @pledges = @project.pledges
+    pledges = @project.pledges
+    @funding_by_level = @pledge_levels.map do |level|
+      level.pledges.map do |pledge|
+        pledge.amount
+      end
+    end
 
-    render json: @pledges
+    render :show
+    # render json: @funding_by_level
   end
 
   def create
