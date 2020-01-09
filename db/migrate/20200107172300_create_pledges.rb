@@ -3,7 +3,7 @@ class CreatePledges < ActiveRecord::Migration[5.2]
     create_table :pledges do |t|
       t.integer :backer_id, null: false
       t.integer :pledge_level_id, null: false
-      t.integer :quantity, null: false
+      t.integer :amount, null: false
       t.timestamps
     end
     add_index :pledges, :backer_id

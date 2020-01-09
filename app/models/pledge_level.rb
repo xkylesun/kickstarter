@@ -15,8 +15,8 @@
 # tested success 1/7/2020
 
 class PledgeLevel < ApplicationRecord
-    validates :rate, :title, :description, :delivery_date, presence: true
-    validates :quantity, :rate, numericality: {greater_than: 0}
+    validates :minimum, :title, :description, :delivery_date, presence: true
+    validates :quantity, :minimum, numericality: {greater_than: 0}
 
     belongs_to :project
     has_many :pledges

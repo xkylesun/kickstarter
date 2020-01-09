@@ -4,6 +4,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :title, null: false
       t.integer :creator_id, null: false
       t.string :category, null: false
+      t.integer :target, null: false
       t.timestamps
       t.timestamp :due_date, null: false
       t.text :body, null: false

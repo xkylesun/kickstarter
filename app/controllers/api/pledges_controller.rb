@@ -1,11 +1,11 @@
 class Api::PledgesController < ApplicationController
 
   def create
-    pledge = Pledge.new(pledge_params)
-    if pledge.save
+    @pledge = Pledge.new(pledge_params)
+    if @pledge.save
       render :show
     else
-      render json: pledge.errors.full_messages, status: 401
+      render json: @pledge.errors.full_messages, status: 401
     end
   end
   

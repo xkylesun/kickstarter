@@ -13,8 +13,8 @@
 
 
 class Pledge < ApplicationRecord
-    validates :quantity, presence: true
-    validates :quantity, numericality: {greater_than: 0}
+    validates :amount, presence: true
+    validates :amount, numericality: {greater_than: 0}
 
     belongs_to :backer, foreign_key: :backer_id, class_name: :User
     belongs_to :pledge_level

@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_172300) do
   create_table "pledge_levels", force: :cascade do |t|
     t.integer "project_id", null: false
     t.integer "quantity", null: false
-    t.integer "rate", null: false
+    t.integer "minimum", null: false
     t.string "title", null: false
     t.string "description", null: false
     t.date "delivery_date", null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_172300) do
   create_table "pledges", force: :cascade do |t|
     t.integer "backer_id", null: false
     t.integer "pledge_level_id", null: false
-    t.integer "quantity", null: false
+    t.integer "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["backer_id"], name: "index_pledges_on_backer_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_172300) do
     t.string "title", null: false
     t.integer "creator_id", null: false
     t.string "category", null: false
+    t.integer "target", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "due_date", null: false

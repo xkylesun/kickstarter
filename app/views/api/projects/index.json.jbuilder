@@ -1,8 +1,8 @@
+
 json.set! "projects" do
     @projects.each do |project|
         json.set! project.id do
             json.extract! project, :id, :title, :creator_id, :thumbnail, :due_date
-        
         end
     end
 end
