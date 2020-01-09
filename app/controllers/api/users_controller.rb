@@ -3,7 +3,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
-      render :show
+      render "api/sessions/show"
     else
       render json: @user.errors.full_messages, status: 401
     end
@@ -22,9 +22,11 @@ class Api::UsersController < ApplicationController
   
   def show
     @user = selected_user
-    @backed_projects = @user.backed_projects.includes(:creator)
+    # @backed_projects = @user.backed_projects.includes(:creator)
+    @backed_projects = Project.joins(:backers).where("pledges.backer_id = ?", @user.id).distinct.includes(:creator)
     @creators = @backed_projects.map {|project| project.creator}
-    render json: @user
+    @backed_project_ids = @user.backed_project_ids.uniq
+    render :show
   end
   
   def index

@@ -1,6 +1,9 @@
-json.partial! "api/users/user", user: @user
+json.user do
+    json.extract! @user, :name, :id, :avatar, :biography
+    json.set! "backed_project_ids", @backed_project_ids
+end
 
-json.set! "backed_projects" do 
+json.backed_projects do 
     @backed_projects.each do |project|
         json.set! project.id do 
             json.extract! project, :id, :title, :creator_id, :thumbnail
@@ -8,7 +11,7 @@ json.set! "backed_projects" do
     end
 end
 
-json.set! "creators" do 
+json.creators do
     @creators.each do |creator|
         json.set! creator.id do
             json.extract! creator, :id, :name, :avatar

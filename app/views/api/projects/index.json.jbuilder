@@ -1,5 +1,5 @@
 
-json.set! "projects" do
+json.projects do
     @projects.each_with_index do |project, i|
         json.set! project.id do
             json.extract! project, :id, :title, :creator_id, :thumbnail, :due_date, :target
@@ -7,7 +7,7 @@ json.set! "projects" do
         end
     end
 end
-json.set! "creators" do
+json.creators do
     @creators.each do |creator|
         json.set! creator.id do
             json.extract! creator, :id, :name, :avatar

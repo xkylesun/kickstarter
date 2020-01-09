@@ -49,4 +49,5 @@ document.addEventListener("DOMContentLoaded", () => {
 import {fetchProjects, fetchProject} from "./actions/project_actions";
 window.fetchProjects = fetchProjects;
 window.fetchProject = fetchProject;
-import {} from "./actions/session_actions"
+import { fetchUser } from "./actions/user_actions";
+window.fetchUser = fetchUser;

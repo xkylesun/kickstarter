@@ -11,7 +11,6 @@ class Api::ProjectsController < ApplicationController
         pledge.amount
       end.sum
     end
- 
     render :index
   end
 
