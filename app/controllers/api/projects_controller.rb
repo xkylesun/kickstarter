@@ -3,21 +3,26 @@ class Api::ProjectsController < ApplicationController
   
   def index
     start = 0
-    @projects = Project.order("created_at desc").offset(start).limit(6).includes(:creator, :pledge_levels, :pledges)
+
+    @projects = Project.order("created_at desc").offset(start).limit(6).includes(:creator, :pledges)
     @users = @projects.map {|project| project.creator}
-    @pledge_levels = @projects.map {|project| project.pledge_levels}
-    @pledges = @projects.map {|project| project.pledges}
-    # @pledges = @pledge_levels.map do |pledge_levels|
-    #   pledge_levels.each do |pledge_level|
-    #     pledge_level.pledges
-    # # render :index
-    @pledges.map
-    render json: {"1": @pledges}
+    @funding_by_projects = @projects.map do |project| 
+      project.pledges.map do |pledge|
+        pledge.amount
+      end.sum
+    end
+ 
+    # render json: @funding_by_projects
+    render :index
   end
 
   def show
     @project = selected_project
+    @user = @project.creator
+    @pledge_levels = @project.pledge_levels
+    @pledges = @project.pledges
 
+    render json: @pledges
   end
 
   def create
