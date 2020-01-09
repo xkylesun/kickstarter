@@ -1,13 +1,13 @@
 
 json.set! "projects" do 
     json.set! @project.id do
-        json.extract! @project, :id, :title, :creator_id, :category, :due_date, :body, :created_at, :thumbnail, :video_link, :target
+        json.extract! @project, :id, :title, :creator_id, :category, :due_date, :body, :created_at, :thumbnail, :video_link, :target, :pledge_level_ids
     end
 end
 
-json.set! "users" do
-    json.set! @user.id do
-        json.extract! @user, :id, :name, :email, :biography
+json.set! "creator" do
+    json.set! @creator.id do
+        json.partial! "api/users/user", user: @creator
     end
 end
 

@@ -5,6 +5,7 @@ class Api::SessionsController < ApplicationController
             render json: ['The email address and password you entered do not match.'], status: 401
         else
             login(@user)
+            @backed_projects = @user.backed_projects
             render 'api/users/show';
         end
     end

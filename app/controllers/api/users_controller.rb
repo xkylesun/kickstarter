@@ -22,7 +22,9 @@ class Api::UsersController < ApplicationController
   
   def show
     @user = selected_user
-    @project = @user.backed_projects
+    @backed_projects = @user.backed_projects.includes(:creator)
+    @creators = @backed_projects.map {|project| project.creator}
+    render json: @user
   end
   
   def index

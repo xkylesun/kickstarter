@@ -49,3 +49,4 @@ document.addEventListener("DOMContentLoaded", () => {
 import {fetchProjects, fetchProject} from "./actions/project_actions";
 window.fetchProjects = fetchProjects;
 window.fetchProject = fetchProject;
+import {} from "./actions/session_actions"

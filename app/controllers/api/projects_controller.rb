@@ -5,7 +5,7 @@ class Api::ProjectsController < ApplicationController
     start = 0
 
     @projects = Project.order("created_at desc").offset(start).limit(6).includes(:creator, :pledges)
-    @users = @projects.map {|project| project.creator}
+    @creators = @projects.map {|project| project.creator}
     @funding_by_projects = @projects.map do |project| 
       project.pledges.map do |pledge|
         pledge.amount
@@ -17,7 +17,7 @@ class Api::ProjectsController < ApplicationController
 
   def show
     @project = selected_project
-    @user = @project.creator
+    @creator = @project.creator
     @pledge_levels = @project.pledge_levels.includes(:pledges)
     @funding_by_level = @pledge_levels.map do |level|
       level.pledges.map do |pledge|
@@ -67,6 +67,10 @@ class Api::ProjectsController < ApplicationController
 
   def selected_project
     Project.find(params[:id])
+  end
+
+  def filter_params
+
   end
 end
 

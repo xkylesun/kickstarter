@@ -7,10 +7,10 @@ json.set! "projects" do
         end
     end
 end
-json.set! "users" do
-    @users.each do |user|
-        json.set! user.id do
-            json.extract! user, :id, :name
+json.set! "creators" do
+    @creators.each do |creator|
+        json.set! creator.id do
+            json.extract! creator, :id, :name, :avatar
         end
     end
 end

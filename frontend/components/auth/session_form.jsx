@@ -74,7 +74,7 @@ export default class SignUp extends React.Component {
 
                         <button className="btn btn-green" type="submit">Log in</button>
 
-                        <button className="btn btn-blue" onClick={this.demoUser}>Demo User</button>
+                        <button className="btn btn-blue" type="button" onClick={this.demoUser}>Demo User</button>
                     </form>
                 </section>
 
