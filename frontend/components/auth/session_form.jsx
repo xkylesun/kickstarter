@@ -53,8 +53,8 @@ export default class SignUp extends React.Component {
 
     render() {
         return (
-            <div className="auth-content-frame">
-                <section>
+            <div className="auth-content-box">
+                <section className="auth-content-frame">
                     <p className="form-title">Log in</p>
                     {this.renderErrors()}
                     <form onSubmit={this.handleSubmit}>
@@ -78,7 +78,7 @@ export default class SignUp extends React.Component {
                     </form>
                 </section>
 
-                <section className="switch-to-frame">
+                <section className="switch-to-frame to-signup">
                     New to Jumpstarter?
                     <Link to="/signup">Sign up</Link>
                 </section>
