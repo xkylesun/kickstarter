@@ -26,16 +26,18 @@ export default class SignupForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        this.props.clearErrors();
+        console.dir(this.state.errors)
+        if (this.check()){
             this.props.signup({
                 name: this.state.name,
-                email: this.state.email, 
-                password: this.state.password
-            })
-                .then(
+                email: this.state.reEmail, 
+                password: this.state.rePassword
+            }).then(
                 () => this.props.history.push("/"),
-                () => this.check()
+                () => this.setState({errors: this.props.errors})
             )
-
+        }
     }
 
     renderErrors() {
@@ -60,7 +62,7 @@ export default class SignupForm extends React.Component {
     };
     
     check() {
-        let errors = [...this.props.errors];
+        let errors = [];
         if (this.state.email !== this.state.reEmail){
             errors.push("Email confirmation doesn't match Email")
         }
@@ -68,7 +70,11 @@ export default class SignupForm extends React.Component {
         if (this.state.password !== this.state.rePassword){
             errors.push("Password confirmation doesn't match Password")
         }
-        this.setState({errors: errors});
+        if (errors.length === 0){
+            return true;
+        } else {
+            this.setState({ errors: [...this.props.errors].concat(errors) });
+        }
     }
 
     componentWillUnmount(){
@@ -87,7 +93,7 @@ export default class SignupForm extends React.Component {
                 <section>
                     <p className="form-title">Sign up</p>
                     {this.renderErrors()}
-                    <form>
+                    <form onSubmit={ this.handleSubmit }>
                         <input
                             className="form-input"
                             type="text"
@@ -122,8 +128,7 @@ export default class SignupForm extends React.Component {
                             onChange={(e) => {
                                 this.handleInput("password")(e);
                                 this.reEnter("re-password")();
-                            }}
-                            />
+                            }} />
 
                         <input
                             className="form-input hidden"
@@ -133,7 +138,7 @@ export default class SignupForm extends React.Component {
                             value={this.state.rePassword}
                             onChange={this.handleInput("rePassword")} />
 
-                        <button className="btn btn-green" onClick={this.handleSubmit}>Create account</button>
+                        <button className="btn btn-green" type="submit">Create account</button>
                         <p id="auth-disclaimer">By signing up, you agree to our terms of use, privacy policy, and cookie policy.</p>
                     </form>
                 </section> 
