@@ -7,8 +7,8 @@ export default class SignUp extends React.Component {
         this.state = {
             email: "",
             password: "",
+            errors: [],
         };
-        // this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoUser = this.demoUser.bind(this);
     }
@@ -22,20 +22,22 @@ export default class SignUp extends React.Component {
     }
 
     handleSubmit(event) {
-        console.dir(this.state)
         event.preventDefault();
-        this.props.login(this.state)
-            .then(() => this.props.history.push("/"));
+        this.props.login({
+            email: this.state.email,
+            password: this.state.password
+        })
+            .then(() => this.props.history.push("/"),
+            () => {this.setState({errors: [...this.props.errors]})});
             // .then(() => this.props.history.push("./profile"))
-        setTimeout(()=> console.dir(this.props),1000)
     }
 
     renderErrors() {
-        if (this.props.errors.length === 0) return null;
+        if (this.state.errors.length === 0) return null;
         return (
             <section className="display-error">
                 <ul>
-                    {this.props.errors.map((error, i) => (
+                    {this.state.errors.map((error, i) => (
                         <li key={`error-${i}`}>
                             {error}
                         </li>
@@ -43,6 +45,10 @@ export default class SignUp extends React.Component {
                 </ul>
             </section>
         );
+    }
+
+    componentWillUnmount() {
+        this.props.clearErrors();
     }
 
     render() {
@@ -83,4 +89,5 @@ export default class SignUp extends React.Component {
         this.setState({email: "demo_user@email.com", password: "password"});
         setTimeout(() => this.props.login(this.state), 1000);
     }
+
 };

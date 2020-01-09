@@ -10,7 +10,7 @@ export default class SignupForm extends React.Component {
             reEmail: "",
             password: "",
             rePassword: "",
-            errors: this.props.errors,
+            errors: [],
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.check = this.check.bind(this);
@@ -26,14 +26,16 @@ export default class SignupForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.signup({
-            name: this.state.name,
-            email: this.state.email, 
-            password: this.state.password
-        })
-        .then(
-            () => this.props.history.push("/"),
-            this.check)
+            this.props.signup({
+                name: this.state.name,
+                email: this.state.email, 
+                password: this.state.password
+            })
+                .then(
+                () => this.props.history.push("/"),
+                () => this.check()
+            )
+
     }
 
     renderErrors() {
@@ -61,13 +63,16 @@ export default class SignupForm extends React.Component {
         let errors = [...this.props.errors];
         if (this.state.email !== this.state.reEmail){
             errors.push("Email confirmation doesn't match Email")
-        } 
+        }
 
         if (this.state.password !== this.state.rePassword){
             errors.push("Password confirmation doesn't match Password")
         }
         this.setState({errors: errors});
-        setTimeout(()=> console.dir(this.state),1000)
+    }
+
+    componentWillUnmount(){
+        this.props.clearErrors();
     }
 
     render() {
