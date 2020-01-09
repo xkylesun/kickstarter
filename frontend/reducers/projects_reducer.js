@@ -8,9 +8,9 @@ export const projectsReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_PROJECTS:
-            return Object.assign({}, state, action.projects)
+            return Object.assign({}, state, action.payload)
         case RECEIVE_PROJECT:
-            return Object.assign({}, state, { [action.project.id]: action.project })
+            return Object.assign({}, state, action.payload)
         case REMOVE_PROJECT:
             let newState = Object.assign({}, state)
             delete newState(action.projectId)

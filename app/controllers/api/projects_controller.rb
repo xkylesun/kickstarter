@@ -18,8 +18,7 @@ class Api::ProjectsController < ApplicationController
   def show
     @project = selected_project
     @user = @project.creator
-    @pledge_levels = @project.pledge_levels
-    pledges = @project.pledges
+    @pledge_levels = @project.pledge_levels.includes(:pledges)
     @funding_by_level = @pledge_levels.map do |level|
       level.pledges.map do |pledge|
         pledge.amount

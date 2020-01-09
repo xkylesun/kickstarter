@@ -5,17 +5,17 @@ export const RECEIVE_PROJECT = "RECEIVE_PROJECT";
 export const RECEIVE_PROJECT_ERRORS = "RECEIVE_PROJECT_ERRORS";
 export const REMOVE_PROJECT = "REMOVE_PROJECT"
 
-const receiveProjects = projects => {
+const receiveProjects = payload => {
     return {
         type: RECEIVE_PROJECTS,
-        projects
+        payload
     };
 };
 
-const receiveProject = project => {
+const receiveProject = payload => {
     return {
         type: RECEIVE_PROJECT,
-        project
+        payload
     };
 };
 
@@ -36,7 +36,7 @@ const receiveErrors = errors => {
 export const fetchProjects = filters => dispatch => (
     ProjectUtil.fetchProjects(filters)
         .then(
-            projects => dispatch(receiveProjects(projects)),
+            payload => dispatch(receiveProjects(payload)),
             errors => dispatch(receiveErrors(errors))
         )
 );
@@ -44,7 +44,7 @@ export const fetchProjects = filters => dispatch => (
 export const fetchProject = projectId => dispatch => (
     ProjectUtil.fetchProject(projectId)
         .then(
-            project => dispatch(receiveProject(project)),
+            payload => dispatch(receiveProject(payload)),
             errors => dispatch(receiveErrors(errors))
         )
 );
@@ -52,7 +52,7 @@ export const fetchProject = projectId => dispatch => (
 export const createProject = formProject => dispatch => (
     ProjectUtil.createProject(formProject)
         .then(
-            project => dispatch(receiveProject(project)),
+            payload => dispatch(receiveProject(payload)),
             errors => dispatch(receiveErrors(errors))
         )
 );
@@ -60,7 +60,7 @@ export const createProject = formProject => dispatch => (
 export const updateProject = formProject => dispatch => (
     ProjectUtil.updateProject(formProject)
         .then(
-            project => dispatch(receiveProject(project)),
+            payload => dispatch(receiveProject(payload)),
             errors => dispatch(receiveErrors(errors))
         )
 );

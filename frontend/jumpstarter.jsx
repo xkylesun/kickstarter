@@ -38,10 +38,14 @@ document.addEventListener("DOMContentLoaded", () => {
 // window.update = SessionUtil.update;
 // window.logout = SessionUtil.logout;
 
-// test
-import * as ProjectUtil from "./utils/project_util"
-window.fetchProjects = ProjectUtil.fetchProjects;
-window.fetchProject = ProjectUtil.fetchProject;
-window.createProject = ProjectUtil.createProject;
-window.updateProject = ProjectUtil.updateProject;
-window.deleteProject = ProjectUtil.deleteProject;
+// test - success on 2020/1/8
+// import * as ProjectUtil from "./utils/project_util"
+// window.fetchProjects = ProjectUtil.fetchProjects;
+// window.fetchProject = ProjectUtil.fetchProject;
+// window.createProject = ProjectUtil.createProject;
+// window.updateProject = ProjectUtil.updateProject;
+// window.deleteProject = ProjectUtil.deleteProject;
+
+import {fetchProjects, fetchProject} from "./actions/project_actions";
+window.fetchProjects = fetchProjects;
+window.fetchProject = fetchProject;
