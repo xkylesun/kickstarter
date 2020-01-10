@@ -1,19 +1,15 @@
-import React from "react"
+import React from "react";
+import { Link } from 'react-router-dom';
 
 export default class PledgeLevel extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            value: 1
+            value: this.props.level.minimum
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
     }
 
-    handleSubmit(){
-        event.preventDefault();
-        console.log("yooo")
-    }
     
     handleInput(event) {
         this.setState({
@@ -36,7 +32,7 @@ export default class PledgeLevel extends React.Component{
                 </div>
                 <p>Limited ({this.props.level.quantity - this.props.level.count} of {this.props.level.quantity})</p>
                 <p>{this.props.level.count} backers</p>
-                <form onSubmit={this.handleSubmit}>
+                <form>
                     <label className="input-pledge">Pledge amount
                         <span>$</span>
                         <input
@@ -46,7 +42,18 @@ export default class PledgeLevel extends React.Component{
                             onChange={this.handleInput}>
                         </input>
                     </label>
-                    <button type="submit">Continue</button>
+                        <Link 
+                        to={{
+                            pathname: `/checkouts/${this.props.level.id}/payments`,
+                            state: {
+                                title: this.props.level.title,
+                                minimum: this.props.level.minimum,
+                                value: this.state.value
+                            }
+                        }}
+                        >
+                            <button type="button">Continue</button>
+                        </Link>
                 </form>
 
             </div>

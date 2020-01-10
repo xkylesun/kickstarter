@@ -14,8 +14,8 @@ export default class Project extends React.Component{
     }
 
     componentDidUpdate(prevProps) {
-        // console.log(this.props.match.params.projectId);
-        // console.log(prevProps.id)
+        console.log(this.props.match.params.projectId);
+        console.log(prevProps.id)
         if (this.props.match.params.projectId !== prevProps.id) {
             this.props.fetchProject(this.props.match.params.projectId)
             // setTimeout(() => this.setState({
