@@ -27,7 +27,6 @@ export default class SignupForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.clearErrors();
-        console.dir(this.state.errors)
         if (this.check()){
             this.props.signup({
                 name: this.state.name,
