@@ -1,0 +1,65 @@
+@import "./style";
+
+#navbar-frame {
+    /* width: 100%; */
+    border: 1px solid $border-gray;
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    height: 66px;
+    background: white;
+}
+
+.nav-left {
+    // position: absolute;
+    flex-grow: 1;
+    padding-left: 15px;
+}
+.nav-center{
+    flex-grow: 1;
+}
+
+#nav-logo {
+    font-family: "RNS-Black", sans-serif;
+    color: $text-green;
+    font-size: 26px;
+    font-weight: 900;
+    position: relative;
+    left: -6%;
+    top: -2px;
+
+}
+
+.nav-right {
+    // flex-grow: 1;
+    padding-right: 15px;
+}
+
+.nav-button {
+    border: none;
+    background: white;
+    font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: $text-black;
+    letter-spacing: 0.4px;
+    padding: 0 7px;
+}
+
+.nav-button:hover {
+    color: $text-dark-green;
+    cursor: pointer;
+}
+
+#search-icon {
+    padding: 0 6px;
+    font-weight: 100;
+}
+#nav-button:hover {
+    color: $text-dark-green;
+
+}
+
+
+
+

@@ -8,8 +8,10 @@ const mapStateToProps = (props) => {
     };
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => {
+    return {
     // requestProjects: dispatch(requestProjects)
-});
+    }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

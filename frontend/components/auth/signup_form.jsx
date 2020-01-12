@@ -89,6 +89,8 @@ export default class SignupForm extends React.Component {
                     <Link to="/login">Log in</Link>
                 </section>
 
+                <div className="line-full"></div>
+
                 <section className="auth-content-frame">
                     <p className="form-title">Sign up</p>
                     {this.renderErrors()}
@@ -138,7 +140,7 @@ export default class SignupForm extends React.Component {
                             onChange={this.handleInput("rePassword")} />
 
                         <button className="btn btn-green" type="submit">Create account</button>
-                        <p id="auth-disclaimer">By signing up, you agree to our terms of use, privacy policy, and cookie policy.</p>
+                        <p className="disclaimer">By signing up, you agree to our terms of use, privacy policy, and cookie policy.</p>
                     </form>
                 </section> 
             </div>)

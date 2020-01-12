@@ -53,11 +53,12 @@ export default class SignUp extends React.Component {
 
     render() {
         return (
+        <div>
             <div className="auth-content-box">
                 <section className="auth-content-frame">
                     <p className="form-title">Log in</p>
                     {this.renderErrors()}
-                    <form onSubmit={this.handleSubmit}>
+                    <form className="auth-form" onSubmit={this.handleSubmit}>
                         <input
                             className="form-input"
                             type="email"
@@ -73,16 +74,22 @@ export default class SignUp extends React.Component {
                             onChange={this.handleInput("password")} />
 
                         <button className="btn btn-green" type="submit">Log in</button>
-
+                        <div className="line">
+                        <span className="line-left"></span>
+                        <p>or</p>
+                        <span className="line-right"></span>
+                        </div>
                         <button className="btn btn-blue" type="button" onClick={this.demoUser}>Demo User</button>
+                        <p className="disclaimer">Don't feel like signing up? Use demo account to experience Jumpstarter. Note that Jumpstarter will never send you email without your permission.</p>
                     </form>
                 </section>
-
+                <div className="line-full"></div>
                 <section className="switch-to-frame to-signup">
                     New to Jumpstarter?
                     <Link to="/signup">Sign up</Link>
                 </section>
-            </div>)
+            </div>
+        </div>)
     };
 
     demoUser(){

@@ -1,3 +1,143 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "./style";
+
+.auth-content-box {
+    display: grid;
+    box-sizing: content-box;
+    align-items: center;
+    width: 338px;
+    border: 1px solid $border-light-gray;
+    padding: 20px 30px 20px 30px;
+    margin: 60px auto;
+    font-size: 14px;
+    font-weight: 300;
+    background: white;
+}
+
+.auth-content-frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-title {
+    margin: 20px 0 20px 0;
+    font-size: 28px;
+    letter-spacing: 1px;;
+}
+
+.form-input {
+    border: 1px solid $border-gray;
+    width: 312px;
+    padding: 12px;
+    margin: 12px 0;
+    font-weight: 300;
+}
+
+.form-input:focus {
+    border: 1px solid $border-green;
+    outline: none;
+}
+
+::placeholder {
+    color: $text-gray;
+}
+
+.btn{
+    background-color: $btn-green;
+    color: $text-white;
+    height: 42px;
+    width: 95.2%;
+    // padding: 0 18px;
+    box-shadow: 0 2px 4px rgba(40,40,40,0.17);
+    cursor: pointer;
+    transition: all 0.25s ease-in-out !important;
+    text-align: center;
+    margin: 20px 0 20px 0;
+    font-size: inherit;
+    font-weight: 250;
+    display: inline-block;
+    position: relative;
+}
+
+.btn-green:hover {
+    background-color: $btn-green-hover;
+}
+
+.btn-blue {
+    background-color: $btn-blue;
+}
+
+.btn-blue:hover {
+    background-color: $btn-blue-hover;
+}
+
+.line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.line-left, .line-right{
+    border-top: 1px solid $border-light-gray;
+    height: 1px;
+    width: 45%;
+    margin: 20px 0 20px 0;
+}
+
+.line-full {
+    width: 98%;
+    border-top: 1px solid $border-light-gray;
+    height: 1px;
+    margin: 0 auto;
+}
+
+.disclaimer {
+    color: $text-dark-gray;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+}
+
+
+.switch-to-frame {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 20px 0;
+}
+
+.switch-to-frame a {
+    text-decoration: none;
+    padding-left: 5px;
+    color: $text-blue;
+    font-weight: 500;
+}
+
+.switch-to-frame a:hover{
+    color: inherit;
+}
+
+// .to-login {
+//     margin-bottom: 20px;
+// }
+
+// .to-signup {
+//     margin-top: 20px
+// }
+
+.display-error {
+    background: $background-red;
+    color: white;
+    font-size: 100%;
+    padding: 10px 20px;
+}
+
+.display-error ul li{ 
+    font-size: 16px;
+    margin: 10px;
+}
+

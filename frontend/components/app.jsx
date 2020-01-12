@@ -5,7 +5,7 @@ import { AuthRoute, ProtectedRoute, PaymentRoute } from '../utils/route_util';
 import SignupFormContainer from "./auth/signup_form_container";
 import SessionFormContainer from "./auth/session_form_container"
 import CatchAll from "./catch_all";
-import Home from "./home";
+import HomeContainer from "./home/home_container"
 import NavbarContainer from "./nav_bar/nav_bar_container";
 import StartProjectContainer from "./start_project/start_project_container";
 import UserProfileContainer from "./user/user_profile_container";
@@ -16,7 +16,7 @@ const App = () => (
     <div>
         <NavbarContainer />
         <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={HomeContainer} />
             <AuthRoute exact path="/login" component={SessionFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
             <Route exact path="/profile/:userId/" component={UserProfileContainer} />
