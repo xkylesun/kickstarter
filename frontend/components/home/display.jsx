@@ -23,7 +23,7 @@ export const Recommended = (props) => {
     return (
     <div className="rec-item-frame">
         <div className="rec-content-container">
-            <div classNmae="rec-image-container">
+            <div className="rec-image-container">
                 <img className="image rec-image" src="https://ksr-ugc.imgix.net/assets/027/539/333/e97fe76e6f1a364d80069fdf9aa705ca_original.JPG?ixlib=rb-2.1.0&crop=faces&w=1024&h=576&fit=crop&v=1576687762&auto=format&frame=1&q=92&s=d9b24a424fb492f6aea4b38299305ede" />
             </div>
             <div className="rec-item-info">
