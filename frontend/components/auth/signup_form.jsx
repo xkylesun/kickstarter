@@ -82,67 +82,69 @@ export default class SignupForm extends React.Component {
 
     render() {
         return (
-            <div className="auth-content-box">
+            <div className="auth-background">
+                <div className="auth-content-box">
             
-                <section className="switch-to-frame to-login">
-                    Have an account?
-                    <Link to="/login">Log in</Link>
-                </section>
+                    <section className="switch-to-frame to-login">
+                        Have an account?
+                        <Link to="/login">Log in</Link>
+                    </section>
 
-                <div className="line-full"></div>
+                    <div className="line-full"></div>
 
-                <section className="auth-content-frame">
-                    <p className="form-title">Sign up</p>
-                    {this.renderErrors()}
-                    <form onSubmit={ this.handleSubmit }>
-                        <input
-                            className="form-input"
-                            type="text"
-                            placeholder="Name"
-                            value={this.state.name}
-                            onChange={this.handleInput("name")} />
+                    <section className="auth-content-frame">
+                        <p className="form-title">Sign up</p>
+                        {this.renderErrors()}
+                        <form onSubmit={ this.handleSubmit }>
+                            <input
+                                className="form-input"
+                                type="text"
+                                placeholder="Name"
+                                value={this.state.name}
+                                onChange={this.handleInput("name")} />
 
-                        <input
-                            className="form-input"
-                            type="email"
-                            placeholder="Email"
-                            value={this.state.email}
-                            onChange={(e)=>{
-                                this.handleInput("email")(e);
-                                this.reEnter("re-email")();
-                            }}
-                        />
+                            <input
+                                className="form-input"
+                                type="email"
+                                placeholder="Email"
+                                value={this.state.email}
+                                onChange={(e)=>{
+                                    this.handleInput("email")(e);
+                                    this.reEnter("re-email")();
+                                }}
+                            />
 
-                        <input
-                            className="form-input hidden"
-                            id="re-email"
-                            type="email"
-                            placeholder="Re-enter email"
-                            value={this.state.reEmail}
-                            onChange={this.handleInput("reEmail")} />
+                            <input
+                                className="form-input hidden"
+                                id="re-email"
+                                type="email"
+                                placeholder="Re-enter email"
+                                value={this.state.reEmail}
+                                onChange={this.handleInput("reEmail")} />
 
-                        <input
-                            className="form-input"
-                            type="password"
-                            placeholder="Password"
-                            value={this.state.password}
-                            onChange={(e) => {
-                                this.handleInput("password")(e);
-                                this.reEnter("re-password")();
-                            }} />
+                            <input
+                                className="form-input"
+                                type="password"
+                                placeholder="Password"
+                                value={this.state.password}
+                                onChange={(e) => {
+                                    this.handleInput("password")(e);
+                                    this.reEnter("re-password")();
+                                }} />
 
-                        <input
-                            className="form-input hidden"
-                            id="re-password"
-                            type="password"
-                            placeholder="Re-enter Password"
-                            value={this.state.rePassword}
-                            onChange={this.handleInput("rePassword")} />
+                            <input
+                                className="form-input hidden"
+                                id="re-password"
+                                type="password"
+                                placeholder="Re-enter Password"
+                                value={this.state.rePassword}
+                                onChange={this.handleInput("rePassword")} />
 
-                        <button className="btn btn-green" type="submit">Create account</button>
-                        <p className="disclaimer">By signing up, you agree to our terms of use, privacy policy, and cookie policy.</p>
-                    </form>
-                </section> 
+                            <button className="btn btn-green" type="submit">Create account</button>
+                            <p className="disclaimer">By signing up, you agree to our terms of use, privacy policy, and cookie policy.</p>
+                        </form>
+                    </section> 
+                </div>
             </div>)
     };
 };

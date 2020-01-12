@@ -53,7 +53,7 @@ export default class SignUp extends React.Component {
 
     render() {
         return (
-        <div>
+        <div class="auth-background">
             <div className="auth-content-box">
                 <section className="auth-content-frame">
                     <p className="form-title">Log in</p>

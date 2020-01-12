@@ -16,7 +16,7 @@ const Navbar = (props) => {
             </span>
             <span className="nav-center"><Link to="/"><h1 id="nav-logo">Jumpstarter</h1></Link></span>
             <span className="nav-right">
-                <a href="#"><button className="nav-button">Search<i id="search-icon" class="fa fa-search"></i></button></a>
+                <a href="#"><button className="nav-button">Search<i id="search-icon" className="fa fa-search"></i></button></a>
                 {userComp}
             </span>
 

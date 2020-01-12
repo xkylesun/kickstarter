@@ -4,6 +4,10 @@
 
 @import "./style";
 
+.auth-background {
+    background-color: $background-beige;
+}
+
 .auth-content-box {
     display: grid;
     box-sizing: content-box;

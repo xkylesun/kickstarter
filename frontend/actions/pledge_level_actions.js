@@ -1,24 +1,25 @@
-import * as PledgeUtil from "../utils/pledge_util";
+import * as PledgeLevelUtil from "../utils/pledge_level_utils"
 
-export const RECEIVE_PLEDGE = "RECEIVE_PLEDGE";
-export const RECEIVE_PLEDGE_ERRORS = "RECEIVE_PLEDGE_ERRORS";
+export const RECEIVE_PLEDGE_LEVEL = "RECEIVE_PLEDGE_LEVEL";
+export const RECEIVE_PLEDGE_LEVEL_ERRORS = "RECEIVE_PLEDGE_LEVEL_ERRORS";
 
-const receivePledge = pledge => {
+const receivePledge = pledgeLevel => {
     return {
-        type: RECEIVE_PLEDGE,
-        pledge
+        type: RECEIVE_PLEDGE_LEVEL,
+        pledgeLevel
     };
 };
 
 const receiveErrors = errors => {
     return {
-        type: RECEIVE_PLEDGE_ERRORS,
+        type: RECEIVE_PLEDGE_LEVEL_ERRORS,
         errors
     }
 };
 
-export const createPledge = pledge => dispatch => (
-    PledgeUtil.createPledge(pledge).then(
+
+export const createPledgeLevel = pledgeLevel => dispatch => (
+    PledgeLevelUtil.createPledgeLevel(pledgeLevel).then(
         pledge => dispatch(receivePledge(pledge)),
         errors => dispatch(receiveErrors(errors))
     )

@@ -1,6 +1,6 @@
 import Payment from "./payment";
 import { connect } from "react-redux";
-import { createPledge } from "../../actions/pledge_level_actions";
+import { createPledge } from "../../actions/pledge_actions";
 
 const mapStateToProps = (state, ownProps) => {
     return {
