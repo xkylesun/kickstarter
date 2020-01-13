@@ -10,8 +10,10 @@ export default class StartForm extends React.Component {
             title: "",
             subtitle: "",
             body: "",
+            datetime: "",
             imageFile: null,
-            previewUrl: null
+            previewUrl: null,
+            rewards: []
         }
         this.handleFile = this.handleFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -76,10 +78,10 @@ export default class StartForm extends React.Component {
                         </span>
                         <span>
                             <label>Title
-                                <input type="text" />
+                                <input type="text" onChange={this.handleInput("title")}/>
                             </label>
                             <label>Subtitle
-                                <input type="text" />
+                                <input type="text" onChange={this.handleInput("subtitle")} />
                             </label>
                         </span>
                     </div>
@@ -92,7 +94,7 @@ export default class StartForm extends React.Component {
                         </span>
                         <span>
                             <select defaultValue="0" onChange={this.handleInput("category")}>
-                                <option disabled value="0">Select car:</option>
+                                <option disabled value="0">Category:</option>
                                 <option value="art">Art</option>
                                 <option value="comics">Comics</option>
                                 <option value="design">Design</option>
@@ -127,16 +129,19 @@ export default class StartForm extends React.Component {
                             <p>End on a specific date &amp; time</p>
                                 <input type="datetime-local" name="" id="" />
                         </span>
-                    <button type="button" onClick={this.handleClick}>Next: Reward</button>
+                    </div>
+
+                    <div className="bottom-bar">
+                        <button type="button" onClick={this.handleClick("project-basics", "project-rewards")}>Next: Reward</button>
                     </div>
                 </div>
 
-                <div className="project-rewards hidden">
+                <div className="hidden" id="project-rewards">
                     <h1>Add your rewards</h1>
                     <h2>Offer simple, meaningful rewards that bring backers closer to your project. Rewards don’t have to be physical items. Consider special experiences or behind-the-scenes peeks into your project.</h2>
 
-                    <form action="">
-                        <label >Pledge amount
+                    <form>
+                        <label>Pledge amount
                             Set a minimum pledge amount for this reward.
                             <input type="number" name="" id=""/>
                         </label>
@@ -144,35 +149,43 @@ export default class StartForm extends React.Component {
                             Describe this reward in more detail.
                             <input type="text" name="" id=""/>
                         </label>
-                        <label >Estimated delivery
+                        <label>Estimated delivery</label>
                             Give yourself plenty of time. It's better to deliver to backers ahead of schedule than behind.
-                            <input type="month" name="" id=""/>
-                            <select defaultValue="0" onChange={this.handleInput("category", "one")}>
-                                <option disabled value="0">Year</option>
-                                <option value="2020">2020</option>
-                                <option value="2021">2021</option>
-                                <option value="2022">2022</option>
-                                <option value="2023">2023</option>
-                                <option value="2024">2024</option>
+                            <input type="month" onChange={""} />
+                        <select defaultValue="0" onChange={""}>
+                        <option disabled value="0">Year</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
                             </select> 
-                        </label>
+                        
                         <section>
                             <h2>Add reward items</h2>
                             <h3>Briefly list and describe each item included in this reward.</h3>
                             <button type="submit">Add an item</button>
                         </section>
                     </form>
+                    <div className="bottom-bar">
+                        <button type="button" onClick={this.handleClick("project-rewards", "project-basics")}>Back to Basics</button>
+                        <button type="button" onClick={this.handleClick("project-rewards", "project-story")}>Next: Story</button>
+                    </div>
                 </div>
 
 
-                <div className="project-story hidden">
+                <div className="hidden" id="project-story">
                     <h1>Introduce your project</h1>
                     <h2>Tell people why they should be excited about your project. Get specific but be clear and be brief.</h2>
                     <div>
                         <h2>Project description</h2>
                         <h3>Describe what you're raising funds to do, why you care about it, how you plan to make it happen, and who you are. Your description should tell backers everything they need to know. If possible, include images to show them what your project is all about and what rewards look like.</h3>
                         <textarea name="" id="" cols="30" rows="10" placeholder="Write about your project like you're explaining it to a friend"></textarea>
-                        <button onClick={this.handleSubmit}>Submit</button>
+                    </div>
+
+                    <div className="bottom-bar">
+                        <button type="button" onClick={this.handleClick("project-story", "project-rewards")}>Back to Rewards</button>
+                        <button onClick={this.handleSubmit}>Launch my project</button>
                     </div>
                 </div>
             </div>
