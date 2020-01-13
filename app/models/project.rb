@@ -27,6 +27,8 @@ class Project < ApplicationRecord
 
     after_commit :create_first_pledge_level
 
+    has_one_attached :image
+
     def create_first_pledge_level
         PledgeLevel.new(project_id: Project.last.id, minimum: 1, title: "Back it because you believe in it.", description: "Support the project for no reward, just because it speaks to you.").save
     end
