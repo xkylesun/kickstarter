@@ -20,42 +20,47 @@ export default class PledgeLevel extends React.Component{
     render(){
         return (
         <li>
-            <div className="pledge-level-content-box">
-                <h1>Pledge ${this.props.level.minimum} or more</h1>
-                <h2>{this.props.level.title}</h2>
-                <p>{this.props.level.description}</p>
-                <div className="level-extra-info">
-                    <span>ESTIMATED DELIVERY</span>
-                    <time>{this.props.level.deliveryDate}</time>
-                    <span>SHIPS TO</span>
-                    <span>Anywhere in the world</span>
+            <div className="pledge-level-item-frame">
+                <div className="pledge-info-container">
+                    <h1 className="level-amount">Pledge ${this.props.level.minimum} or more</h1>
+                    <h2 className="level-title">{this.props.level.title}</h2>
+                    <p className="level-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolores atque, qui esse enim in doloremque, nisi, soluta maiores incidunt at? Facere sequi animi labore nihil minus. Repellat, molestias minima?{this.props.level.description}</p>
+                    <div className="level-extra-info">
+                        <span className="level-delivery-title">ESTIMATED DELIVERY</span>
+                        <p className="level-delivery-date">{this.props.level.deliveryDate}</p>
+                    </div>
+                    <p className="level-remaining">Limited ({this.props.level.quantity - this.props.level.count} of {this.props.level.quantity})</p>
+                    <p className="level-backer-count">{this.props.level.count} backers</p>
                 </div>
-                <p>Limited ({this.props.level.quantity - this.props.level.count} of {this.props.level.quantity})</p>
-                <p>{this.props.level.count} backers</p>
-                <form>
-                    <label className="input-pledge">Pledge amount
-                        <span>$</span>
+                <div className="pledge-form-container">
+                    <form>
+                    <p className="pledge-input-label">Pledge amount</p>
+                        <span className="pledge-currency">$</span>
                         <input
+                            className="pledge-input"
                             type="number"
                             min={this.props.level.miminum}
                             value={this.state.value}
                             onChange={this.handleInput}>
                         </input>
-                    </label>
-                        <Link 
-                        to={{
-                            pathname: `/checkouts/${this.props.level.id}/payments`,
-                            state: {
-                                title: this.props.level.title,
-                                minimum: this.props.level.minimum,
-                                value: this.state.value
-                            }
-                        }}
+                    
+                        <Link
+                            to={{
+                                pathname: `/checkouts/${this.props.level.id}/payments`,
+                                state: {
+                                    title: this.props.level.title,
+                                    minimum: this.props.level.minimum,
+                                    value: this.state.value
+                                }
+                            }}
                         >
-                            <button type="button">Continue</button>
+                            <button 
+                                className="btn btn-green" 
+                                id="plege-form-btn"
+                                type="button">Continue</button>
                         </Link>
-                </form>
-
+                    </form>
+                </div>
             </div>
         </li>)
     }

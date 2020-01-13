@@ -75,9 +75,9 @@ export default class SignUp extends React.Component {
 
                         <button className="btn btn-green" type="submit">Log in</button>
                         <div className="line">
-                        <span className="line-left"></span>
-                        <p>or</p>
-                        <span className="line-right"></span>
+                            <span className="line-left"></span>
+                            <p>or</p>
+                            <span className="line-right"></span>
                         </div>
                         <button className="btn btn-blue" type="button" onClick={this.demoUser}>Demo User</button>
                         <p className="disclaimer">Don't feel like signing up? Use demo account to experience Jumpstarter. Note that Jumpstarter will never send you email without your permission.</p>

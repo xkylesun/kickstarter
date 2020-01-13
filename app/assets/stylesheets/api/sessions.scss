@@ -27,6 +27,10 @@
     justify-content: space-between;
 }
 
+.auth-form {
+    
+}
+
 .form-title {
     margin: 20px 0 20px 0;
     font-size: 28px;
@@ -51,20 +55,20 @@
 }
 
 .btn{
-    background-color: $btn-green;
     color: $text-white;
     height: 42px;
-    width: 95.2%;
-    // padding: 0 18px;
+    width: 100%;
     box-shadow: 0 2px 4px rgba(40,40,40,0.17);
     cursor: pointer;
     transition: all 0.25s ease-in-out !important;
     text-align: center;
     margin: 20px 0 20px 0;
     font-size: inherit;
-    font-weight: 250;
-    display: inline-block;
-    position: relative;
+    font-weight: 300;
+}
+
+.btn-green{
+    background-color: $btn-green;
 }
 
 .btn-green:hover {
@@ -103,7 +107,7 @@
     color: $text-dark-gray;
     font-size: 12px;
     line-height: 18px;
-    letter-spacing: 0.5px;
+    // letter-spacing: 0.5px;
     margin-bottom: 20px;
 }
 
@@ -124,14 +128,6 @@
 .switch-to-frame a:hover{
     color: inherit;
 }
-
-// .to-login {
-//     margin-bottom: 20px;
-// }
-
-// .to-signup {
-//     margin-top: 20px
-// }
 
 .display-error {
     background: $background-red;

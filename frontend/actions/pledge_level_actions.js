@@ -10,7 +10,7 @@ const receivePledge = pledgeLevel => {
     };
 };
 
-const receiveErrors = errors => {
+const receivePledgeLevelErrors = errors => {
     return {
         type: RECEIVE_PLEDGE_LEVEL_ERRORS,
         errors
@@ -21,6 +21,6 @@ const receiveErrors = errors => {
 export const createPledgeLevel = pledgeLevel => dispatch => (
     PledgeLevelUtil.createPledgeLevel(pledgeLevel).then(
         pledge => dispatch(receivePledge(pledge)),
-        errors => dispatch(receiveErrors(errors))
+        errors => dispatch(receivePledgeLevelErrors(errors))
     )
 );
