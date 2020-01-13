@@ -17,35 +17,41 @@ export default class Project extends React.Component{
         }
     }
 
+    countDays(date){
+        let currentDate = new Date();
+        let dueDate = new Date(date);
+        return Math.floor((dueDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24));
+    }
+
     render(){
+        console.dir(this.props)
         if (!this.props.project) {
             return null;
         } else {
-            const {title, body, videoLink} = this.props.project;
-        
+            const {title, subtitle, body, imageUrl, target, dueDate, currentFunding, backersCount} = this.props.project;
             return (
             <div>
                 <div className="project-header-frame">
                     <div className="project-title-container">
                         <h1 className="project-header-title">{title}</h1>
-                        <h2 className="project-header-subtitle">{"description"}</h2>
+                        <h2 className="project-header-subtitle">{subtitle}</h2>
                     </div>
 
                     <div className="project-content-container">
                         <span className="content-image-container">
-                                <img className="content-image" src="https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"></img>
+                                <img className="content-image" src={imageUrl}></img>
                         </span>
                         <span className="content-info-container">
                             <div className="funding-bar-frame">
-                                <div className="bar-green"></div>
-                                <div className="bar-gray"></div>
+                                <div className="bar-green" style={{ width: `${currentFunding / target * 100}%` }}></div>
+                                <div className="bar-gray" style={{ width: `${(1 - currentFunding / target) * 100}%` }}></div>
                             </div>
-                            <section className="content-info-number content-info-funding">${"num"}</section>
-                            <section className="content-info-unit">pledged of ${} goal</section>
-                            <section className="content-info-number">{"num"}</section>
+                                <section className="content-info-number content-info-funding">${currentFunding}</section>
+                                <section className="content-info-unit">pledged of ${target} goal</section>
+                            <section className="content-info-number">{backersCount}</section>
                             <section className="content-info-unit">backers</section>
-                            <section className="content-info-number">{"num"}</section>
-                            <section className="content-info-unit">day to go</section>
+                            <section className="content-info-number">{this.countDays(dueDate)}</section>
+                            <section className="content-info-unit">days to go</section>
                             <button className="btn btn-green" type="button">Back this project</button>
                             <p className="disclaimer"><span className="underlined">All or nothing.</span> This project will only be funded if it reaches its goal by {"date"}.</p>
                         </span>

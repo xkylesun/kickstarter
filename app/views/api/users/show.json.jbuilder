@@ -6,7 +6,7 @@ end
 json.backed_projects do 
     @backed_projects.each do |project|
         json.set! project.id do 
-            json.extract! project, :id, :title, :creator_id, :thumbnail
+            json.extract! project, :id, :title, :creator_id, :image_url
         end
     end
 end

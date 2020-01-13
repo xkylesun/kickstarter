@@ -9,31 +9,55 @@ User.create!([
 ])
 
 Project.create!([
-  {title: "project02", creator_id: 1, category: "art", target: 1000, due_date: "2020-01-07 18:57:24", body: "na", thumbnail: nil, video_link: nil},
-  {title: "project03", creator_id: 2, category: "technology", target: 20000, due_date: "2020-01-07 18:57:54", body: "na", thumbnail: nil, video_link: nil},
-  {title: "project01", creator_id: 1, category: "technology", target: 10000, due_date: "2020-01-07 18:56:03", body: "naaaa", thumbnail: nil, video_link: nil}
+  {title: "Rubi: The Wayward Mira", subtitle: "A 2D action platformer game teeming with lush pixels", creator_id: 2, category: "games", target: 5000, due_date: "2020-02-07 18:57:24", body: "Rubi: The Wayward Mira is a 2D action-platformer game based in a lush pixel world where science and magic come together. Featuring ability-based progression, Rubi is a Metroidvania at its core, but features nonlinear gameplay with multiple playstyles and endings.", image_url: "https://ksr-ugc.imgix.net/assets/026/507/804/461fc5b57c1c1d017d8b607776fbb7bc_original.png?ixlib=rb-2.1.0&w=680&fit=max&v=1568726565&auto=format&gif-q=50&lossless=true&s=fad5832f3e796fbee190a8412a2a84be"},
+  {title: "Arknights", subtitle: "As long as we are together, this winter is not cold", creator_id: 3, category: "games", target: 10000, due_date: "2020-03-07 18:57:24", body: "Rubi: The Wayward Mira is a 2D action-platformer game based in a lush pixel world where science and magic come together. Featuring ability-based progression, Rubi is a Metroidvania at its core, but features nonlinear gameplay with multiple playstyles and endings.", image_url: "https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/75635930_1168350233364193_4638528503170465792_n.png?_nc_cat=109&_nc_ohc=nj3vNJI-JOsAQmsukkUDKJZTxgA-QkcoT2NNLtkRCYHmex7vn4JFvaXJA&_nc_ht=scontent-sjc3-1.xx&oh=507418ee2746cb8840011ab18b35b69d&oe=5EA85B67"},
+  {title: "New Album by Chamberlain", subtitle: "Working hard on a new LP entitled RED WEATHER.", creator_id: 4, category: "music", target: 1000, due_date: "2020-04-07 18:57:24", body: "Rubi: The Wayward Mira is a 2D action-platformer game based in a lush pixel world where science and magic come together. Featuring ability-based progression, Rubi is a Metroidvania at its core, but features nonlinear gameplay with multiple playstyles and endings.", image_url: "https://ksr-ugc.imgix.net/assets/027/018/273/c042fcec44b4a6b645443b00d080d769_original.jpg?ixlib=rb-2.1.0&w=680&fit=max&v=1572370638&auto=format&gif-q=50&q=92&s=532212e8c897a50a2419e4670d3fca6a"},
+  {title: "Skill Board - Master Your Balance", subtitle: "Skill Board is the most challenging, fun.", creator_id: 2, category: "games", target: 5000, due_date: "2020-02-07 18:57:24", body: "Rubi: The Wayward Mira is a 2D action-platformer game based in a lush pixel world where science and magic come together. Featuring ability-based progression, Rubi is a Metroidvania at its core, but features nonlinear gameplay with multiple playstyles and endings.", image_url: "https://ksr-ugc.imgix.net/assets/027/503/669/623aa40381a1e7381bb8c72e61e2bfae_original.jpg?ixlib=rb-2.1.0&w=680&fit=max&v=1576307802&auto=format&gif-q=50&q=92&s=184a862f742c0fd20225d9bad0dc20f7"},
+  {title: "Ode Brew Grinder | Café Performance For Your Countertop", subtitle: "A powerful and precise home grinder with café capabilities that reduces mess and noise.", creator_id: 3, category: "games", target: 10000, due_date: "2020-03-07 18:57:24", body: "Rubi: The Wayward Mira is a 2D action-platformer game based in a lush pixel world where science and magic come together. Featuring ability-based progression, Rubi is a Metroidvania at its core, but features nonlinear gameplay with multiple playstyles and endings.", image_url: "https://ksr-ugc.imgix.net/assets/027/405/143/34b6b15b33ed5eb9e55afaa08affe40d_original.png?ixlib=rb-2.1.0&w=680&fit=max&v=1575357709&auto=format&gif-q=50&lossless=true&s=dd6c7967447e85bf908145cf3e0c6b79"},
+  {title: "Oxeye London - by Sven-Hanson Britt", subtitle: "Oxeye will be starting a residency in London!", creator_id: 4, category: "technology", target: 1000, due_date: "2020-04-07 18:57:24", body: "Rubi: The Wayward Mira is a 2D action-platformer game based in a lush pixel world where science and magic come together. Featuring ability-based progression, Rubi is a Metroidvania at its core, but features nonlinear gameplay with multiple playstyles and endings.", image_url: "https://ksr-ugc.imgix.net/assets/027/018/273/c042fcec44b4a6b645443b00d080d769_original.jpg?ixlib=rb-2.1.0&w=680&fit=max&v=1572370638&auto=format&gif-q=50&q=92&s=532212e8c897a50a2419e4670d3fca6a"},
+  {title: "Progress Tracker Auto Check-in Hacks", subtitle: "Never get another stirkes again", creator_id: 2, category: "games", target: 5000, due_date: "2020-02-07 18:57:24", body: "Rubi: The Wayward Mira is a 2D action-platformer game based in a lush pixel world where science and magic come together. Featuring ability-based progression, Rubi is a Metroidvania at its core, but features nonlinear gameplay with multiple playstyles and endings.", image_url: "https://ksr-ugc.imgix.net/assets/026/507/804/461fc5b57c1c1d017d8b607776fbb7bc_original.png?ixlib=rb-2.1.0&w=680&fit=max&v=1568726565&auto=format&gif-q=50&lossless=true&s=fad5832f3e796fbee190a8412a2a84be"},
+  {title: "Darknights", subtitle: "As long as we are together, this winter is not cold", creator_id: 3, category: "games", target: 10000, due_date: "2020-03-07 18:57:24", body: "Rubi: The Wayward Mira is a 2D action-platformer game based in a lush pixel world where science and magic come together. Featuring ability-based progression, Rubi is a Metroidvania at its core, but features nonlinear gameplay with multiple playstyles and endings.", image_url: "https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/75635930_1168350233364193_4638528503170465792_n.png?_nc_cat=109&_nc_ohc=nj3vNJI-JOsAQmsukkUDKJZTxgA-QkcoT2NNLtkRCYHmex7vn4JFvaXJA&_nc_ht=scontent-sjc3-1.xx&oh=507418ee2746cb8840011ab18b35b69d&oe=5EA85B67"},
+  {title: "Enimem Dissback at Nick Cannon", subtitle: "Funding for the Em to diss back", creator_id: 4, category: "music", target: 1000, due_date: "2020-04-07 18:57:24", body: "Rubi: The Wayward Mira is a 2D action-platformer game based in a lush pixel world where science and magic come together. Featuring ability-based progression, Rubi is a Metroidvania at its core, but features nonlinear gameplay with multiple playstyles and endings.", image_url: "https://ksr-ugc.imgix.net/assets/027/018/273/c042fcec44b4a6b645443b00d080d769_original.jpg?ixlib=rb-2.1.0&w=680&fit=max&v=1572370638&auto=format&gif-q=50&q=92&s=532212e8c897a50a2419e4670d3fca6a"}
+
 ])
 
 
 PledgeLevel.create!([
-  {project_id: 1, quantity: 1000, minimum: 1, title: "Show Your Support", description: "na", delivery_date: "2020-01-08"},
-  {project_id: 1, quantity: 100, minimum: 10, title: "Gold", description: "na", delivery_date: "2020-01-08"},
-  {project_id: 1, quantity: 10, minimum: 100, title: "Plat", description: "na", delivery_date: "2020-01-08"},
-  {project_id: 2, quantity: 1000, minimum: 1, title: "Show Your Support", description: "na", delivery_date: "2020-01-08"},
-  {project_id: 2, quantity: 50, minimum: 200, title: "Epic", description: "na", delivery_date: "2020-01-08"},
-  {project_id: 3, quantity: 2000, minimum: 2, title: "Show Your Support", description: "na", delivery_date: "2020-01-08"},
-  {project_id: 3, quantity: 200, minimum: 20, title: "Gold", description: "na", delivery_date: "2020-01-08"},
-  {project_id: 3, quantity: 20, minimum: 200, title: "Plat", description: "na", delivery_date: "2020-01-08"}
+  {project_id: 1, quantity: 1000, minimum: 10, title: "Silver", description: "Support the Campaign and Join the Community!", estimated_delivery: "Feb 2020"},
+  {project_id: 1, quantity: 100, minimum: 100, title: "Gold", description: "A huge thank you from Sven, Kae and Rex for contributing to our dream. This is a huge step for us so every little means a huge amount. Please do stop into Oxeye when we're open and we'll all celebrate together!", estimated_delivery: "Feb 2020"},
+  {project_id: 2, quantity: 1000, minimum: 10, title: "Silver", description: "Support the Campaign and Join the Community!", estimated_delivery: "Feb 2020"},
+  {project_id: 2, quantity: 100, minimum: 100, title: "Gold", description: "A huge thank you from Sven, Kae and Rex for contributing to our dream. This is a huge step for us so every little means a huge amount. Please do stop into Oxeye when we're open and we'll all celebrate together!", estimated_delivery: "Feb 2020"},
+  {project_id: 3, quantity: 1000, minimum: 10, title: "Silver", description: "Support the Campaign and Join the Community!", estimated_delivery: "Feb 2020"},
+  {project_id: 3, quantity: 100, minimum: 100, title: "Gold", description: "A huge thank you from Sven, Kae and Rex for contributing to our dream. This is a huge step for us so every little means a huge amount. Please do stop into Oxeye when we're open and we'll all celebrate together!", estimated_delivery: "Nov 2020"},
+  {project_id: 4, quantity: 1000, minimum: 10, title: "Silver", description: "Support the Campaign and Join the Community!", estimated_delivery: "Feb 2020"},
+  {project_id: 4, quantity: 100, minimum: 100, title: "Gold", description: "A huge thank you from Sven, Kae and Rex for contributing to our dream. This is a huge step for us so every little means a huge amount. Please do stop into Oxeye when we're open and we'll all celebrate together!", estimated_delivery: "Feb 2020"},
+  {project_id: 5, quantity: 1000, minimum: 10, title: "Silver", description: "Support the Campaign and Join the Community!", estimated_delivery: "Feb 2020"},
+  {project_id: 5, quantity: 100, minimum: 100, title: "Gold", description: "A huge thank you from Sven, Kae and Rex for contributing to our dream. This is a huge step for us so every little means a huge amount. Please do stop into Oxeye when we're open and we'll all celebrate together!", estimated_delivery: "Sep 2020"},
+  {project_id: 6, quantity: 1000, minimum: 10, title: "Silver", description: "Support the Campaign and Join the Community!", estimated_delivery: "Feb 2020"},
+  {project_id: 6, quantity: 100, minimum: 100, title: "Gold", description: "A huge thank you from Sven, Kae and Rex for contributing to our dream. This is a huge step for us so every little means a huge amount. Please do stop into Oxeye when we're open and we'll all celebrate together!", estimated_delivery: "Dec 2020"},
+  {project_id: 7, quantity: 1000, minimum: 10, title: "Silver", description: "Support the Campaign and Join the Community!", estimated_delivery: "Feb 2020"},
+  {project_id: 7, quantity: 100, minimum: 100, title: "Gold", description: "A huge thank you from Sven, Kae and Rex for contributing to our dream. This is a huge step for us so every little means a huge amount. Please do stop into Oxeye when we're open and we'll all celebrate together!", estimated_delivery: "Mar 2020"},
+  {project_id: 8, quantity: 1000, minimum: 10, title: "Silver", description: "Support the Campaign and Join the Community!", estimated_delivery: "2020-01-08"},
+  {project_id: 8, quantity: 100, minimum: 100, title: "Gold", description: "A huge thank you from Sven, Kae and Rex for contributing to our dream. This is a huge step for us so every little means a huge amount. Please do stop into Oxeye when we're open and we'll all celebrate together!", estimated_delivery: "Jun 2020"},
+
 ])
 
 Pledge.create!([
-  {backer_id: 3, pledge_level_id: 1, amount: 100},
-  {backer_id: 3, pledge_level_id: 3, amount: 200},
-  {backer_id: 4, pledge_level_id: 1, amount: 500},
-  {backer_id: 4, pledge_level_id: 3, amount: 1000},
-  {backer_id: 4, pledge_level_id: 4, amount: 100},
-  {backer_id: 4, pledge_level_id: 2, amount: 450},
-  {backer_id: 5, pledge_level_id: 4, amount: 600},
-  {backer_id: 5, pledge_level_id: 5, amount: 1000},
-  {backer_id: 5, pledge_level_id: 6, amount: 1200}
+  {backer_id: 1, pledge_level_id: 1, amount: 100},
+  {backer_id: 1, pledge_level_id: 3, amount: 200},
+  {backer_id: 2, pledge_level_id: 5, amount: 500},
+  {backer_id: 2, pledge_level_id: 7, amount: 1000},
+  {backer_id: 2, pledge_level_id: 1, amount: 100},
+  {backer_id: 3, pledge_level_id: 3, amount: 450},
+  {backer_id: 3, pledge_level_id: 5, amount: 600},
+  {backer_id: 4, pledge_level_id: 7, amount: 1000},
+  {backer_id: 4, pledge_level_id: 1, amount: 2000},
+  {backer_id: 5, pledge_level_id: 2, amount: 500},
+  {backer_id: 5, pledge_level_id: 6, amount: 100},
+  {backer_id: 5, pledge_level_id: 9, amount: 350},
+  {backer_id: 6, pledge_level_id: 8, amount: 300},
+  {backer_id: 6, pledge_level_id: 3, amount: 1000},
+  {backer_id: 7, pledge_level_id: 5, amount: 400},
+  {backer_id: 7, pledge_level_id: 8, amount: 5000},
+  {backer_id: 7, pledge_level_id: 9, amount: 1200}
 ])

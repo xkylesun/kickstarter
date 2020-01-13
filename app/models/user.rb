@@ -12,7 +12,6 @@
 #  biography       :string
 #  avatar          :string
 #
-# tested success 1/7/2020
 
 class User < ApplicationRecord
     validates :name, :email, :password_digest, :session_token, presence: true

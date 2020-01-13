@@ -36,7 +36,7 @@ class Api::PledgeLevelsController < ApplicationController
   end
   
   def pledge_level_params
-    params.require(:pledge_level).permit(:project_id, :quantity, :rate, :title, :description, :delivery_date)
+    params.require(:pledge_level).permit(:project_id, :quantity, :rate, :title, :description, :estimated_delivery)
   end
 
 end

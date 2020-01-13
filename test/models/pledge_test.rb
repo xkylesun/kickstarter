@@ -5,7 +5,7 @@
 #  id              :bigint           not null, primary key
 #  backer_id       :integer          not null
 #  pledge_level_id :integer          not null
-#  quantity        :integer          not null
+#  amount          :integer          not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

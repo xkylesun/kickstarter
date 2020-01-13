@@ -23,6 +23,7 @@ class Api::ProjectsController < ApplicationController
         pledge.amount
       end
     end
+    @all_pledges = @funding_by_level.flatten
 
     render :show
     # render json: @funding_by_level

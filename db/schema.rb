@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 2020_01_07_172300) do
 
   create_table "pledge_levels", force: :cascade do |t|
     t.integer "project_id", null: false
-    t.integer "quantity", null: false
+    t.integer "quantity"
     t.integer "minimum", null: false
     t.string "title", null: false
     t.string "description", null: false
-    t.date "delivery_date", null: false
+    t.date "estimated_delivery"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_pledge_levels_on_project_id"
@@ -33,11 +33,13 @@ ActiveRecord::Schema.define(version: 2020_01_07_172300) do
     t.integer "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["backer_id", "pledge_level_id"], name: "index_pledges_on_backer_id_and_pledge_level_id", unique: true
+    t.index ["backer_id"], name: "index_pledges_on_backer_id"
+    t.index ["pledge_level_id"], name: "index_pledges_on_pledge_level_id"
   end
 
   create_table "projects", force: :cascade do |t|
     t.string "title", null: false
+    t.string "subtitle", null: false
     t.integer "creator_id", null: false
     t.string "category", null: false
     t.integer "target", null: false
@@ -45,8 +47,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_172300) do
     t.datetime "updated_at", null: false
     t.datetime "due_date", null: false
     t.text "body", null: false
-    t.string "thumbnail"
-    t.string "video_link"
+    t.string "image_url"
     t.index ["creator_id", "title"], name: "index_projects_on_creator_id_and_title", unique: true
   end
 
