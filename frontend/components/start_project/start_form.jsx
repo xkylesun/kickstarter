@@ -13,7 +13,6 @@ export default class StartForm extends React.Component {
     };
 
     handleInput(stateName){
-        // console.log(this.state)
         return event => {
             this.setState({ [stateName]: event.currentTarget.value});
         }

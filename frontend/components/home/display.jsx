@@ -2,7 +2,6 @@ import React from "react";
 
 // only one project
 export const Featured = (props) => {
-    console.dir(props)
     return (
     <div className="feat-frame">
         <div className="image-container">

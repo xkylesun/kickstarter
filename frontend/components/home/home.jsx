@@ -10,7 +10,6 @@ export default class Home extends React.Component{
 
     componentDidMount(){
         this.props.fetchProjects()
-        setTimeout(() => console.dir(this.props),1000)
     }
 
     render(){

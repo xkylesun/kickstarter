@@ -27,7 +27,6 @@ export default class Payment extends React.Component{
         }
 
         const { title, value, minimum } = this.props.location.state;
-        console.dir(this.props)
         return (
             <div className="payment-frame">
                 <div className="pledge-summary-frame">

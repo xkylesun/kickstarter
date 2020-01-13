@@ -7,7 +7,6 @@ const Navbar = (props) => {
     ) : (
         <Link to="/login"><button className="nav-button">Log in</button></Link>
     );
-    // console.dir(props)
     return (
         <div id="navbar-frame">
             <span className="nav-left">

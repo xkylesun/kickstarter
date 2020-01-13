@@ -10,8 +10,6 @@ export default class Project extends React.Component{
     }
 
     componentDidUpdate(prevProps) {
-        // console.log(this.props.match.params.projectId);
-        // console.log(prevProps.id)
         if (this.props.match.params.projectId !== prevProps.id) {
             this.props.fetchProject(this.props.match.params.projectId)
         }
@@ -24,7 +22,6 @@ export default class Project extends React.Component{
     }
 
     render(){
-        console.dir(this.props)
         if (!this.props.project) {
             return null;
         } else {
