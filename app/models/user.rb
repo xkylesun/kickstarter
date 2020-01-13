@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
     attr_reader :password
 
-    after_initialize :ensure_session_token
+    after_initialize :ensure_session_token, :ensure_avatar
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
@@ -50,6 +50,10 @@ class User < ApplicationRecord
 
     def ensure_session_token
         self.session_token ||= SecureRandom.urlsafe_base64
+    end
+
+    def ensure_avatar
+        self.avatar ||= "https://ksr-ugc.imgix.net/missing_user_avatar.png?ixlib=rb-2.1.0&w=80&h=80&fit=crop&v=&auto=format&frame=1&q=92&s=d89e3180fafd307918a94a3c9dd79c45"
     end
 
 end

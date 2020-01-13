@@ -18,6 +18,8 @@ export const createProject = project => (
         method: 'post',
         url: `api/projects/`,
         data: { project },
+        contentType: false,
+        processData: false
     })
 );
 

@@ -7,9 +7,14 @@ export default class StartForm extends React.Component {
         super(props)
         this.state = {
             category: "",
+            title: "",
             subtitle: "",
-            body: ""
+            body: "",
+            imageFile: null,
+            previewUrl: null
         }
+        this.handleFile = this.handleFile.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     handleInput(stateName){
@@ -25,7 +30,40 @@ export default class StartForm extends React.Component {
         }
     }
 
+    handleFile(e){
+        const file = e.currentTarget.files[0];
+        const fileReader = new fileReader();
+
+        if (file) {
+            if (file.size > 2097152) {
+                alert("File is too large");
+            } else {
+                fileReader.onloadend = () => {
+                    this.setState({ imageUrl: file, previewUrl: fileReader.result })
+                };
+                fileReader.readAsDataURL(file);
+            }
+        }
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("project[title]", this.state.title);
+        formData.append("project[image]", this.state.imageFile);
+        this.props.createProject(formData)
+    }
+
     render() {
+
+        const preview = null;
+        if (this.state.imageUrl) {
+            preview = 
+                <div className="preview-container">
+                    <img className="start-upload=preview" src={this.state.previewUrl} />
+                </div>
+        }
+
         return (
             <div>
                 <div id="project-basics">
@@ -53,13 +91,13 @@ export default class StartForm extends React.Component {
                             <h3>You’ll be able to change the category and subcategory even after your project is live.</h3>
                         </span>
                         <span>
-                            <select defaultValue="0" onChange={this.handleInput("category", "one")}>
+                            <select defaultValue="0" onChange={this.handleInput("category")}>
                                 <option disabled value="0">Select car:</option>
-                                <option value="Art">Art</option>
-                                <option value="Comics">Comics</option>
-                                <option value="Design">Design</option>
-                                <option value="Games">Games</option>
-                                <option value="Technology">Technology</option>
+                                <option value="art">Art</option>
+                                <option value="comics">Comics</option>
+                                <option value="design">Design</option>
+                                <option value="games">Games</option>
+                                <option value="technology">Technology</option>
                             </select>
                         </span>
                     </div>
@@ -73,9 +111,10 @@ export default class StartForm extends React.Component {
                         </span>
                         <span>
                             <form action="">
-                                <input type="file" name="pic" accept="image/*" />
+                                <input type="file" name="pic" accept="image/*" onChange={this.handleFile}/>
                                 <input type="submit" />
                             </form>
+                            {preview}
                         </span>
                     </div>
 
@@ -133,7 +172,7 @@ export default class StartForm extends React.Component {
                         <h2>Project description</h2>
                         <h3>Describe what you're raising funds to do, why you care about it, how you plan to make it happen, and who you are. Your description should tell backers everything they need to know. If possible, include images to show them what your project is all about and what rewards look like.</h3>
                         <textarea name="" id="" cols="30" rows="10" placeholder="Write about your project like you're explaining it to a friend"></textarea>
-                        <button>Submit</button>
+                        <button onClick={this.handleSubmit}>Submit</button>
                     </div>
                 </div>
             </div>
