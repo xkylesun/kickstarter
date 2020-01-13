@@ -5,6 +5,18 @@
 @import "./style";
 
 .auth-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+}
+
+.signup-background {
+    background-color: $background-light-gray;
+}
+
+.login-background {
     background-color: $background-beige;
 }
 
@@ -12,10 +24,9 @@
     display: grid;
     box-sizing: content-box;
     align-items: center;
-    width: 338px;
+    width: 336px;
     border: 1px solid $border-light-gray;
     padding: 20px 30px 20px 30px;
-    margin: 60px auto;
     font-size: 14px;
     font-weight: 300;
     background: white;
@@ -27,12 +38,8 @@
     justify-content: space-between;
 }
 
-.auth-form {
-    
-}
-
 .form-title {
-    margin: 20px 0 20px 0;
+    margin: 10px 0 20px 0;
     font-size: 28px;
     letter-spacing: 1px;;
 }
@@ -115,18 +122,38 @@
 .switch-to-frame {
     display: flex;
     justify-content: center;
-    margin: 20px 0 20px 0;
+    padding: 20px;
+    width: 398px;
+    border-left: 1px solid $border-light-gray;
+    border-right: 1px solid $border-light-gray;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
 }
 
 .switch-to-frame a {
     text-decoration: none;
     padding-left: 5px;
     color: $text-blue;
+}
+
+.to-login a {
     font-weight: 500;
 }
 
 .switch-to-frame a:hover{
     color: inherit;
+}
+
+.to-signup {
+    background-color: white;
+    border-bottom: 1px solid $border-light-gray;
+}
+
+.to-login {
+    background-color: $background-white;
+    border-top: 1px solid $border-light-gray;
 }
 
 .display-error {

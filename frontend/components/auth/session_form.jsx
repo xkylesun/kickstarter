@@ -53,7 +53,7 @@ export default class SignUp extends React.Component {
 
     render() {
         return (
-        <div class="auth-background">
+        <div class="auth-background login-background">
             <div className="auth-content-box">
                 <section className="auth-content-frame">
                     <p className="form-title">Log in</p>
@@ -83,11 +83,10 @@ export default class SignUp extends React.Component {
                         <p className="disclaimer">Don't feel like signing up? Use demo account to experience Jumpstarter. Note that Jumpstarter will never send you email without your permission.</p>
                     </form>
                 </section>
-                <div className="line-full"></div>
-                <section className="switch-to-frame to-signup">
-                    New to Jumpstarter?
-                    <Link to="/signup">Sign up</Link>
-                </section>
+            </div>
+            <div className="switch-to-frame to-signup">
+                New to Jumpstarter?
+                <Link to="/signup">Sign up</Link>
             </div>
         </div>)
     };

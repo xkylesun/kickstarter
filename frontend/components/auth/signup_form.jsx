@@ -82,16 +82,13 @@ export default class SignupForm extends React.Component {
 
     render() {
         return (
-            <div className="auth-background">
-                <div className="auth-content-box">
-            
-                    <section className="switch-to-frame to-login">
-                        Have an account?
+            <div className="auth-background signup-background">
+                <div className="switch-to-frame to-login">
+                    Have an account?
                         <Link to="/login">Log in</Link>
-                    </section>
+                </div>
 
-                    <div className="line-full"></div>
-
+                <div className="auth-content-box">
                     <section className="auth-content-frame">
                         <p className="form-title">Sign up</p>
                         {this.renderErrors()}
