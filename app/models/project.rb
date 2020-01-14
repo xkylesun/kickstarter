@@ -33,9 +33,9 @@ class Project < ApplicationRecord
         PledgeLevel.new(project_id: Project.last.id, minimum: 1, title: "Back it because you believe in it.", description: "Support the project for no reward, just because it speaks to you.").save
     end
 
-    def ensure_image 
-        unless self.image.attached?
-            errors[:image] << "must be attached"
-        end
-    end
+    # def ensure_image 
+    #     unless self.image.attached?
+    #         errors[:image] << "must be attached"
+    #     end
+    # end
 end

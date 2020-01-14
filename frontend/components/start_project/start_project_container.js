@@ -12,8 +12,8 @@ const mapStateToProps = (props) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createProject: project => dispatch(createProject(project)),
-        createPledgeLevel: pledgeLevel => dispatch(createPledgeLevel(pledgeLevel))
+        createProject: formData => dispatch(createProject(formData))
+        // createPledgeLevel: pledgeLevel => dispatch(createPledgeLevel(pledgeLevel))
     }
 };
 

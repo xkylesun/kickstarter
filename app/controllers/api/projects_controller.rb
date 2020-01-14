@@ -1,3 +1,5 @@
+require 'json'
+
 class Api::ProjectsController < ApplicationController
 
   
@@ -30,8 +32,24 @@ class Api::ProjectsController < ApplicationController
   end
 
   def create
+
     @project = Project.new(project_params)
     if @project.save
+      JSON.parse(params[:project][:rewards]).each do |reward|
+        level = PledgeLevel.new(reward)
+        level.project_id = @project.id
+        level.save
+      end
+
+
+      @creator = @project.creator
+      @pledge_levels = @project.pledge_levels.includes(:pledges)
+      @funding_by_level = @pledge_levels.map do |level|
+        level.pledges.map do |pledge|
+          pledge.amount
+        end
+      end
+      @all_pledges = @funding_by_level.flatten
       render :show
     else
       render json: @project.errors.full_messages, status: 401
@@ -62,7 +80,12 @@ class Api::ProjectsController < ApplicationController
   private
   
   def project_params
-    params.require(:project).permit(:title, :subtitle, :creator_id, :category, :due_date, :body, :image)
+    # params.require(:project).permit(:title, :subtitle, :creator_id, :category, :due_date, :body, :image, :rewards)
+    params.require(:project).permit(:title, :subtitle, :creator_id, :category, :due_date, :body, :target)
+  end
+
+  def rewards_params
+    params.require(:project).permit(:rewards)
   end
 
   def selected_project

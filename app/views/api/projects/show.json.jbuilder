@@ -18,8 +18,10 @@ json.set! "pledge_levels" do
     @pledge_levels.each_with_index do |level, i|
         json.set! level.id do
             json.extract! level, :id, :quantity, :minimum, :title, :description, :estimated_delivery
+
             json.set! "funding", @funding_by_level[i].sum
             json.set! "count", @funding_by_level[i].count
+
         end
     end
 end

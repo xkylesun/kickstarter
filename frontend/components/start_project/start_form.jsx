@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-
+import RewardForm from "./reward_form";
 
 export default class StartForm extends React.Component {
     constructor(props) {
@@ -9,14 +8,16 @@ export default class StartForm extends React.Component {
             category: "",
             title: "",
             subtitle: "",
+            target: 0,
             body: "",
-            datetime: "",
+            dueDate: "",
             imageFile: null,
             previewUrl: null,
             rewards: []
         }
         this.handleFile = this.handleFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.addReward = this.addReward.bind(this);
     };
 
     handleInput(stateName){
@@ -34,7 +35,7 @@ export default class StartForm extends React.Component {
 
     handleFile(e){
         const file = e.currentTarget.files[0];
-        const fileReader = new fileReader();
+        const fileReader = new FileReader();
 
         if (file) {
             if (file.size > 2097152) {
@@ -48,17 +49,35 @@ export default class StartForm extends React.Component {
         }
     }
 
+    addReward(formReward){
+        let temp = JSON.parse(JSON.stringify(this.state.rewards));
+        temp.push(formReward);
+        this.setState({rewards: temp})
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-        formData.append("project[title]", this.state.title);
-        formData.append("project[image]", this.state.imageFile);
-        this.props.createProject(formData)
+        formData.append('project[creator_id', this.props.currentUserId);
+        formData.append('project[category]', this.state.category);
+        formData.append('project[title]', this.state.title);
+        formData.append('project[subtitle]', this.state.subtitle);
+        formData.append('project[body]', this.state.body);
+        formData.append('project[target]', this.state.target);
+        formData.append('project[due_date]', this.state.dueDate);
+        // formData.append('project[image]', this.state.imageFile);
+        formData.append('project[rewards]', JSON.stringify(this.state.rewards));
+        // debugger;
+        // this.props.createProject(formData);
+        // for (var key of formData.entries()) {
+        //     console.log(key[0] + ', ' + key[1]);
+        // }
+        this.props.createProject(formData);
     }
 
     render() {
 
-        const preview = null;
+        var preview = null;
         if (this.state.imageUrl) {
             preview = 
                 <div className="preview-container">
@@ -82,6 +101,9 @@ export default class StartForm extends React.Component {
                             </label>
                             <label>Subtitle
                                 <input type="text" onChange={this.handleInput("subtitle")} />
+                            </label>
+                            <label>Funding goal
+                                <input type="number" onChange={this.handleInput("target")} />
                             </label>
                         </span>
                     </div>
@@ -112,10 +134,9 @@ export default class StartForm extends React.Component {
                             <h3>Your image should be at least 1024x576 pixels. It will be cropped to a 16:9 ratio.</h3>            
                         </span>
                         <span>
-                            <form action="">
-                                <input type="file" name="pic" accept="image/*" onChange={this.handleFile}/>
-                                <input type="submit" />
-                            </form>
+   
+                            <input type="file" name="pic" accept="image/*" onChange={this.handleFile}/>
+
                             {preview}
                         </span>
                     </div>
@@ -127,7 +148,7 @@ export default class StartForm extends React.Component {
                         </span>
                         <span>
                             <p>End on a specific date &amp; time</p>
-                                <input type="datetime-local" name="" id="" />
+                                <input type="datetime-local" onChange={this.handleInput("dueDate")} />
                         </span>
                     </div>
 
@@ -140,33 +161,12 @@ export default class StartForm extends React.Component {
                     <h1>Add your rewards</h1>
                     <h2>Offer simple, meaningful rewards that bring backers closer to your project. Rewards don’t have to be physical items. Consider special experiences or behind-the-scenes peeks into your project.</h2>
 
-                    <form>
-                        <label>Pledge amount
-                            Set a minimum pledge amount for this reward.
-                            <input type="number" name="" id=""/>
-                        </label>
-                        <label >Description
-                            Describe this reward in more detail.
-                            <input type="text" name="" id=""/>
-                        </label>
-                        <label>Estimated delivery</label>
-                            Give yourself plenty of time. It's better to deliver to backers ahead of schedule than behind.
-                            <input type="month" onChange={""} />
-                        <select defaultValue="0" onChange={""}>
-                        <option disabled value="0">Year</option>
-                        <option value="2020">2020</option>
-                        <option value="2021">2021</option>
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                            </select> 
-                        
-                        <section>
-                            <h2>Add reward items</h2>
-                            <h3>Briefly list and describe each item included in this reward.</h3>
-                            <button type="submit">Add an item</button>
-                        </section>
-                    </form>
+                    <div>
+                        <h1>Rewards</h1>
+                        <h2>It's good to provide a range of prices but not too many options.</h2>
+                        <RewardForm addReward={this.addReward} />
+                    </div>
+
                     <div className="bottom-bar">
                         <button type="button" onClick={this.handleClick("project-rewards", "project-basics")}>Back to Basics</button>
                         <button type="button" onClick={this.handleClick("project-rewards", "project-story")}>Next: Story</button>
@@ -180,7 +180,7 @@ export default class StartForm extends React.Component {
                     <div>
                         <h2>Project description</h2>
                         <h3>Describe what you're raising funds to do, why you care about it, how you plan to make it happen, and who you are. Your description should tell backers everything they need to know. If possible, include images to show them what your project is all about and what rewards look like.</h3>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Write about your project like you're explaining it to a friend"></textarea>
+                        <textarea placeholder="Write about your project like you're explaining it to a friend" onChange={this.handleInput("body")}></textarea>
                     </div>
 
                     <div className="bottom-bar">

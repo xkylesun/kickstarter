@@ -49,8 +49,8 @@ export const fetchProject = projectId => dispatch => (
         )
 );
 
-export const createProject = formProject => dispatch => (
-    ProjectUtil.createProject(formProject)
+export const createProject = formData => dispatch => (
+    ProjectUtil.createProject(formData)
         .then(
             payload => dispatch(receiveProject(payload)),
             errors => dispatch(receiveErrors(errors))
