@@ -75,14 +75,14 @@ export default class LoginForm extends React.Component {
                     {this.renderErrors()}
                     <form className="auth-form" onSubmit={this.handleSubmit}>
                         <input
-                            className="form-input"
+                            className="form-input auth-input"
                             type="email"
                             value={this.state.email}
                             placeholder="Email"
                             onChange={this.handleInput("email")} />
 
                         <input
-                            className="form-input"
+                            className="form-input auth-input"
                             type="password"
                             value={this.state.password}
                             placeholder="Password"

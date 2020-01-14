@@ -94,14 +94,14 @@ export default class SignupForm extends React.Component {
                         {this.renderErrors()}
                         <form onSubmit={ this.handleSubmit }>
                             <input
-                                className="form-input"
+                                className="form-input auth-input"
                                 type="text"
                                 placeholder="Name"
                                 value={this.state.name}
                                 onChange={this.handleInput("name")} />
 
                             <input
-                                className="form-input"
+                                className="form-input auth-input"
                                 type="email"
                                 placeholder="Email"
                                 value={this.state.email}
@@ -112,7 +112,7 @@ export default class SignupForm extends React.Component {
                             />
 
                             <input
-                                className="form-input hidden"
+                                className="form-input hidden auth-input"
                                 id="re-email"
                                 type="email"
                                 placeholder="Re-enter email"
@@ -120,7 +120,7 @@ export default class SignupForm extends React.Component {
                                 onChange={this.handleInput("reEmail")} />
 
                             <input
-                                className="form-input"
+                                className="form-input auth-input"
                                 type="password"
                                 placeholder="Password"
                                 value={this.state.password}
@@ -130,7 +130,7 @@ export default class SignupForm extends React.Component {
                                 }} />
 
                             <input
-                                className="form-input hidden"
+                                className="form-input hidden auth-input"
                                 id="re-password"
                                 type="password"
                                 placeholder="Re-enter Password"
