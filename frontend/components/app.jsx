@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import { AuthRoute, ProtectedRoute, PaymentRoute } from '../utils/route_util';
 import SignupFormContainer from "./auth/signup_form_container";
-import SessionFormContainer from "./auth/session_form_container"
+import LoginFormContainer from "./auth/login_form_container";
 import CatchAll from "./catch_all";
 import HomeContainer from "./home/home_container"
 import NavbarContainer from "./navbar/navbar_container";
@@ -17,7 +17,7 @@ const App = () => (
         <NavbarContainer />
         <Switch>
             <Route exact path="/" component={HomeContainer} />
-            <AuthRoute exact path="/login" component={SessionFormContainer} />
+            <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
             <Route exact path="/profile/:userId/" component={UserProfileContainer} />
             <Route exact path="/projects/:projectId" component={ProjectContainer} />

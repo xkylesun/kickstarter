@@ -54,11 +54,10 @@
     padding: 0 6px;
     font-weight: 100;
 }
-#nav-button:hover {
-    color: $text-dark-green;
 
+.nav-button:focus {
+    outline: none;
 }
-
 
 
 
