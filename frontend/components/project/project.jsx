@@ -22,7 +22,7 @@ export default class Project extends React.Component{
     }
 
     parseNum(num) {
-        return num ? num.toLocaleString("en") : "";
+        return num ? num.toLocaleString("en") : 0;
     }
 
     render(){
