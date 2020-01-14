@@ -5,7 +5,6 @@ export const selectBackedProjects = (state, user) => {
 }
 
 export const selectPledgeLevels = (state, project) => {
-    // debugger;
     if (project){
         if (project.pledgeLevelIds){
             return project.pledgeLevelIds.map(id => (state.entities.pledgeLevels[id]))

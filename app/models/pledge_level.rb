@@ -8,7 +8,7 @@
 #  minimum            :integer          not null
 #  title              :string           not null
 #  description        :string           not null
-#  estimated_delivery :date
+#  estimated_delivery :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #

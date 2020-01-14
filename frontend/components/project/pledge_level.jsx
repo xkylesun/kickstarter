@@ -18,6 +18,19 @@ export default class PledgeLevel extends React.Component{
     }
 
     render(){
+        var limited;
+        var estimatedDelivery;
+        if (this.props.level.quantity){
+            limited = <p className="level-remaining">Limited ({this.props.level.quantity - this.props.level.count} of {this.props.level.quantity})</p>
+        }
+
+        if (estimatedDelivery) {
+            estimatedDelivery = <div className="level-extra-info">
+                <span className="level-delivery-title">ESTIMATED DELIVERY</span>
+                <p className="level-delivery-date">{this.props.level.estimatedDelivery}</p>
+            </div>
+        }
+
         return (
         <li>
             <div className="pledge-level-item-frame">
@@ -25,11 +38,8 @@ export default class PledgeLevel extends React.Component{
                     <h1 className="level-amount">Pledge ${this.props.level.minimum} or more</h1>
                     <h2 className="level-title">{this.props.level.title}</h2>
                     <p className="level-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolores atque, qui esse enim in doloremque, nisi, soluta maiores incidunt at? Facere sequi animi labore nihil minus. Repellat, molestias minima?{this.props.level.description}</p>
-                    <div className="level-extra-info">
-                        <span className="level-delivery-title">ESTIMATED DELIVERY</span>
-                        <p className="level-delivery-date">{this.props.level.deliveryDate}</p>
-                    </div>
-                    <p className="level-remaining">Limited ({this.props.level.quantity - this.props.level.count} of {this.props.level.quantity})</p>
+                    {estimatedDelivery}
+                    {limited}
                     <p className="level-backer-count">{this.props.level.count} backers</p>
                 </div>
                 <div className="pledge-form-container">

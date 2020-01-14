@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_01_13_172844) do
     t.integer "minimum", null: false
     t.string "title", null: false
     t.string "description", null: false
-    t.date "estimated_delivery"
+    t.string "estimated_delivery"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_pledge_levels_on_project_id"

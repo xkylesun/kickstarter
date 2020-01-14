@@ -37,10 +37,10 @@ class Api::ProjectsController < ApplicationController
     if @project.save
       JSON.parse(params[:project][:rewards]).each do |reward|
         level = PledgeLevel.new(reward)
+        debugger
         level.project_id = @project.id
         level.save
       end
-
 
       @creator = @project.creator
       @pledge_levels = @project.pledge_levels.includes(:pledges)
@@ -80,8 +80,8 @@ class Api::ProjectsController < ApplicationController
   private
   
   def project_params
-    # params.require(:project).permit(:title, :subtitle, :creator_id, :category, :due_date, :body, :image, :rewards)
-    params.require(:project).permit(:title, :subtitle, :creator_id, :category, :due_date, :body, :target)
+    params.require(:project).permit(:title, :subtitle, :creator_id, :category, :due_date, :body, :target, :image)
+    # params.require(:project).permit(:title, :subtitle, :creator_id, :category, :due_date, :body, :target)
   end
 
   def rewards_params

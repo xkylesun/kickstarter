@@ -6,9 +6,14 @@ import Project from "./project";
 
 const mapStateToProps = (state, ownProps) => {
     const project = state.entities.projects[ownProps.match.params.projectId]
+    var creator;
+    if (project) {
+        creator = state.entities.users[project.creatorId]
+    }
     return {
         id: ownProps.match.params.projectId,
         project: project,
+        creator: creator,
         pledgeLevels: selectPledgeLevels(state, project)
     }
 }

@@ -42,7 +42,7 @@ export default class StartForm extends React.Component {
                 alert("File is too large");
             } else {
                 fileReader.onloadend = () => {
-                    this.setState({ imageUrl: file, previewUrl: fileReader.result })
+                    this.setState({ imageFile: file, previewUrl: fileReader.result })
                 };
                 fileReader.readAsDataURL(file);
             }
@@ -65,14 +65,17 @@ export default class StartForm extends React.Component {
         formData.append('project[body]', this.state.body);
         formData.append('project[target]', this.state.target);
         formData.append('project[due_date]', this.state.dueDate);
-        // formData.append('project[image]', this.state.imageFile);
+        formData.append('project[image]', this.state.imageFile);
         formData.append('project[rewards]', JSON.stringify(this.state.rewards));
-        // debugger;
         // this.props.createProject(formData);
         // for (var key of formData.entries()) {
         //     console.log(key[0] + ', ' + key[1]);
         // }
-        this.props.createProject(formData);
+        this.props.createProject(formData)
+            .then(
+                data => this.props.history.push(`/projects/${Object.keys(data.payload.projects)[0]}`)
+            );
+
     }
 
     render() {
@@ -135,7 +138,7 @@ export default class StartForm extends React.Component {
                         </span>
                         <span>
    
-                            <input type="file" name="pic" accept="image/*" onChange={this.handleFile}/>
+                            <input type="file" accept="image/*" onChange={this.handleFile}/>
 
                             {preview}
                         </span>

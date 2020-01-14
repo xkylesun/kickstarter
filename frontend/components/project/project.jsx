@@ -80,12 +80,12 @@ export default class Project extends React.Component{
                     <div className="project-body-2-2">
                         <div className="project-user-profile">
                             <div className="project-avatar-container">
-                                <img className="project-user-avatar" src="https://ksr-ugc.imgix.net/assets/027/546/015/fcad2610f647f10117260b8c41218d3f_original.jpeg?ixlib=rb-2.1.0&w=160&h=160&fit=crop&v=1576755292&auto=format&frame=1&q=92&s=d6f914fa13e5d31172b55fc00fb3303f" alt="" />
+                                <img className="project-user-avatar" src={this.props.creator.avatar} />
                             </div>
                             
                             <div className="project-user-info">
-                                <h2 className="profile-name">{"user.name"}</h2>
-                                <p className="profile-bio">{"user bio"}</p>
+                                <h2 className="profile-name">{this.props.creator.name}</h2>
+                                <p className="profile-bio">{this.props.creator.biography}</p>
                             </div>
 
                         </div>

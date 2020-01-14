@@ -1,11 +1,11 @@
 User.create!([
-  {name: "Demo User", email: "demo_user@email.com", password_digest: "$2a$12$CvTrWLNWn1Jg7YZdnk2Bp.plItQSgbTcgYK5J4HXX29ZRg7Fz9iG6", session_token: "sWT4Z8V8UK0S5U25nXG-Rg", biography: nil, avatar: nil},
-  {name: "Creator 01", email: "creator01@gmail.com", password_digest: "$2a$12$V85M8EH9DQINwOGnYvsXOujGlowWYuusY/YlTAbK.Vjp5ST4j8No2", session_token: "56bSuazyShajJhf4iCquxA", biography: nil, avatar: nil},
-  {name: "Creator 02", email: "creator02@gmail.com", password_digest: "$2a$12$MbTLyYtbTezgg6LWX633tO3hUIk.R4DqlnVEVBP/B4rriQ2Q.OjMK", session_token: "NTZC75yDlvGQJGNCUTOs9g", biography: nil, avatar: nil},
-  {name: "Creator 03", email: "creator03@gmail.com", password_digest: "$2a$12$7SIHFea4/WE0FLoUDHMpreKIIXiyFnvAHIE2dcJRPUPTDFf4SL3EG", session_token: "vi2m8P_ORSKsAEoDimztPQ", biography: nil, avatar: nil},
-  {name: "Backer 01", email: "backer01@gmail.com", password_digest: "$2a$12$OwFn8FtcD8F/Bye6nEl73ul/N1gYtOdz9ZaIKqtX5k6Ga/rVmSq3S", session_token: "1qQT6w3eHLp1D_SX2IDCdQ", biography: nil, avatar: nil},
-  {name: "Backer 02", email: "backer02@gmail.com", password_digest: "$2a$12$pBXttlyrcxCL90KofitFcOy092iyVB3qXbkj2bGFuGKtqW6twg/by", session_token: "zXxHI6EdIrbwBGmqpn1Jqw", biography: nil, avatar: nil},
-  {name: "Backer 03", email: "backer03@gmail.com", password_digest: "$2a$12$yg/xkvzGXC4Id4kBa/4lNence.i8LGuf4rhaSSZ6KJG9i.Hk9/ilK", session_token: "O6OAPaJcqV0OLuvNG77o7g", biography: nil, avatar: nil}
+  {name: "Demo User", email: "demo_user@email.com", password_digest: "$2a$12$CvTrWLNWn1Jg7YZdnk2Bp.plItQSgbTcgYK5J4HXX29ZRg7Fz9iG6", session_token: "sWT4Z8V8UK0S5U25nXG-Rg", biography: nil},
+  {name: "Creator 01", email: "creator01@gmail.com", password_digest: "$2a$12$V85M8EH9DQINwOGnYvsXOujGlowWYuusY/YlTAbK.Vjp5ST4j8No2", session_token: "56bSuazyShajJhf4iCquxA", biography: nil},
+  {name: "Creator 02", email: "creator02@gmail.com", password_digest: "$2a$12$MbTLyYtbTezgg6LWX633tO3hUIk.R4DqlnVEVBP/B4rriQ2Q.OjMK", session_token: "NTZC75yDlvGQJGNCUTOs9g", biography: nil},
+  {name: "Creator 03", email: "creator03@gmail.com", password_digest: "$2a$12$7SIHFea4/WE0FLoUDHMpreKIIXiyFnvAHIE2dcJRPUPTDFf4SL3EG", session_token: "vi2m8P_ORSKsAEoDimztPQ", biography: nil},
+  {name: "Backer 01", email: "backer01@gmail.com", password_digest: "$2a$12$OwFn8FtcD8F/Bye6nEl73ul/N1gYtOdz9ZaIKqtX5k6Ga/rVmSq3S", session_token: "1qQT6w3eHLp1D_SX2IDCdQ", biography: nil},
+  {name: "Backer 02", email: "backer02@gmail.com", password_digest: "$2a$12$pBXttlyrcxCL90KofitFcOy092iyVB3qXbkj2bGFuGKtqW6twg/by", session_token: "zXxHI6EdIrbwBGmqpn1Jqw", biography: nil},
+  {name: "Backer 03", email: "backer03@gmail.com", password_digest: "$2a$12$yg/xkvzGXC4Id4kBa/4lNence.i8LGuf4rhaSSZ6KJG9i.Hk9/ilK", session_token: "O6OAPaJcqV0OLuvNG77o7g", biography: nil}
 ])
 
 Project.create!([

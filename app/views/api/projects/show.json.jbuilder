@@ -1,10 +1,11 @@
 
 json.set! "projects" do 
     json.set! @project.id do
-        json.extract! @project, :id, :title, :subtitle, :creator_id, :category, :due_date, :body, :created_at, :image_url, :target, :pledge_level_ids
+        # json.extract! @project, :id, :title, :subtitle, :creator_id, :category, :due_date, :body, :created_at, :image_url, :target, :pledge_level_ids
+        json.extract! @project, :id, :title, :subtitle, :creator_id, :category, :due_date, :body, :created_at, :target, :pledge_level_ids
         json.set! "current_funding", @all_pledges.sum
         json.set! "backers_count", @all_pledges.length
-        # json.image_url url_for(@project.image)
+        json.image_url url_for(@project.image)
     end
 end
 

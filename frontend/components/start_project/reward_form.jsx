@@ -83,7 +83,7 @@ export default class RewardForm extends React.Component{
                                     title: this.state.title,
                                     description: this.state.description,
                                     minimum: this.state.minimum,
-                                    quantity: this.state.quanitty,
+                                    quantity: this.state.quantity,
                                     estimated_delivery: this.state.month + " " + this.state.year
                                 })
                         }>
