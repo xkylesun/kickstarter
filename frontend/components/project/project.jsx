@@ -91,7 +91,7 @@ export default class Project extends React.Component{
                         </div>
 
                         <div className="reward-frame">
-                            <h1 className="reward-title">Support</h1>
+                            <h1 className="rewards-title">Support</h1>
                             <ul className="rewards">
                                 {this.props.rewards.map(reward => <Reward reward={reward} key={reward.id}/>)}
                             </ul>

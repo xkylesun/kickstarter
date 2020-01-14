@@ -101,7 +101,7 @@
 }
 
 .project-body-frame {
-    margin: 0 150px;
+    // margin: 0 150px;
     padding: 48px 18px 48px 60px;
     display: flex;
 }
@@ -109,6 +109,7 @@
 .project-body-1-2 {
     width: 66.6%;
     display: flex;
+    padding: 0 18px;
 }
 
 .body-sidebar {
@@ -154,6 +155,7 @@
     max-width: 336px;
     display: flex;
     flex-direction: column;
+    padding: 0 18px;
 }
 
 .project-user-profile {
@@ -173,7 +175,7 @@
     width: 72px;
     position: absolute;
     top: -36px;
-    left: 132px;
+    right: 38%
 }
 
 .project-user-info {

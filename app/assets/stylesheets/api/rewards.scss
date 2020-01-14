@@ -4,7 +4,7 @@
 
 @import "./style";
 
-.reward-title {
+.rewards-title {
     margin: 36px 0 42px 0;
     font-size: 21px;
     font-weight: 300;
@@ -13,6 +13,7 @@
 .reward-item-frame {
     border: 1px solid $border-gray;
     margin: 0 0 20px;
+    position: relative;
 }
 
 .pledge-info-container {
@@ -65,6 +66,7 @@
 
 .pledge-form-container {
     padding: 18px;
+
 }
 
 .pledge-input-label {
@@ -102,4 +104,27 @@
 
 #pledge-form-button {
     width: 100%;
+}
+
+.pledge-form-screen {
+    // transition: all 5s ease-in-out;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 16px;
+    font-weight: 300;
+    color: white;
+    background-color: $background-green-hover;
+    z-index: 2;
+    transition: all 0.2s ease-in-out;
+    // text-align: center;
+    // align-self: center;
+}
+
+.pledge-form-screen:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

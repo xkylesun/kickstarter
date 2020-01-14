@@ -21,27 +21,27 @@ Project.create!([
 ])
 
 
-PledgeLevel.create!([
-  {project_id: 1, quantity: 1000, minimum: 10, title: "Silver", description: "Support the Campaign and Join the Community!", estimated_delivery: "Feb 2020"},
-  {project_id: 1, quantity: 100, minimum: 100, title: "Gold", description: "A huge thank you from the creator! Together we can change the world!", estimated_delivery: "Feb 2020"},
+Reward.create!([
+  {project_id: 1, quantity: 100, minimum: 10, title: "Silver", description: "Support the Campaign and Join the Community!", estimated_delivery: "Feb 2020"},
+  {project_id: 1, quantity: 10, minimum: 100, title: "Gold", description: "A huge thank you from the creator! Together we can change the world!", estimated_delivery: "Feb 2020"},
 ])
 
 Pledge.create!([
-  {backer_id: 1, pledge_level_id: 1, amount: 100},
-  {backer_id: 2, pledge_level_id: 3, amount: 200},
-  # {backer_id: 2, pledge_level_id: 5, amount: 500},
-  # {backer_id: 2, pledge_level_id: 7, amount: 1000},
-  # {backer_id: 2, pledge_level_id: 1, amount: 100},
-  # {backer_id: 3, pledge_level_id: 3, amount: 450},
-  # {backer_id: 3, pledge_level_id: 5, amount: 600},
-  # {backer_id: 4, pledge_level_id: 7, amount: 1000},
-  # {backer_id: 4, pledge_level_id: 1, amount: 2000},
-  # {backer_id: 5, pledge_level_id: 2, amount: 500},
-  # {backer_id: 5, pledge_level_id: 6, amount: 100},
-  # {backer_id: 5, pledge_level_id: 9, amount: 350},
-  # {backer_id: 6, pledge_level_id: 8, amount: 300},
-  # {backer_id: 6, pledge_level_id: 3, amount: 1000},
-  # {backer_id: 7, pledge_level_id: 5, amount: 400},
-  # {backer_id: 7, pledge_level_id: 8, amount: 5000},
-  # {backer_id: 7, pledge_level_id: 9, amount: 1200}
+  {backer_id: 1, reward_id: 1, amount: 100},
+  {backer_id: 2, reward_id: 3, amount: 200},
+  {backer_id: 2, reward_id: 5, amount: 500},
+  {backer_id: 2, reward_id: 7, amount: 1000},
+  {backer_id: 2, reward_id: 1, amount: 100},
+  {backer_id: 3, reward_id: 3, amount: 450},
+  {backer_id: 3, reward_id: 5, amount: 600},
+  {backer_id: 4, reward_id: 7, amount: 1000},
+  {backer_id: 4, reward_id: 1, amount: 2000},
+  {backer_id: 5, reward_id: 2, amount: 500},
+  {backer_id: 5, reward_id: 6, amount: 100},
+  {backer_id: 5, reward_id: 9, amount: 350},
+  {backer_id: 6, reward_id: 8, amount: 300},
+  {backer_id: 6, reward_id: 3, amount: 1000},
+  {backer_id: 7, reward_id: 5, amount: 400},
+  {backer_id: 7, reward_id: 8, amount: 5000},
+  {backer_id: 7, reward_id: 9, amount: 1200}
 ])
