@@ -4,10 +4,10 @@ export const selectBackedProjects = (state, user) => {
     ) : [];
 }
 
-export const selectPledgeLevels = (state, project) => {
+export const selectRewards = (state, project) => {
     if (project){
-        if (project.pledgeLevelIds){
-            return project.pledgeLevelIds.map(id => (state.entities.pledgeLevels[id]))
+        if (project.rewardIds){
+            return project.rewardIds.map(id => (state.entities.rewards[id]))
         } else {
             return [];
         }

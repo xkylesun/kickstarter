@@ -6,7 +6,7 @@ import SignupFormContainer from "./auth/signup_form_container";
 import SessionFormContainer from "./auth/session_form_container"
 import CatchAll from "./catch_all";
 import HomeContainer from "./home/home_container"
-import NavbarContainer from "./nav_bar/nav_bar_container";
+import NavbarContainer from "./navbar/navbar_container";
 import StartProjectContainer from "./start_project/start_project_container";
 import UserProfileContainer from "./user/user_profile_container";
 import ProjectContainer from "./project/project_container";
@@ -23,7 +23,7 @@ const App = () => (
             <Route exact path="/projects/:projectId" component={ProjectContainer} />
             <ProtectedRoute exact path="/start" component={StartProjectContainer} />
             <ProtectedRoute exact path="/settings" component={UserProfileContainer} />
-            <PaymentRoute exact path="/checkouts/:pledgeLevelId/payments" component={PaymentContainer} />
+            <PaymentRoute exact path="/checkouts/:rewardId/payments" component={PaymentContainer} />
             <Route component={CatchAll} />
         </Switch>
     </div>

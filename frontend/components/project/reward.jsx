@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-export default class PledgeLevel extends React.Component{
+export default class Reward extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            value: this.props.level.minimum
+            value: this.props.reward.minimum
         }
         this.handleInput = this.handleInput.bind(this);
     }
@@ -20,27 +20,27 @@ export default class PledgeLevel extends React.Component{
     render(){
         var limited;
         var estimatedDelivery;
-        if (this.props.level.quantity){
-            limited = <p className="level-remaining">Limited ({this.props.level.quantity - this.props.level.count} of {this.props.level.quantity})</p>
+        if (this.props.reward.quantity){
+            limited = <p className="reward-remaining">Limited ({this.props.reward.quantity - this.props.reward.count} of {this.props.reward.quantity})</p>
         }
 
         if (estimatedDelivery) {
-            estimatedDelivery = <div className="level-extra-info">
-                <span className="level-delivery-title">ESTIMATED DELIVERY</span>
-                <p className="level-delivery-date">{this.props.level.estimatedDelivery}</p>
+            estimatedDelivery = <div className="reward-extra-info">
+                <span className="reward-delivery-title">ESTIMATED DELIVERY</span>
+                <p className="reward-delivery-date">{this.props.reward.estimatedDelivery}</p>
             </div>
         }
 
         return (
         <li>
-            <div className="pledge-level-item-frame">
+            <div className="reward-item-frame">
                 <div className="pledge-info-container">
-                    <h1 className="level-amount">Pledge ${this.props.level.minimum} or more</h1>
-                    <h2 className="level-title">{this.props.level.title}</h2>
-                    <p className="level-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolores atque, qui esse enim in doloremque, nisi, soluta maiores incidunt at? Facere sequi animi labore nihil minus. Repellat, molestias minima?{this.props.level.description}</p>
+                    <h1 className="reward-amount">Pledge ${this.props.reward.minimum} or more</h1>
+                    <h2 className="reward-title">{this.props.reward.title}</h2>
+                    <p className="reward-desc">{this.props.reward.description}</p>
                     {estimatedDelivery}
                     {limited}
-                    <p className="level-backer-count">{this.props.level.count} backers</p>
+                    <p className="reward-backer-count">{this.props.reward.count} backers</p>
                 </div>
                 <div className="pledge-form-container">
                     <form>
@@ -49,17 +49,17 @@ export default class PledgeLevel extends React.Component{
                         <input
                             className="pledge-input"
                             type="number"
-                            min={this.props.level.miminum}
+                            min={this.props.reward.miminum}
                             value={this.state.value}
                             onChange={this.handleInput}>
                         </input>
                     
                         <Link
                             to={{
-                                pathname: `/checkouts/${this.props.level.id}/payments`,
+                                pathname: `/checkouts/${this.props.reward.id}/payments`,
                                 state: {
-                                    title: this.props.level.title,
-                                    minimum: this.props.level.minimum,
+                                    title: this.props.reward.title,
+                                    minimum: this.props.reward.minimum,
                                     value: this.state.value
                                 }
                             }}

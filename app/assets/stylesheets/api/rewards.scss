@@ -1,16 +1,16 @@
-// Place all the styles related to the api/pledge_levels controller here.
+// Place all the styles related to the api/rewards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "./style";
 
-.pledge-level-title {
+.reward-title {
     margin: 36px 0 42px 0;
     font-size: 21px;
     font-weight: 300;
 }
 
-.pledge-level-item-frame {
+.reward-item-frame {
     border: 1px solid $border-gray;
     margin: 0 0 20px;
 }
@@ -20,17 +20,17 @@
     padding: 20px 0 16.8px;
 }
 
-.level-amount {
+.reward-amount {
     font-size: 18px;
     margin: 0 0 20px;
 }
 
-.level-title {
+.reward-title {
     font-size: 16px;
     margin: 0 0 10px;
 }
 
-.level-desc {
+.reward-desc {
     font-size: 14px;
     margin: 0 0 20px;
     color: $text-dark-gray;
@@ -38,27 +38,27 @@
     line-height: 18px;
 }
 
-.level-delivery-title {
+.reward-delivery-title {
     font-size: 10px;
     line-height: 18px;
     letter-spacing: 0.5px;
     color: $text-dark-gray;
 }
 
-.level-delivery-date {
+.reward-delivery-date {
     font-size: 14px;
     margin: 0 0 20px;
     line-height: 18px;
 }
 
-.level-remaining {
+.reward-remaining {
     font-size: 12px;
     color: $text-red;
     line-height: 18px;
 
 }
 
-.level-backer-count{
+.reward-backer-count{
     font-size: 12px;
     line-height: 18px;
 }

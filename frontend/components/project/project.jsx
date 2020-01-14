@@ -1,5 +1,5 @@
 import React from "react";
-import PledgeLevel from "./pledge_level";
+import Reward from "./reward";
 
 export default class Project extends React.Component{
     constructor(props){
@@ -90,10 +90,10 @@ export default class Project extends React.Component{
 
                         </div>
 
-                        <div className="pledge-level-frame">
-                            <h1 className="pledge-level-title">Support</h1>
-                            <ul className="pledge-levels">
-                                {this.props.pledgeLevels.map(level => <PledgeLevel level={level} key={level.id}/>)}
+                        <div className="reward-frame">
+                            <h1 className="reward-title">Support</h1>
+                            <ul className="rewards">
+                                {this.props.rewards.map(reward => <Reward reward={reward} key={reward.id}/>)}
                             </ul>
                         </div>
                     </div>

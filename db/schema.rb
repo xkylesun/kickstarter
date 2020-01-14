@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_01_13_172844) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "pledge_levels", force: :cascade do |t|
+  create_table "rewards", force: :cascade do |t|
     t.integer "project_id", null: false
     t.integer "quantity"
     t.integer "minimum", null: false
@@ -45,17 +45,17 @@ ActiveRecord::Schema.define(version: 2020_01_13_172844) do
     t.string "estimated_delivery"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_pledge_levels_on_project_id"
+    t.index ["project_id"], name: "index_rewards_on_project_id"
   end
 
   create_table "pledges", force: :cascade do |t|
     t.integer "backer_id", null: false
-    t.integer "pledge_level_id", null: false
+    t.integer "reward_id", null: false
     t.integer "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["backer_id"], name: "index_pledges_on_backer_id"
-    t.index ["pledge_level_id"], name: "index_pledges_on_pledge_level_id"
+    t.index ["reward_id"], name: "index_pledges_on_reward_id"
   end
 
   create_table "projects", force: :cascade do |t|

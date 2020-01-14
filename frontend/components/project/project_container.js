@@ -1,7 +1,7 @@
 ;
 import { connect } from "react-redux";
 import { fetchProject  } from "../../actions/project_actions";
-import { selectPledgeLevels } from "../../reducers/selector"
+import { selectRewards } from "../../reducers/selector"
 import Project from "./project";
 
 const mapStateToProps = (state, ownProps) => {
@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
         id: ownProps.match.params.projectId,
         project: project,
         creator: creator,
-        pledgeLevels: selectPledgeLevels(state, project)
+        rewards: selectRewards(state, project)
     }
 }
 

@@ -1,8 +1,6 @@
-
-
 require 'test_helper'
 
-class PledgeTest < ActiveSupport::TestCase
+class Api::RewardsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

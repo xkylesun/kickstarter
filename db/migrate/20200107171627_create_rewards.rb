@@ -1,6 +1,6 @@
-class CreatePledgeLevels < ActiveRecord::Migration[5.2]
+class CreateRewards < ActiveRecord::Migration[5.2]
   def change
-    create_table :pledge_levels do |t|
+    create_table :rewards do |t|
       t.integer :project_id, null: false
       t.integer :quantity
       t.integer :minimum, null: false
@@ -9,6 +9,6 @@ class CreatePledgeLevels < ActiveRecord::Migration[5.2]
       t.date :estimated_delivery
       t.timestamps
     end
-    add_index :pledge_levels, :project_id
+    add_index :rewards, :project_id
   end
 end
