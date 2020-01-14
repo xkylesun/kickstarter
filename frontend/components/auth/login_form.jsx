@@ -1,7 +1,22 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-export default class SignUp extends React.Component {
+// import Modal from 'react-modal';
+
+// const customStyles = {
+//     content: {
+//         top: '50%',
+//         left: '50%',
+//         right: 'auto',
+//         bottom: 'auto',
+//         marginRight: '-50%',
+//         transform: 'translate(-50%, -50%)'
+//     }
+// };
+
+// Modal.setAppElement(SessionForm)
+
+export default class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -53,21 +68,21 @@ export default class SignUp extends React.Component {
 
     render() {
         return (
-        <div class="auth-background login-background">
+        <div className="auth-background login-background">
             <div className="auth-content-box">
                 <section className="auth-content-frame">
                     <p className="form-title">Log in</p>
                     {this.renderErrors()}
                     <form className="auth-form" onSubmit={this.handleSubmit}>
                         <input
-                            className="form-input"
+                            className="form-input auth-input"
                             type="email"
                             value={this.state.email}
                             placeholder="Email"
                             onChange={this.handleInput("email")} />
 
                         <input
-                            className="form-input"
+                            className="form-input auth-input"
                             type="password"
                             value={this.state.password}
                             placeholder="Password"

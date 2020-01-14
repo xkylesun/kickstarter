@@ -1,8 +1,10 @@
 
+@import url(//db.onlinewebfonts.com/c/4cffa20a560405339ae5f98d0b62853f?family=RNS++BARUTA+BLACK);
+
 @font-face {
-    font-family: "RNS-Black";
-    src: url("./RNS-B.ttf") format("truetype");
-}
+    font-family: "RNS BARUTA BLACK"; 
+    src: url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.eot"); 
+    src: url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.woff") format("woff"), url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.svg#RNS BARUTA BLACK") format("svg"); }
 
 $btn-green: #009E74;
 $btn-green-hover: #037362;
@@ -27,6 +29,7 @@ $border-green: #009E74;
 $background-red: #fd003b;
 $background-beige: #f7f7f6;
 $background-green: #037362;
+$background-green-hover: rgba(0,158,116,0.9);
 $background-gray: #E8E8E8;
 $background-white: #fbfbfa;
 $background-light-gray: #f0f0f0;

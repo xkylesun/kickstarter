@@ -12,6 +12,6 @@ class Api::PledgesController < ApplicationController
   private
   
   def pledge_params
-    params.require(:pledge).permit(:backer_id, :pledge_level_id, :amount)
+    params.require(:pledge).permit(:backer_id, :reward_id, :amount)
   end
 end

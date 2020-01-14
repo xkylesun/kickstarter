@@ -10,7 +10,7 @@ export default class Payment extends React.Component{
     handleSubmit(){
         this.props.createPledge({
             backer_id: this.props.userId,
-            pledge_level_id: this.props.match.params.pledgeLevelId,
+            reward_id: this.props.match.params.rewardId,
             amount: this.props.location.state.value
         }).then(
             () => {

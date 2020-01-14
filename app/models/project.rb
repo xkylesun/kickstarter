@@ -21,13 +21,21 @@ class Project < ApplicationRecord
 
     belongs_to :creator, foreign_key: :creator_id, class_name: :User
 
-    has_many :pledge_levels, dependent: :destroy
-    has_many :pledges, through: :pledge_levels, source: :pledges
+    has_many :rewards, dependent: :destroy
+    has_many :pledges, through: :rewards, source: :pledges
     has_many :backers, through: :pledges, source: :backer
 
-    after_commit :create_first_pledge_level
+    after_commit :create_first_reward
+    
+    has_one_attached :image
 
-    def create_first_pledge_level
-        PledgeLevel.new(project_id: Project.last.id, minimum: 1, title: "Back it because you believe in it.", description: "Support the project for no reward, just because it speaks to you.").save
+    def create_first_reward
+        Reward.new(project_id: Project.last.id, minimum: 1, title: "Back it because you believe in it.", description: "Support the project for no reward, just because it speaks to you.").save
     end
+
+    # def ensure_image 
+    #     unless self.image.attached?
+    #         errors[:image] << "must be attached"
+    #     end
+    # end
 end

@@ -10,31 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_07_172300) do
+ActiveRecord::Schema.define(version: 2020_01_13_172844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "pledge_levels", force: :cascade do |t|
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "rewards", force: :cascade do |t|
     t.integer "project_id", null: false
     t.integer "quantity"
     t.integer "minimum", null: false
     t.string "title", null: false
     t.string "description", null: false
-    t.date "estimated_delivery"
+    t.string "estimated_delivery"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_pledge_levels_on_project_id"
+    t.index ["project_id"], name: "index_rewards_on_project_id"
   end
 
   create_table "pledges", force: :cascade do |t|
     t.integer "backer_id", null: false
-    t.integer "pledge_level_id", null: false
+    t.integer "reward_id", null: false
     t.integer "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["backer_id"], name: "index_pledges_on_backer_id"
-    t.index ["pledge_level_id"], name: "index_pledges_on_pledge_level_id"
+    t.index ["reward_id"], name: "index_pledges_on_reward_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -64,4 +85,5 @@ ActiveRecord::Schema.define(version: 2020_01_07_172300) do
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
 end

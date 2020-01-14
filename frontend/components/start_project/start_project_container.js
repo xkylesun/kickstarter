@@ -2,8 +2,7 @@ import { connect } from 'react-redux';
 
 import StartForm from './start_form';
 import { createProject } from "../../actions/project_actions";
-import { createPledgeLevel } from "../../actions/pledge_level_actions"
-import { createPledge } from '../../utils/pledge_util';
+import { createReward } from "../../actions/reward_actions";
  
 const mapStateToProps = (props) => {
     return {
@@ -13,8 +12,8 @@ const mapStateToProps = (props) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createProject: project => dispatch(createProject(project)),
-        createPledgeLevel: pledgeLevel => dispatch(createPledgeLevel(pledgeLevel))
+        createProject: formData => dispatch(createProject(formData))
+        // createReward: reward => dispatch(createReward(reward))
     }
 };
 

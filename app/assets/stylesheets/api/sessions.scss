@@ -46,10 +46,14 @@
 
 .form-input {
     border: 1px solid $border-gray;
-    width: 312px;
     padding: 12px;
-    margin: 12px 0;
     font-weight: 300;
+    // height: 16px;
+}
+
+.auth-input {
+    width: 312px;
+    margin: 12px 0;
 }
 
 .form-input:focus {

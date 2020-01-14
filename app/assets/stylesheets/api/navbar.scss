@@ -20,7 +20,7 @@
 }
 
 #nav-logo {
-    font-family: "RNS-Black", sans-serif;
+    font-family: "RNS BARUTA BLACK";
     color: $text-logo-green;
     font-size: 26px;
     font-weight: 900;
@@ -54,11 +54,10 @@
     padding: 0 6px;
     font-weight: 100;
 }
-#nav-button:hover {
-    color: $text-dark-green;
 
+.nav-button:focus {
+    outline: none;
 }
-
 
 
 

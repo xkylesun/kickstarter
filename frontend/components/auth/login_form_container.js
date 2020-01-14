@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login, CLEAR_SESSION_ERRORS } from "../../actions/session_actions";
-import SessionForm from "./session_form";
+import LoginForm from "./login_form";
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -16,6 +16,6 @@ const mapDispatchToProps = dispatch => {
     };
 }
 
-const SessionFormContainer = connect(mapStateToProps, mapDispatchToProps)(SessionForm);
+const LoginFormContainer = connect(mapStateToProps, mapDispatchToProps)(LoginForm);
 
-export default SessionFormContainer;
+export default LoginFormContainer;
