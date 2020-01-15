@@ -1,0 +1,19 @@
+input:hover{
+    border: 1px solid $border-green;
+}
+
+textarea:hover{
+    border: 1px solid $border-green;
+}
+
+select:hover{
+    border: 1px solid $border-green;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+button:focus{
+    outline: none;
+}
