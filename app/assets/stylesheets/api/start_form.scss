@@ -1,9 +1,6 @@
 @import "style";
 
 .form-top-frame {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
     margin: 0 auto;
     padding: 0 60px;
     width: 81%;
@@ -11,7 +8,6 @@
     box-sizing: content-box;
     line-height: 150%;
     letter-spacing: 0.5px;
-
 }
 
 .form-header {
@@ -115,6 +111,153 @@ select {
     vertical-align: top;
 }
 
-// .start-dropdown:focus {
-//     outline: none;
+#preview-container {
+    margin-top: 20px;
+    border: 1px solid $border-gray;
+    overflow: hidden;
+    padding-top: 56.25%;
+    position: relative;
+}
+
+#form-image-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+
+#input-date {
+    margin-top: 6px;
+    // line-height: 18px;
+    font-size: 14px;
+    box-sizing: border-box;
+    height: 42px;
+}
+
+.last-container {
+    border-bottom: none;
+}
+
+.currency-box-container {
+    position: relative;
+}
+
+.currency-input {
+    padding: 10px 10px 10px 54px;
+}
+
+.currency-box {
+    border-right: 1px solid $border-gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 36px;
+    width:40px;
+    font-size: 14px;
+    color: $text-dark-gray;
+    bottom: 49px;
+}
+
+.bottom-bar {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    // padding-bottom: 20px;
+    // border-bottom: 1px solid $border-gray;
+
+    margin: 0 auto 60px auto;
+    padding: 0 40px;
+    max-width: 1282px;
+    box-sizing: content-box;
+}
+
+.btn-dark-green {
+    background-color: $btn-dark-green;
+}
+
+.btn-dark-green:hover {
+    background-color: $btn-dark-green-hover;
+}
+
+.back-button {
+    border: none;
+    font-family: $font-default;
+    font-size: 12px;
+    letter-spacing: 0.5;
+    color: $text-black;
+    background-color: white;
+}
+
+.back-button:hover{
+    color: $background-green;
+    text-decoration: underline;
+}
+
+.next-button {
+    padding: 0 12px;
+    width: inherit;
+    height: 36px;
+    font-size: 12px;
+    color: white;
+    font-weight: 300;
+    letter-spacing: 0.8px;
+}
+
+// .next-button > i {
+//     font-size: 15px;
+//     vertical-align: middle;
 // }
+
+.form-story-frame {
+    margin: 0 auto;
+    padding: 0 60px;
+    line-height: 150%;
+    letter-spacing: 0.5px;
+    width: 81%;
+    max-width: 1282px;
+    box-sizing: content-box;
+}
+
+.form-story-container {
+    display: flex;
+    flex-direction: column;
+    padding: 48px 0 12px;
+    border-bottom: 1px solid $border-gray;
+    width: 50%;
+}
+
+.textbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 12px;
+    margin-bottom: 48px;
+    border: 1px solid $border-gray;
+}
+
+.textbox-container:hover {
+    border: 1px solid $border-green;
+}
+
+.form-story-textarea {
+    width: 100%;
+    padding: 20px;
+    width: 640px;
+    height: 360px;
+    border: none;
+}
+
+.form-story-textarea:focus{
+    outline: none;
+}
+
+.line-separator {
+    width: 100%;
+    border-top: 1px solid $border-light-gray;
+    height: 1px;
+    // margin: 60px auto;
+    margin-bottom: 60px;;
+}
