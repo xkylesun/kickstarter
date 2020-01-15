@@ -1,5 +1,6 @@
 import React from "react";
 import RewardForm from "./reward_form";
+import RewardItem from "./reward_item"
 
 export default class StartForm extends React.Component {
     constructor(props) {
@@ -18,6 +19,7 @@ export default class StartForm extends React.Component {
         this.handleFile = this.handleFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.addReward = this.addReward.bind(this);
+        this.deleteReward = this.deleteReward.bind(this);
     };
 
     handleInput(stateName){
@@ -31,6 +33,10 @@ export default class StartForm extends React.Component {
             document.getElementById(divId1).classList.add("hidden");
             document.getElementById(divId2).classList.remove("hidden");
         }
+    }
+
+    showForm(){
+        document.getElementById("reward-form").classList.remove("hidden");
     }
 
     handleFile(e){
@@ -53,7 +59,13 @@ export default class StartForm extends React.Component {
     addReward(formReward){
         let temp = JSON.parse(JSON.stringify(this.state.rewards));
         temp.push(formReward);
-        this.setState({rewards: temp})
+        this.setState({rewards: temp});
+    }
+
+    deleteReward(idx){
+        let temp = JSON.parse(JSON.stringify(this.state.rewards));
+        temp.splice(idx, 1);
+        this.setState({ rewards: temp });
     }
 
     handleSubmit(e) {
@@ -155,7 +167,7 @@ export default class StartForm extends React.Component {
                             </span>
                             <span className="form-input-container">
                                 <div className="image-input-box">
-                                    <input type="file" accept="image/*" onChange={this.handleFile} />
+                                    <input id="form-input-image" type="file" accept="image/*" onChange={this.handleFile} />
                                 </div>
                                 <div id="preview-container"
                                 className="hidden">
@@ -209,23 +221,37 @@ export default class StartForm extends React.Component {
                         <div className="form-header">
                             <div className="form-header-container"
                             >
-                            <h1 className="form-header-title">Add your rewards</h1>
-                            <h2 className="form-header-sub">Offer simple, meaningful rewards that bring backers closer to your project. Rewards don’t have to be physical items. Consider special experiences or behind-the-scenes peeks into your project.</h2>
+                            <h1 className="reward-header-title">Add your rewards</h1>
+                            <h2 className="form-desc-body">Offer simple, meaningful rewards that bring backers closer to your project. Rewards don’t have to be physical items. Consider special experiences or behind-the-scenes peeks into your project.</h2>
                             </div>
                         </div>
                     </div>
 
-                    <div className="form-desc-frame">
+                    <div className="form-top-frame">
                         <div className="reward-sub-header">
-                            <h1>Rewards</h1>
-                            <h2>It's good to provide a range of prices but not too many options.</h2>
+                            <div className="reward-sub-frame">
+                                <div>
+                                    <h1 className="form-header-title">Rewards</h1>
+                                    <h2 className="form-desc-body">It's good to provide a range of prices but not too many options.</h2>
+                                </div>
+                                <div className="show-form-btn-container">
+                                    <button className="btn btn-black" onClick={this.showForm}>+ Add a reward</button>
+                                </div>
+                            </div>
+                            <div className="reward-item-display">
+                                <ul>
+                                {this.state.rewards.map((reward, idx) => {
+                                    return (<li key={idx}><RewardItem reward={reward} idx={idx} deleteReward={this.deleteReward}/></li>)
+                                })}
+                                </ul>
+                            </div>
                         </div>
                         <RewardForm addReward={this.addReward} />
                     </div>
 
                     <div className="bottom-bar">
-                        <button className="next-button btn-dark-green" type="button" onClick={this.handleClick("project-rewards", "project-story")}>Next: Story <i class="fa fa-angle-right"></i></button>
-                        <button className="back-button" type="button" onClick={this.handleClick("project-rewards", "project-basics")}><i class="fa fa-angle-left"></i> Back to Basics</button>
+                        <button className="next-button btn-dark-green" type="button" onClick={this.handleClick("project-rewards", "project-story")}>Next: Story <i className="fa fa-angle-right"></i></button>
+                        <button className="back-button" type="button" onClick={this.handleClick("project-rewards", "project-basics")}><i className="fa fa-angle-left"></i> Back to Basics</button>
                     </div>
                     <div className="line-separator"></div>
                 </div>
@@ -248,13 +274,13 @@ export default class StartForm extends React.Component {
                         </div>
                         <div className="textbox-container">
                             <textarea
-                                className="form-story-textarea"
+                                id="form-story-textarea"
                                 placeholder="Write about your project like you're explaining it to a friend..." onChange={this.handleInput("body")}></textarea>
                         </div>
                     </div>
                     <div className="bottom-bar">
                         <button className="btn-dark-green next-button" onClick={this.handleSubmit}>Launch my project</button>
-                        <button type="button" className="back-button" onClick={this.handleClick("project-story", "project-rewards")}><i class="fa fa-angle-left"></i> Back to Rewards</button>
+                        <button type="button" className="back-button" onClick={this.handleClick("project-story", "project-rewards")}><i className="fa fa-angle-left"></i> Back to Rewards</button>
                     </div>
                     <div className="line-separator"></div>
                 </div>

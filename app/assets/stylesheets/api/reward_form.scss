@@ -1,0 +1,154 @@
+@import "style";
+
+.reward-sub-header {
+    margin: 48px 0;
+}
+
+.reward-sub-frame {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-header-title {
+    font-size: 21px;
+}
+
+.show-form-btn-container{
+    width: inherit
+}
+
+.btn-black {
+    background-color: black;
+    width: inherit;
+    padding: 0 24px;
+}
+
+.btn-black:hover {
+    transition: all 0.25s ease-in-out;
+    background-color: $btn-black-hover;
+}
+
+.reward-input-frame {
+    display: flex;
+    flex-direction: column;;
+    padding: 48px 0 0 0;
+    border-bottom: 1px solid $border-gray;
+}
+
+.reward-delivery {
+    display: flex;
+}
+
+.month-dropdown {
+    margin: 0 20px 48px 0;
+}
+
+.year-dropdown {
+    margin-bottom: 48px;
+}
+
+
+.reward-desc-title {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.reward-desc-body {
+    font-size: 14px;
+    margin: 6px 0;
+    color: $text-dark-gray;
+}
+
+.reward-textarea {
+    height: 70px;
+    border: 1px solid $border-gray;
+    padding: 12px;
+}
+
+.reward-textarea:focus {
+    border: 1px solid $border-green;
+    outline: none;
+}
+
+input:hover{
+    border: 1px solid $border-green;
+}
+
+textarea:hover{
+    border: 1px solid $border-green;
+}
+
+select:hover{
+    border: 1px solid $border-green;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+button:focus{
+    outline: none;
+}
+
+.reward-list-frame {
+    letter-spacing: 0;
+    font-weight: 300;
+}
+
+.reward-list-item-frame:hover {
+    box-shadow: 0 3px 6px 1px rgba(0,0,0,0.17);
+    transition: all 0.25s ease-in-out;
+}
+
+.reward-list-menu {
+    display: flex;
+    padding: 12px 0;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.reward-list-data {
+    display: flex;
+    border: 1px solid $border-gray;
+    border-bottom: none;
+    padding: 24px 0 42px 0;
+    font-size: 18px;
+    // line-height: 24px;
+    color: $text-black;
+    line-height: 21px;
+    letter-spacing: 0px;
+}
+
+.cell-first {
+    width: 30%;
+    padding: 0 36px;
+}
+
+.cell-second {
+    width: 45%;
+    padding: 0 36px;
+}
+
+.list-reward-title {
+    margin: 0 0 18px;
+}
+
+.list-delivery {
+    font-size: 14px;
+}
+
+.reward-list-bottom {
+    display: flex;
+    justify-content: flex-end;
+    border: 1px solid $border-gray;
+    padding: 12px 0;
+    margin-bottom: 12px;
+}
+
+.btn-delete {
+    border: none;
+    color: $text-dark-gray;
+    font-size: 14px;
+    padding-right: 36px;
+    line-height: 18px;;
+}

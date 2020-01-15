@@ -19,6 +19,7 @@
 }
 
 .form-header-container {
+    width: 66.6%;
     padding: 70px 0 66px;
     text-align: center;
 }
@@ -74,8 +75,9 @@
 }
 
 .start-input {
+    box-sizing: border-box;
     width: 100%;
-    height: 16px;
+    height: 42px;
     font-size: 14px;
     margin: 6px 0 48px;
     letter-spacing: 0.5px;
@@ -87,10 +89,11 @@
     font-size: 14px;
     letter-spacing: 0.5px;
     line-height: 18px;
-
+    box-sizing: border-box;
 }
 
-select { 
+select {
+    box-sizing: border-box;
 	display: block;
     width: 100%;
     border: none;
@@ -128,6 +131,10 @@ select {
     width: 100%;
 }
 
+#form-input-image:hover {
+    border: none;
+}
+
 #input-date {
     margin-top: 6px;
     // line-height: 18px;
@@ -154,11 +161,12 @@ select {
     justify-content: center;
     align-items: center;
     position: absolute;
-    height: 36px;
+    height: 40px;
     width:40px;
     font-size: 14px;
     color: $text-dark-gray;
     bottom: 49px;
+    // z-index: -1;
 }
 
 .bottom-bar {
@@ -180,6 +188,7 @@ select {
 
 .btn-dark-green:hover {
     background-color: $btn-dark-green-hover;
+    transition: all 0.25s ease-in-out;
 }
 
 .back-button {
@@ -206,11 +215,6 @@ select {
     letter-spacing: 0.8px;
 }
 
-// .next-button > i {
-//     font-size: 15px;
-//     vertical-align: middle;
-// }
-
 .form-story-frame {
     margin: 0 auto;
     padding: 0 60px;
@@ -226,7 +230,7 @@ select {
     flex-direction: column;
     padding: 48px 0 12px;
     border-bottom: 1px solid $border-gray;
-    width: 50%;
+    width: 54%;
 }
 
 .textbox-container {
@@ -242,7 +246,7 @@ select {
     border: 1px solid $border-green;
 }
 
-.form-story-textarea {
+#form-story-textarea {
     width: 100%;
     padding: 20px;
     width: 640px;
@@ -250,8 +254,12 @@ select {
     border: none;
 }
 
-.form-story-textarea:focus{
+#form-story-textarea:focus{
     outline: none;
+}
+
+#form-story-textarea:hover{
+    border: none;
 }
 
 .line-separator {
