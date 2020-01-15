@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import {Featured, Recommended} from "./home_projects" 
 
-export default class Home extends React.Component{
+export default class Discover extends React.Component{
 
     constructor(props){
         super(props)
@@ -14,7 +14,7 @@ export default class Home extends React.Component{
     }
 
     componentDidMount(){
-        this.props.fetchProjects({filter: null})
+        this.props.fetchProjects({filter: {limit: 10}})
     }
 
     handleShift(num) {

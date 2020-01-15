@@ -9,7 +9,7 @@ export const projectsReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_PROJECTS:
-            return action.payload.projects;
+            return action.payload.projects || {};
         case RECEIVE_PROJECT:
             return Object.assign({}, state, action.payload.projects)
         case REMOVE_PROJECT:

@@ -4,14 +4,15 @@ class Api::ProjectsController < ApplicationController
 
   
   def index
+    # debugger
     @project = nil;
     if filter_params[:category]
-      @projects = Project.where(category: filter_params[:category]).order("due_date asc").offset(filter_params[:start]).limit(10).includes(:creator, :pledges)
+      @projects = Project.where(category: filter_params[:category]).order("due_date asc").offset(filter_params[:start]).limit(filter_params[:limit]).includes(:creator, :pledges)
     elsif filter_params[:search_term]
-      regex = "%#{filter_params[:search_term]}%"
-      @projects = Project.where("lower(projects.title) like '#{regex}'").order("due_date asc").offset(filter_params[:start]).limit(10).includes(:creator, :pledges)
+      regex = "%#{filter_params[:search_term].downcase}%"
+      @projects = Project.where("lower(projects.title) like '#{regex}'").order("due_date asc").offset(filter_params[:start]).limit(filter_params[:limit]).includes(:creator, :pledges)
     else
-      @projects = Project.order("due_date asc").limit(10).includes(:creator, :pledges)
+      @projects = Project.order("due_date asc").offset(filter_params[:start]).limit(filter_params[:limit]).includes(:creator, :pledges)
     end
   
     @creators = @projects.map {|project| project.creator}
@@ -95,7 +96,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def filter_params
-    params.require(:filters).permit(:category, :search_term, :start)
+    params.require(:filters).permit(:category, :search_term, :start, :limit)
   end
 end
 

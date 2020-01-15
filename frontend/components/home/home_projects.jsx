@@ -1,4 +1,6 @@
 import React from "react";
+import { parseNum, countDays } from "../../utils/other_utils";
+import { Link } from 'react-router-dom';
 
 // only one project
 export const Featured = (props) => {
@@ -36,3 +38,35 @@ export const Recommended = (props) => {
     )
 }
 
+export const ProjectItem = (props) => {
+    return (
+        <div className="project-item-frame">
+            <div className="project-item">
+                <div className="image-container-16-9 discover-image">
+                    <img className="image-16-9" src={props.project.imageUrl} />
+                </div>
+                <div className="discover-title-frame">
+                    <h2 className="discover-title">{props.project.title}</h2>
+                    <h3 className="discover-sub">{props.project.subtitle}</h3>
+                    <p className="discover-creator">by {props.creator.name}</p>
+                </div>
+                <div>
+
+                    <div className="discover-info-container">
+                        <div className="bar-frame discover-bar-container">
+                            <div className="bar-green" style={{ width: `${props.project.funding / props.project.target * 100}%` }}></div>
+                            <div className="bar-gray" style={{ width: `${(1 - props.project.funding / props.project.target) * 100}%` }}></div>
+                        </div> 
+                        <p className="text-green">${parseNum(props.project.funding)} pledged</p>
+                        <p className="text-gray">{Math.floor(props.project.funding / props.project.target * 100)}% funded</p>
+                        <p className="text-gray">{ countDays(props.project.dueDate)} days to go</p>
+                        <Link to={`ref=category=${props.project.category}`}>
+                            <p className="cate-link text-gray underlined">{props.project.category}</p>
+                        </Link>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    );
+}

@@ -11,6 +11,7 @@ import StartProjectContainer from "./start_project/start_project_container";
 import UserProfileContainer from "./user/user_profile_container";
 import ProjectContainer from "./project/project_container";
 import PaymentContainer from "./payment/payment_container";
+import IndexContainer from "./discover/discover_container";
 
 const App = () => (
     <div>
@@ -21,6 +22,7 @@ const App = () => (
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
             <Route exact path="/profile/:userId/" component={UserProfileContainer} />
             <Route exact path="/projects/:projectId" component={ProjectContainer} />
+            <Route exact path="/discover/ref=:filterType=:searchTerm" component={IndexContainer} />
             <ProtectedRoute exact path="/start" component={StartProjectContainer} />
             <ProtectedRoute exact path="/settings" component={UserProfileContainer} />
             <PaymentRoute exact path="/checkouts/:rewardId/payments" component={PaymentContainer} />

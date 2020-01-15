@@ -1,0 +1,89 @@
+@import "./style";
+
+.discover-body-frame {
+    display: flex;
+    flex-direction: column;
+}
+
+.discover-grid-container {
+    padding: 18px 0 60px 0;
+    border-bottom: 1px solid $border-gray;
+    max-width: 1366px;
+    margin: 0 auto;
+}
+
+.projects-show-grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 60px;
+}
+
+.discover-grid-item {
+  flex: 1 0 31%;
+  padding: 15px 18px;
+}
+
+.project-item-frame {
+    border: 1px solid $border-gray;
+    font-weight: 300;
+    letter-spacing: 0.8px;
+}
+
+.discover-title-frame{
+    padding: 24px 18px 0;
+}
+
+.discover-title {
+    margin: 0 0 6px;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.discover-title:hover {
+    text-decoration: underline;
+}
+
+.discover-sub {
+    margin: 0 0 20px;
+    color: $text-gray;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.discover-creator {
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.discover-info-container {
+    padding: 18px;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.discover-bar-container {
+    height: 3px !important;
+    margin-bottom: 20px;
+}
+
+.text-green {
+    color: $text-dark-green;
+}
+
+.text-gray {
+    color: $text-dark-gray;
+}
+
+.cate-link {
+    padding-top: 18px;
+    text-transform: capitalize;
+}
+
+.discover-bottom-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 150px;
+    padding: 60px 0;
+    border-bottom: 1px solid $border-gray;
+}
