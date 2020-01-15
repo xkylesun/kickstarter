@@ -6,7 +6,9 @@ class Api::ProjectsController < ApplicationController
   def index
     start = 0
 
-    @projects = Project.order("created_at desc").offset(start).limit(6).includes(:creator, :pledges)
+    @projects = Project.order("due_date asc").limit(10).includes(:creator, :pledges)
+
+  
     @creators = @projects.map {|project| project.creator}
     @funding_by_projects = @projects.map do |project| 
       project.pledges.map do |pledge|

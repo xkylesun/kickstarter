@@ -4,12 +4,12 @@ import React from "react";
 export const Featured = (props) => {
     return (
     <div className="feat-frame">
-        <div className="image-container">
-            <img className="image feat-image" src={props.project.imageUrl} />
-            <div className="bar-frame">
-                <div className="bar-green" style={{ width: `${props.project.funding / props.project.target * 100}%`}}></div>
-                <div className="bar-gray" style={{ width: `${(1 - props.project.funding / props.project.target) * 100}%` }}></div>
-            </div>
+        <div className="image-container-16-9">
+            <img className="image-16-9" src={props.project.imageUrl} />
+        </div>
+        <div className="bar-frame">
+            <div className="bar-green" style={{ width: `${props.project.funding / props.project.target * 100}%`}}></div>
+            <div className="bar-gray" style={{ width: `${(1 - props.project.funding / props.project.target) * 100}%` }}></div>
         </div>
 
         <h1 className="feat-project-title">{props.project.title}</h1>
@@ -23,7 +23,9 @@ export const Recommended = (props) => {
     return (
         <div className="rec-content-frame">
             <div className="rec-image-container">
-                <img className="image rec-image" src={props.project.imageUrl} />
+                <div className="image-container-16-9">
+                    <img className="image-16-9 rec-image" src={props.project.imageUrl} />
+                </div>
             </div>
             <div className="rec-item-info">
                 <h1 className="rec-project-title">{props.project.title}</h1>
