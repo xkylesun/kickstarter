@@ -32,7 +32,6 @@ export const Recommended = (props) => {
                 <h3 className="rec-funding">{Math.floor(props.project.funding / props.project.target * 100)}% funded</h3>
                 <p className="attr-creator">By {props.creator.name}</p>
             </div>
-
         </div>
     )
 }

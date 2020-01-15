@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import {Featured, Recommended} from "./display" 
+import {Featured, Recommended} from "./home_projects" 
 
 export default class Home extends React.Component{
 
