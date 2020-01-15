@@ -4,10 +4,15 @@ class Api::ProjectsController < ApplicationController
 
   
   def index
-    start = 0
-
-    @projects = Project.order("due_date asc").limit(10).includes(:creator, :pledges)
-
+    @project = nil;
+    if filter_params[:category]
+      @projects = Project.where(category: filter_params[:category]).order("due_date asc").offset(filter_params[:start]).limit(10).includes(:creator, :pledges)
+    elsif filter_params[:search_term]
+      regex = "%#{filter_params[:search_term]}%"
+      @projects = Project.where("lower(projects.title) like '#{regex}'").order("due_date asc").offset(filter_params[:start]).limit(10).includes(:creator, :pledges)
+    else
+      @projects = Project.order("due_date asc").limit(10).includes(:creator, :pledges)
+    end
   
     @creators = @projects.map {|project| project.creator}
     @funding_by_projects = @projects.map do |project| 
@@ -90,7 +95,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def filter_params
-
+    params.require(:filters).permit(:category, :search_term, :start)
   end
 end
 
