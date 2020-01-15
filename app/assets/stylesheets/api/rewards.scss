@@ -96,7 +96,6 @@
     font-size: 16px;
 }
 
-
 .pledge-input:focus {
     border: 1px solid $border-green;
     outline: none;
@@ -107,7 +106,6 @@
 }
 
 .pledge-form-screen {
-    // transition: all 5s ease-in-out;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -119,8 +117,6 @@
     background-color: $background-green-hover;
     z-index: 2;
     transition: all 0.2s ease-in-out;
-    // text-align: center;
-    // align-self: center;
 }
 
 .pledge-form-screen:hover {

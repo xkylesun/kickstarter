@@ -7,10 +7,21 @@ export default class RewardForm extends React.Component{
             title: "",
             description: "",
             minimum: 1,
-            quantity: 0,
+            quantity: "",
             month: "",
             year: "",
         }
+    }
+
+    clearForm() {
+        this.setState({
+            title: "",
+            description: "",
+            minimum: 1,
+            quantity: "",
+            month: "",
+            year: "",
+        })
     }
 
     handleInput(stateName) {
@@ -21,73 +32,111 @@ export default class RewardForm extends React.Component{
 
     render(){
         return (
-            <div className="reward=form-frame">
-                <div className="reward-title-frame">
-                    <h1 className="reward-item-title">Title</h1>
-                    <h2 className="reward-item-desc">Briefly describe this reward.</h2>
-                    <input type="text" placeholder="Signed limited-edition" onChange={this.handleInput("title")}/>
-                </div>
-                <div className="reward-amount-frame">
-                    <h1 className="reward-item-title">Pledge amount</h1>
-                    <h2 className="reward-item-desc">Set a minimum pledge amount for this reward.</h2>
-                    <input type="number" onChange={this.handleInput("minimum")} value={this.state.minimum}/>
-                </div>
+            <div className="reward-form-frame hidden" id="reward-form">
                 <div className="reward-desc-frame">
-                    <h1 className="reward-item-title">Description</h1>
-                    <h2 className="reward-item-desc">Describe this reward in more detail.</h2>
-                    <input type="text" placeholder="Get an early copy - hot off the presses" onChange={this.handleInput("description")}/>
+                    <h1 className="form-desc-title">Add a reward</h1>
+                    <h2 className="form-desc-body">Offer tangible or intangible things that bring backers closer to your project.</h2>
+                </div>
+                <div className="reward-input-frame">
+                    <h1 className="reward-desc-title">Title</h1>
+                    <h2 className="reward-desc-body">Briefly describe this reward.</h2>
+                    <input 
+                        className="form-input start-input" 
+                        type="text" 
+                        placeholder="Signed limited-edition" 
+                        value={this.state.title} onChange={this.handleInput("title")}/>
                 </div>
 
-                <div className="reward-delivery-frame">
-                    <h1 className="reward-item-title">Estimated delivery</h1>
-                    <h2 className="reward-item-desc">Give yourself plenty of time. It's better to deliver to backers ahead of schedule than behind.</h2>
-                    <div className="reward-delivery">
-                        <select defaultValue="0" onChange={this.handleInput("month")}>
-                            <option disabled value="0">Month</option>
-                            <option value="Jan">January</option>
-                            <option value="Feb">February</option>
-                            <option value="Mar">March</option>
-                            <option value="Apr">April</option>
-                            <option value="May">May</option>
-                            <option value="Jun">June</option>
-                            <option value="Jul">July</option>
-                            <option value="Aug">August</option>
-                            <option value="Sep">September</option>
-                            <option value="Oct">October</option>
-                            <option value="Nov">November</option>
-                            <option value="Dec">December</option>
-                        </select>
-                        <select defaultValue="0" onChange={this.handleInput("year")}>
-                            <option disabled value="0">Year</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                        </select>
-                    </div>
-                    <div className="reward-quantity-frame">
-                        <h1 className="reward-item-title">Reward quantity</h1>
-                        <h2 className="reward-item-desc">You may want to limit the quantity of this reward available to backers if production or shipping is difficult, time-consuming, or not scalable.</h2>
-                        <input type="number" placeholder="Leave blank if quantity unlimited" onChange={this.handleInput("quantity")} />
+                <div className="reward-input-frame">
+                    <h1 className="reward-desc-title">Pledge amount</h1>
+                    <h2 className="reward-desc-body">Set a minimum pledge amount for this reward.</h2>
+                    <div className="currency-box-container last-container">
+                        <p className="currency-box">$</p>
+                        <input 
+                            className="form-input start-input currency-input" 
+                            type="number" onChange={this.handleInput("minimum")} 
+                            value={this.state.minimum}/>
                     </div>
                 </div>
+
+                <div className="reward-input-frame">
+                    <h1 className="reward-desc-title">Description</h1>
+                    <h2 className="reward-desc-body">Describe this reward in more detail.</h2>
+                    <textarea 
+                        className="reward-textarea form-iput"
+                        placeholder="Get an early copy - hot off the presses"
+                        value={this.state.description}
+                        onChange={this.handleInput("description")}>
+                    >
+
+                    </textarea>
+                </div>
+
+                <div className="reward-input-frame">
+                    <h1 className="reward-desc-title">Estimated delivery</h1>
+                    <h2 className="reward-desc-body">Give yourself plenty of time. It's better to deliver to backers ahead of schedule than behind.</h2>
+                    <div className="reward-delivery">
+                        <select 
+                            className="start-dropdown form-input month-dropdown" 
+                            value={this.state.month} 
+                            onChange={this.handleInput("month")}>
+
+                                <option disabled value="">Month</option>
+                                <option value="Jan">January</option>
+                                <option value="Feb">February</option>
+                                <option value="Mar">March</option>
+                                <option value="Apr">April</option>
+                                <option value="May">May</option>
+                                <option value="Jun">June</option>
+                                <option value="Jul">July</option>
+                                <option value="Aug">August</option>
+                                <option value="Sep">September</option>
+                                <option value="Oct">October</option>
+                                <option value="Nov">November</option>
+                                <option value="Dec">December</option>
+                        </select>
+                        <select 
+                            className="start-dropdown form-input year-dropdown" 
+                            value={this.state.year} 
+                            onChange={this.handleInput("year")}>
+                                <option disabled value="">Year</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div className="reward-input-frame">
+                    <h1 className="reward-desc-title">Reward quantity</h1>
+                    <h2 className="reward-desc-body">You may want to limit the quantity of this reward available to backers if production or shipping is difficult, time-consuming, or not scalable.</h2>
+                    <input 
+                        className="form-input start-input" 
+                        type="number" 
+                        value={this.state.quantity}
+                        placeholder="Leave blank if quantity unlimited" 
+                        onChange={this.handleInput("quantity")} />
+                </div>
+
                 <div>
-                    <h2>Add reward items</h2>
-                    <h3>Briefly list and describe each item included in this reward.</h3>
-                    <button className="btn btn-black" 
+                    <button className="btn btn-green" 
                         type="button" 
                         onClick={
-                            () => this.props.addReward(
+                            () => {
+                                this.props.addReward(
                                 {
                                     title: this.state.title,
                                     description: this.state.description,
                                     minimum: this.state.minimum,
                                     quantity: this.state.quantity,
                                     estimated_delivery: this.state.month + " " + this.state.year
-                                })
+                                });
+                                this.clearForm()
+                            }
                         }>
-                    + Add an item
+                    Save reward
                     </button>
                 </div>
             </div>

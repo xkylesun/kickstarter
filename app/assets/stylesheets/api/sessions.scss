@@ -70,11 +70,9 @@
     height: 42px;
     width: 100%;
     box-shadow: 0 2px 4px rgba(40,40,40,0.17);
-    cursor: pointer;
-    transition: all 0.25s ease-in-out !important;
     text-align: center;
     margin: 20px 0 20px 0;
-    font-size: inherit;
+    font-size: 14px;
     font-weight: 300;
 }
 
@@ -84,6 +82,7 @@
 
 .btn-green:hover {
     background-color: $btn-green-hover;
+    transition: all 0.25s ease-in-out;
 }
 
 .btn-blue {
@@ -92,6 +91,7 @@
 
 .btn-blue:hover {
     background-color: $btn-blue-hover;
+    transition: all 0.25s ease-in-out;
 }
 
 .line {
