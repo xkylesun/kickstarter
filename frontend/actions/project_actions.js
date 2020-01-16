@@ -1,6 +1,7 @@
 import * as ProjectUtil from "../utils/project_util"
 
 export const RECEIVE_PROJECTS = "RECEIVE_PROJECTS";
+export const APPEND_PROJECTS = "APPEND_PROJECTS";
 export const RECEIVE_PROJECT = "RECEIVE_PROJECT";
 export const RECEIVE_PROJECT_ERRORS = "RECEIVE_PROJECT_ERRORS";
 export const REMOVE_PROJECT = "REMOVE_PROJECT"
@@ -8,6 +9,13 @@ export const REMOVE_PROJECT = "REMOVE_PROJECT"
 const receiveProjects = payload => {
     return {
         type: RECEIVE_PROJECTS,
+        payload
+    };
+};
+
+const appendProjects = payload => {
+    return {
+        type: APPEND_PROJECTS,
         payload
     };
 };
@@ -33,13 +41,21 @@ const receiveErrors = errors => {
     }
 }
 
-export const fetchProjects = filters => dispatch => (
-    ProjectUtil.fetchProjects(filters)
+export const fetchProjects = (filters) => dispatch => {
+    return ProjectUtil.fetchProjects(filters)
         .then(
             payload => dispatch(receiveProjects(payload)),
             errors => dispatch(receiveErrors(errors))
         )
-);
+};
+
+export const fetchMoreProjects = (filters) => dispatch => {
+    return ProjectUtil.fetchProjects(filters)
+        .then(
+            payload => dispatch(appendProjects(payload)),
+            errors => dispatch(receiveErrors(errors))
+        )
+};
 
 export const fetchProject = projectId => dispatch => (
     ProjectUtil.fetchProject(projectId)

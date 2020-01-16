@@ -4,18 +4,21 @@ class Api::ProjectsController < ApplicationController
 
   
   def index
-    # debugger
     @project = nil;
+    
+    # debugger
     if filter_params[:category]
-      @projects = Project.where(category: filter_params[:category]).order("due_date asc").offset(filter_params[:start]).limit(filter_params[:limit]).includes(:creator, :pledges)
+      category = filter_params[:category].downcase
+      @projects = Project.where(category: category).order("due_date asc").includes(:creator, :pledges).page(filter_params[:page]).per(filter_params[:limit])
     elsif filter_params[:search_term]
       term = filter_params[:search_term].downcase
       regex = "%#{term}%"
-      @projects = Project.where("lower(projects.title) like ? or projects.category = ?", regex, term).distinct.order("due_date asc").offset(filter_params[:start]).limit(filter_params[:limit]).includes(:creator, :pledges)
+      @projects = Project.where("lower(projects.title) like ? or projects.category = ?", regex, term).distinct.order("due_date asc").includes(:creator, :pledges).page(filter_params[:page]).per(filter_params[:limit])
     else
-      @projects = Project.order("due_date asc").offset(filter_params[:start]).limit(filter_params[:limit]).includes(:creator, :pledges)
+      @projects = Project.order("due_date asc").includes(:creator, :pledges).page(filter_params[:page]).per(filter_params[:page])
     end
-  
+    
+    @last_page = @projects.page(filter_params[:page]).per(filter_params[:limit]).last_page? || @projects.page(filter_params[:page]).per(filter_params[:limit]).out_of_range?
     @creators = @projects.map {|project| project.creator}
     @funding_by_projects = @projects.map do |project| 
       project.pledges.map do |pledge|
@@ -97,7 +100,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def filter_params
-    params.require(:filters).permit(:category, :search_term, :start, :limit)
+    params.require(:filters).permit(:category, :search_term, :page, :limit)
   end
 end
 

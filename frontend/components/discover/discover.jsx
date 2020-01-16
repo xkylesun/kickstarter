@@ -7,24 +7,32 @@ export default class Discover extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            offset: 0
+            page: 1,
+            lastPage: false
         }
+        this.loadMore = this.loadMore.bind(this);
     }
 
     componentDidMount() {
-        const filter = {[this.props.filterType]: this.props.searchTerm, start: this.state.offset, limit: 9}
+        const filter = {[this.props.filterType]: this.props.searchTerm, limit: 3 }
         this.props.fetchProjects(filter)
     }
 
-    componentDidUpdate(oldProps) {
-        if (oldProps.location.pathname !== this.props.location.pathname){
-            const filter = { [this.props.filterType]: this.props.searchTerm, start: this.state.offset }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.location.pathname !== this.props.location.pathname){
+            const filter = { [this.props.filterType]: this.props.searchTerm, limit: 3 }
             this.props.fetchProjects(filter)
+            this.setState({page: 1})
+        };
+        if (prevState.page !== this.state.page) {
+            let filters = { [this.props.filterType]: this.props.searchTerm, page: this.state.page, limit: 3 }
+            this.props.fetchMoreProjects(filters)
+                .then(data => this.setState({ lastPage: data.payload.lastPage }))
         }
     }
 
     loadMore() {
-        this.setState({offset: this.props.offset + 9})
+        this.setState({ page: this.state.page + 1 });
     }
 
     render() {
@@ -64,7 +72,12 @@ export default class Discover extends React.Component {
                     </div>
                     <div className="discover-bottom-bar">
                         <span className="btn-container">
-                            <button className="btn btn-green btn-load">Load more</button>
+                            <button
+                                id="load-more-btn"
+                                className={this.state.lastPage ? "btn btn-green btn-load hidden" : "btn btn-green btn-load"}
+                                type="button" 
+                                disabled={this.state.lastPage}
+                                onClick={this.loadMore}>Load more</button>
                         </span>
                     </div>
                 </div>

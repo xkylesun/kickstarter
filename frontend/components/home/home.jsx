@@ -23,7 +23,6 @@ export default class Discover extends React.Component{
 
     pageUp() {
         if (this.state.page < 3){
-            // document.getElementById("slide-up").classList.remove("grayed-out")
             this.setState({ page: this.state.page + 1 })
         } 
     }

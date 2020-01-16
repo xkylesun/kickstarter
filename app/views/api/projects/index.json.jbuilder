@@ -15,4 +15,5 @@ json.creators do
         end
     end
 end
+json.last_page @last_page
 
