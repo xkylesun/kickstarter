@@ -56,10 +56,27 @@ export default class StartForm extends React.Component {
         }
     }
 
+    checkFilled() {
+        let checklist = Array.from(document.getElementsByClassName("required"));
+        let completed = true;
+        for(let i = 0; i < checklist.length; i++){
+            if (!checklist[i].value){
+                checklist[i].classList.add("unfilled");
+                completed = false;
+            }
+        }
+        return completed;
+    }
+
     addReward(formReward){
-        let temp = JSON.parse(JSON.stringify(this.state.rewards));
-        temp.push(formReward);
-        this.setState({rewards: temp});
+        if (this.checkFilled()){
+            let temp = JSON.parse(JSON.stringify(this.state.rewards));
+            temp.push(formReward);
+            this.setState({rewards: temp});
+            return true;
+        } else {
+            return false;
+        }
     }
 
     deleteReward(idx){

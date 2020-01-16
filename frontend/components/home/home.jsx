@@ -14,7 +14,7 @@ export default class Discover extends React.Component{
     }
 
     componentDidMount(){
-        this.props.fetchProjects({filter: {limit: 10}})
+        this.props.fetchProjects({limit: 10})
     }
 
     handleShift(num) {

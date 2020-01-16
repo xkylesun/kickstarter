@@ -9,7 +9,7 @@ export const Featured = (props) => {
         <div className="image-container-16-9">
             <img className="image-16-9" src={props.project.imageUrl} />
         </div>
-        <div className="bar-frame">
+        <div className="bar-frame feat-bar">
             <div className="bar-green" style={{ width: `${props.project.funding / props.project.target * 100}%`}}></div>
             <div className="bar-gray" style={{ width: `${(1 - props.project.funding / props.project.target) * 100}%` }}></div>
         </div>

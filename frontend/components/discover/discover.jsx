@@ -56,7 +56,9 @@ export default class Discover extends React.Component {
                                 project => (
                                     <li key={project.id}
                                         className="discover-grid-item">
-                                        <ProjectItem project={project} creator={this.props.users[project.creatorId]} />
+                                        <Link to={`/projects/${project.id}`}>
+                                            <ProjectItem project={project} creator={this.props.users[project.creatorId]} />
+                                        </Link>
                                     </li>
                                 )
                             )}

@@ -6,7 +6,7 @@ export default class RewardForm extends React.Component{
         this.state = {
             title: "",
             description: "",
-            minimum: 1,
+            minimum: "",
             quantity: "",
             month: "",
             year: "",
@@ -17,7 +17,7 @@ export default class RewardForm extends React.Component{
         this.setState({
             title: "",
             description: "",
-            minimum: 1,
+            minimum: "",
             quantity: "",
             month: "",
             year: "",
@@ -26,6 +26,7 @@ export default class RewardForm extends React.Component{
 
     handleInput(stateName) {
         return event => {
+            event.currentTarget.classList.remove("unfilled");
             this.setState({ [stateName]: event.currentTarget.value });
         }
     }
@@ -41,7 +42,7 @@ export default class RewardForm extends React.Component{
                     <h1 className="reward-desc-title">Title</h1>
                     <h2 className="reward-desc-body">Briefly describe this reward.</h2>
                     <input 
-                        className="form-input start-input" 
+                        className="form-input start-input required" 
                         type="text" 
                         placeholder="Signed limited-edition" 
                         value={this.state.title} onChange={this.handleInput("title")}/>
@@ -53,7 +54,7 @@ export default class RewardForm extends React.Component{
                     <div className="currency-box-container last-container">
                         <p className="currency-box">$</p>
                         <input 
-                            className="form-input start-input currency-input" 
+                            className="form-input start-input currency-input required" 
                             type="number" onChange={this.handleInput("minimum")} 
                             value={this.state.minimum}/>
                     </div>
@@ -63,7 +64,7 @@ export default class RewardForm extends React.Component{
                     <h1 className="reward-desc-title">Description</h1>
                     <h2 className="reward-desc-body">Describe this reward in more detail.</h2>
                     <textarea 
-                        className="reward-textarea form-iput"
+                        className="reward-textarea form-iput required"
                         placeholder="Get an early copy - hot off the presses"
                         value={this.state.description}
                         onChange={this.handleInput("description")}>
@@ -125,15 +126,16 @@ export default class RewardForm extends React.Component{
                         type="button" 
                         onClick={
                             () => {
-                                this.props.addReward(
-                                {
-                                    title: this.state.title,
-                                    description: this.state.description,
-                                    minimum: this.state.minimum,
-                                    quantity: this.state.quantity,
-                                    estimated_delivery: this.state.month + " " + this.state.year
-                                });
-                                this.clearForm()
+                                if (this.props.addReward(
+                                    {
+                                        title: this.state.title,
+                                        description: this.state.description,
+                                        minimum: this.state.minimum,
+                                        quantity: this.state.quantity,
+                                        estimated_delivery: this.state.month + " " + this.state.year
+                                    })){
+                                this.clearForm();
+                                };
                             }
                         }>
                     Save reward

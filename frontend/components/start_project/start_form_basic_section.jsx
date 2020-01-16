@@ -55,6 +55,8 @@ export default class BasicSection extends React.Component {
                                 <option value="comics">Comics</option>
                                 <option value="design">Design</option>
                                 <option value="games">Games</option>
+                                <option value="music">Music</option>
+                                <option value="photography">Photography</option>
                                 <option value="technology">Technology</option>
                             </select>
                         </span>

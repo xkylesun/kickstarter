@@ -18,14 +18,11 @@
     padding: 0 60px;
 }
 
-.discover-grid-item {
-    // padding: 0px 18px;
-}
-
 .project-item-frame {
     border: 1px solid $border-gray;
     font-weight: 300;
     letter-spacing: 0.8px;
+    min-width: 389.33px;
 }
 
 .discover-title-frame{
@@ -61,7 +58,7 @@
 }
 
 .discover-bar-container {
-    height: 3px !important;
+    height: 3px;
     margin-bottom: 20px;
 }
 

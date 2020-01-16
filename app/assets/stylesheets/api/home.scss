@@ -78,7 +78,6 @@
 }
 
 .bar-frame {
-    height: 12px;
     display: flex;
 }
 
@@ -90,6 +89,10 @@
 .bar-gray {
     background-color: $background-gray;
     height: 100%;
+}
+
+.feat-bar {
+    height: 12px;
 }
 
 .attr-creator {
