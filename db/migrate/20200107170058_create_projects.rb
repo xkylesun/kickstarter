@@ -12,5 +12,6 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :image_url
     end
     add_index :projects, [:creator_id, :title], unique: true
+    add_index :projects, :category
   end
 end

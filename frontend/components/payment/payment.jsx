@@ -1,31 +1,32 @@
 import React from "react";
 
 
-export default class Payment extends React.Component{
-    constructor(props){
+export default class Payment extends React.Component {
+    constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(){
+    handleSubmit() {
         this.props.createPledge({
             backer_id: this.props.userId,
+            project_id: this.props.location.state.projectId,
             reward_id: this.props.match.params.rewardId,
             amount: this.props.location.state.value
         }).then(
             () => {
-            alert("Payment successful! You will be redirected to project page in 5s");
-            setTimeout(() => {this.props.history.push(`/`)}, 5000);
+                alert("Payment successful! You will be redirected to project page in 5s");
+                setTimeout(() => { this.props.history.push(`/projects/${this.props.location.state.projectId}`) }, 5000);
             }
         )
     }
 
-    render(){
-        if (!this.props.location.state){
+    render() {
+        if (!this.props.location.state) {
             this.props.history.push(`/`);
             return null;
         }
-
+        console.dir(this.props)
         const { title, value, minimum } = this.props.location.state;
         return (
             <div className="payment-frame">
@@ -38,7 +39,7 @@ export default class Payment extends React.Component{
                             <li>Total amount</li>
                         </ul>
                         <ul>
-                            <li>{title}</li>
+                            <li>{this.props.location.state.projectTitle}</li>
                             <li>${value} - {title}</li>
                             <li>${value}</li>
                         </ul>
@@ -48,19 +49,19 @@ export default class Payment extends React.Component{
                 <div className="payment-form-frame">
                     <form id="payment-form" onSubmit={this.handleSubmit}>
                         <label>Card number
-                            <input type="text" placeholder="Card number"/>
+                            <input type="text" placeholder="Card number" />
                         </label>
                         <label>Cardholder name
                         <input type="text" placeholder="Cardholder name" />
                         </label>
                         <label>Expiration
-                            <input type="date" placeholder="MM / YY"/>
+                            <input type="date" placeholder="MM / YY" />
                         </label>
                         <label>Security code
-                            <input type="text" placeholder="CVC"/>
+                            <input type="text" placeholder="CVC" />
                         </label>
                         <label>Zip/Postal code
-                            <input type="text" placeholder="Zip/Postal code"/>
+                            <input type="text" placeholder="Zip/Postal code" />
                         </label>
                         <button type="submit">Pledge</button>
                     </form>

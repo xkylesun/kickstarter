@@ -27,21 +27,21 @@ Reward.create!([
 ])
 
 Pledge.create!([
-  {backer_id: 1, reward_id: 1, amount: 100},
-  {backer_id: 2, reward_id: 3, amount: 200},
-  {backer_id: 2, reward_id: 5, amount: 500},
-  {backer_id: 2, reward_id: 7, amount: 1000},
-  {backer_id: 2, reward_id: 1, amount: 100},
-  {backer_id: 3, reward_id: 3, amount: 450},
-  {backer_id: 3, reward_id: 5, amount: 600},
-  {backer_id: 4, reward_id: 7, amount: 1000},
-  {backer_id: 4, reward_id: 1, amount: 2000},
-  {backer_id: 5, reward_id: 2, amount: 500},
-  {backer_id: 5, reward_id: 6, amount: 100},
-  {backer_id: 5, reward_id: 9, amount: 350},
-  {backer_id: 6, reward_id: 8, amount: 300},
-  {backer_id: 6, reward_id: 3, amount: 1000},
-  {backer_id: 7, reward_id: 5, amount: 400},
-  {backer_id: 7, reward_id: 8, amount: 5000},
-  {backer_id: 7, reward_id: 9, amount: 1200}
+  {backer_id: 1, project_id: 3, reward_id: 1, amount: 200},
+  {backer_id: 1, project_id: 1, reward_id: 1, amount: 100},
+  {backer_id: 1, project_id: 5, reward_id: 1, amount: 500},
+  {backer_id: 2, project_id: 1, reward_id: 1, amount: 1000},
+  {backer_id: 2, project_id: 3, reward_id: 1, amount: 100},
+  {backer_id: 3, project_id: 4, reward_id: 1, amount: 450},
+  {backer_id: 3, project_id: 7, reward_id: 1, amount: 600},
+  {backer_id: 4, project_id: 1, reward_id: 1, amount: 1000},
+  {backer_id: 4, project_id: 2, reward_id: 1, amount: 2000},
+  {backer_id: 5, project_id: 2, reward_id: 1, amount: 500},
+  {backer_id: 5, project_id: 5, reward_id: 1, amount: 100},
+  {backer_id: 5, project_id: 6, reward_id: 1, amount: 350},
+  {backer_id: 6, project_id: 8, reward_id: 1, amount: 300},
+  {backer_id: 6, project_id: 3, reward_id: 1, amount: 1000},
+  {backer_id: 7, project_id: 5, reward_id: 1, amount: 400},
+  {backer_id: 7, project_id: 8, reward_id: 1, amount: 5000},
+  {backer_id: 7, project_id: 9, reward_id: 1, amount: 1200}
 ])

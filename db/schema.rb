@@ -36,25 +36,14 @@ ActiveRecord::Schema.define(version: 2020_01_13_172844) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "rewards", force: :cascade do |t|
-    t.integer "project_id", null: false
-    t.integer "quantity"
-    t.integer "minimum", null: false
-    t.string "title", null: false
-    t.string "description", null: false
-    t.string "estimated_delivery"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_rewards_on_project_id"
-  end
-
   create_table "pledges", force: :cascade do |t|
     t.integer "backer_id", null: false
     t.integer "reward_id", null: false
+    t.integer "project_id", null: false
     t.integer "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["backer_id"], name: "index_pledges_on_backer_id"
+    t.index ["backer_id", "project_id"], name: "index_pledges_on_backer_id_and_project_id", unique: true
     t.index ["reward_id"], name: "index_pledges_on_reward_id"
   end
 
@@ -69,7 +58,20 @@ ActiveRecord::Schema.define(version: 2020_01_13_172844) do
     t.datetime "due_date", null: false
     t.text "body", null: false
     t.string "image_url"
+    t.index ["category"], name: "index_projects_on_category"
     t.index ["creator_id", "title"], name: "index_projects_on_creator_id_and_title", unique: true
+  end
+
+  create_table "rewards", force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.integer "quantity"
+    t.integer "minimum", null: false
+    t.string "title", null: false
+    t.string "description", null: false
+    t.date "estimated_delivery"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_rewards_on_project_id"
   end
 
   create_table "users", force: :cascade do |t|
