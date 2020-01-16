@@ -1,10 +1,18 @@
 
 @import url(//db.onlinewebfonts.com/c/4cffa20a560405339ae5f98d0b62853f?family=RNS++BARUTA+BLACK);
+@import url(//db.onlinewebfonts.com/c/ddc1686f692c5f18f85f67340500f050?family=Bitstream+Cooper);
 
 @font-face {
     font-family: "RNS BARUTA BLACK"; 
     src: url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.eot"); 
-    src: url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.woff") format("woff"), url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.svg#RNS BARUTA BLACK") format("svg"); }
+    src: url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.woff") format("woff"), url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/4cffa20a560405339ae5f98d0b62853f.svg#RNS BARUTA BLACK") format("svg"); 
+}
+
+@font-face {
+    font-family: "Cooper Lt BT"; 
+    src: url("//db.onlinewebfonts.com/t/e25ed0fa39c44d127ab5ab3e362d8af1.eot"); 
+    src: url("//db.onlinewebfonts.com/t/e25ed0fa39c44d127ab5ab3e362d8af1.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/e25ed0fa39c44d127ab5ab3e362d8af1.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/e25ed0fa39c44d127ab5ab3e362d8af1.woff") format("woff"), url("//db.onlinewebfonts.com/t/e25ed0fa39c44d127ab5ab3e362d8af1.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/e25ed0fa39c44d127ab5ab3e362d8af1.svg#Cooper Lt BT") format("svg"); 
+}
 
 $btn-green: #009E74;
 $btn-green-hover: #037362;
@@ -14,11 +22,13 @@ $btn-dark-green: #034752;
 $btn-dark-green-hover: #023239;
 $btn-black-hover: #4D4D4D;
 
+$text-light-gray: #9B9E9E;
 $text-gray: #919191;
+$text-dark-gray: #656969;
 $text-blue: #2652ff;
+$text-light-blue: rgba(43,96,255,0.9);
 $text-white: #FFFFFF;
 $text-logo-green: #05ce78;
-$text-dark-gray: #656969;
 $text-black: #282828;
 $text-dark-green: #037362;
 $text-green: #009E74;
@@ -37,4 +47,4 @@ $background-white: #fbfbfa;
 $background-light-gray: #f0f0f0;
 
 $font-default: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-subtitle: "Cooper Light", Georgia, Times, "Times New Roman", serif;
+$font-subtitle: "Cooper Lt BT", Georgia, Times, "Times New Roman", serif;

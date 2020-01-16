@@ -6,7 +6,7 @@ import { createReward } from "../../actions/reward_actions";
  
 const mapStateToProps = (props) => {
     return {
-        currentUserId: props.session.currentUserId
+        currentUser: props.session.currentUser
     };
 };
 

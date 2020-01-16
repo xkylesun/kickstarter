@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let store;
     if (window.currentUser) {
         const preloadedState = {
-            session: { currentUserId: window.currentUser.id },
+            session: { currentUser: window.currentUser },
             entities: {
                 users: {
                     [window.currentUser.id]:window.currentUser
@@ -39,15 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
 // window.logout = SessionUtil.logout;
 
 // test - success on 2020/1/8
-// import * as ProjectUtil from "./utils/project_util"
-// window.fetchProjects = ProjectUtil.fetchProjects;
+import * as ProjectUtil from "./utils/project_util"
+window.fetchProjects = ProjectUtil.fetchProjects;
 // window.fetchProject = ProjectUtil.fetchProject;
 // window.createProject = ProjectUtil.createProject;
 // window.updateProject = ProjectUtil.updateProject;
 // window.deleteProject = ProjectUtil.deleteProject;
 
-import {fetchProjects, fetchProject} from "./actions/project_actions";
-window.fetchProjects = fetchProjects;
-window.fetchProject = fetchProject;
-import { fetchUser } from "./actions/user_actions";
-window.fetchUser = fetchUser;
+// import {fetchProjects, fetchProject} from "./actions/project_actions";
+// window.fetchProjects = fetchProjects;
+// window.fetchProject = fetchProject;
+// import { fetchUser } from "./actions/user_actions";
+// window.fetchUser = fetchUser;

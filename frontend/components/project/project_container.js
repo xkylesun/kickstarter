@@ -5,6 +5,7 @@ import { selectRewards } from "../../reducers/selector"
 import Project from "./project";
 
 const mapStateToProps = (state, ownProps) => {
+    console.dir(ownProps)
     const project = state.entities.projects[ownProps.match.params.projectId]
     var creator;
     if (project) {

@@ -21,10 +21,10 @@
     background-color: black;
     width: inherit;
     padding: 0 24px;
+    transition: all 0.25s ease-in-out;
 }
 
 .btn-black:hover {
-    transition: all 0.25s ease-in-out;
     background-color: $btn-black-hover;
 }
 
@@ -46,7 +46,6 @@
 .year-dropdown {
     margin-bottom: 48px;
 }
-
 
 .reward-desc-title {
     font-size: 16px;
@@ -70,5 +69,21 @@
     outline: none;
 }
 
+.cancel-add-reward{
+    color: $text-dark-gray;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
 
+.cancel-add-reward:hover{
+    cursor: pointer;
+    color: $text-black;
+}
+
+.reward-submit-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 

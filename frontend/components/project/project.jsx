@@ -1,6 +1,10 @@
 import React from "react";
 import Reward from "./reward";
 
+import {parseNum, countDays} from "../../utils/other_utils";
+
+
+
 export default class Project extends React.Component{
     constructor(props){
         super(props)
@@ -13,16 +17,6 @@ export default class Project extends React.Component{
         if (this.props.match.params.projectId !== prevProps.id) {
             this.props.fetchProject(this.props.match.params.projectId)
         }
-    }
-
-    countDays(date){
-        let currentDate = new Date();
-        let dueDate = new Date(date);
-        return Math.floor((dueDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24));
-    }
-
-    parseNum(num) {
-        return num ? num.toLocaleString("en") : 0;
     }
 
     render(){
@@ -48,11 +42,11 @@ export default class Project extends React.Component{
                                 <div className="bar-green" style={{ width: `${currentFunding / target * 100}%` }}></div>
                                 <div className="bar-gray" style={{ width: `${(1 - currentFunding / target) * 100}%` }}></div>
                             </div>
-                            <section className="content-info-number content-info-funding">${this.parseNum(currentFunding)}</section>
-                            <section className="content-info-unit">pledged of ${this.parseNum(target)} goal</section>
-                            <section className="content-info-number">{this.parseNum(backersCount)}</section>
+                            <section className="content-info-number content-info-funding">${parseNum(currentFunding)}</section>
+                            <section className="content-info-unit">pledged of ${parseNum(target)} goal</section>
+                            <section className="content-info-number">{parseNum(backersCount)}</section>
                             <section className="content-info-unit">backers</section>
-                            <section className="content-info-number">{this.countDays(dueDate)}</section>
+                            <section className="content-info-number">{countDays(dueDate)}</section>
                             <section className="content-info-unit">days to go</section>
                             <button className="btn btn-green" type="button">Back this project</button>
                             <p className="disclaimer"><span className="underlined">All or nothing.</span> This project will only be funded if it reaches its goal by {"date"}.</p>
@@ -68,7 +62,7 @@ export default class Project extends React.Component{
                 <div className="project-body-frame">
                     <div className="project-body-1-2">
                         <ul className="body-sidebar">
-                            <li className="underlined body-sidebar-item"><a>STORY</a></li>
+                            <li className="underlined body-sidebar-item">STORY</li>
                         </ul>
                         <div className="project-body-main">
                             <h1 className="project-body-title">Story</h1>

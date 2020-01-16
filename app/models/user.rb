@@ -21,7 +21,8 @@ class User < ApplicationRecord
     has_many :pledges, foreign_key: :backer_id, class_name: :Pledge
     has_many :created_projects, foreign_key: :creator_id, class_name: :Project
 
-    has_many :backed_projects, through: :pledges, source: :project
+    has_many :backed_rewards, through: :pledges, source: :reward
+    has_many :backed_projects, through: :backed_rewards, source: :project
 
     attr_reader :password
 
