@@ -16,6 +16,7 @@ export default class Discover extends React.Component {
     componentDidMount() {
         const filter = {[this.props.filterType]: this.props.searchTerm, limit: 3 }
         this.props.fetchProjects(filter)
+        this.autoLoad();
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -28,11 +29,22 @@ export default class Discover extends React.Component {
             let filters = { [this.props.filterType]: this.props.searchTerm, page: this.state.page, limit: 3 }
             this.props.fetchMoreProjects(filters)
                 .then(data => this.setState({ lastPage: data.payload.lastPage }))
-        }
+        };
     }
 
     loadMore() {
         this.setState({ page: this.state.page + 1 });
+    }
+
+    autoLoad() {
+        var _ = require('lodash');
+        let callback = (event) => {
+            var element = event.target.scrollingElement
+            if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+                this.loadMore();
+            }
+        };
+        document.addEventListener('scroll', _.throttle(callback, 1000));
     }
 
     render() {
