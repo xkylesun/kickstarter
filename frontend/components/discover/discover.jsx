@@ -14,19 +14,19 @@ export default class Discover extends React.Component {
     }
 
     componentDidMount() {
-        const filter = {[this.props.filterType]: this.props.searchTerm, limit: 3 }
+        const filter = { type: this.props.filterType, search_term: this.props.searchTerm, limit: 3 }
         this.props.fetchProjects(filter)
         this.autoLoad();
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.location.pathname !== this.props.location.pathname){
-            const filter = { [this.props.filterType]: this.props.searchTerm, limit: 3 }
+            const filter = { type: this.props.filterType, search_term: this.props.searchTerm, limit: 3 }
             this.props.fetchProjects(filter)
             this.setState({page: 1})
         };
         if (prevState.page !== this.state.page) {
-            let filters = { [this.props.filterType]: this.props.searchTerm, page: this.state.page, limit: 3 }
+            let filters = { type: this.props.filterType, search_term: this.props.searchTerm, page: this.state.page, limit: 3 }
             this.props.fetchMoreProjects(filters)
                 .then(data => this.setState({ lastPage: data.payload.lastPage }))
         };

@@ -10,7 +10,6 @@ export const projectsReducer = (state = {}, action) => {
             return action.payload.projects || {};
         case APPEND_PROJECTS:
             newState = Object.assign({}, state, action.payload.projects) || {};
-            // newState.lastPage = action.payload.lastPage;
             return newState;
         case RECEIVE_PROJECT:
             return Object.assign({}, state, action.payload.projects)
@@ -20,8 +19,6 @@ export const projectsReducer = (state = {}, action) => {
             return newState;
         case RECEIVE_REWARD:
             return action.payload.projects
-        // case RECEIVE_CURRENT_USER: 
-        //     return Object.assign({}, state, action.payload.projects)
         case RECEIVE_USER:
             return Object.assign({}, state, action.payload.backedProjects)
         default: 
