@@ -43,11 +43,15 @@ export const ProjectItem = (props) => {
         <div className="project-item-frame">
             <div className="project-item">
                 <div className="image-container-16-9 discover-image">
+                    <Link to={`/projects/${props.project.id}`}>
                     <img className="image-16-9" src={props.project.imageUrl} />
+                    </Link>
                 </div>
                 <div className="discover-title-frame">
-                    <h2 className="discover-title">{props.project.title}</h2>
-                    <h3 className="discover-sub">{props.project.subtitle}</h3>
+                    <Link to={`/projects/${props.project.id}`}>
+                        <h2 className="discover-title">{props.project.title}</h2>
+                        <h3 className="discover-sub">{props.project.subtitle}</h3>
+                    </Link>
                     <p className="discover-creator">by {props.creator.name}</p>
                 </div>
                 <div>

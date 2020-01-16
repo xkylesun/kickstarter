@@ -17,13 +17,13 @@ export default class BasicSection extends React.Component {
                     </div>
                     <div className="form-desc-frame">
                         <span className="form-desc-container">
-                            <h2 className="form-desc-title">Project title</h2>
+                            <h2 className="form-desc-title">Project title *</h2>
                             <h3 className="form-desc-body">Write a clear, brief title that helps people quickly understand the gist of your project.</h3>
                         </span>
                         <span className="form-input-container">
                             <h2 className="label">Title</h2>
                             <input
-                                className="form-input start-input"
+                                className="form-input start-input project-required"
                                 type="text"
                                 placeholder="The Community Microscope Kit"
                                 onChange={this.props.handleInput("title")} />
@@ -31,7 +31,7 @@ export default class BasicSection extends React.Component {
                             <h2 className="label">Subtitle</h2>
 
                             <textarea
-                                className="form-input start-textarea"
+                                className="form-input start-textarea project-required"
                                 placeholder="Explore the invisible microscopic world around you with an affordable microscope kit you construct yourself."
                                 onChange={this.props.handleInput("subtitle")}>
                             </textarea>
@@ -40,7 +40,7 @@ export default class BasicSection extends React.Component {
 
                     <div className="form-desc-frame">
                         <span className="form-desc-container">
-                            <h2 className="form-desc-title">Project category</h2>
+                            <h2 className="form-desc-title">Project category *</h2>
                             <h3 className="form-desc-body">
                                 <p>Choose the category that most closely aligns with your project. </p>
                                 <p>Think of where backers may look to find it. Reach a more specific community by also choosing a subcategory.</p>
@@ -49,8 +49,8 @@ export default class BasicSection extends React.Component {
                             </h3>
                         </span>
                         <span className="form-input-container">
-                            <select className="start-dropdown form-input" defaultValue="0" onChange={this.props.handleInput("category")}>
-                                <option disabled value="0">Category:</option>
+                            <select className="start-dropdown form-input project-required" defaultValue="" onChange={this.props.handleInput("category")}>
+                                <option disabled value="">Category:</option>
                                 <option value="art">Art</option>
                                 <option value="comics">Comics</option>
                                 <option value="design">Design</option>
@@ -64,7 +64,7 @@ export default class BasicSection extends React.Component {
 
                     <div className="form-desc-frame">
                         <span className="form-desc-container">
-                            <h2 className="form-desc-title">Project image</h2>
+                            <h2 className="form-desc-title">Project image *</h2>
                             <h3 className="form-desc-body">
                                 <p>
                                     Add an image that clearly represents your project.
@@ -82,7 +82,11 @@ export default class BasicSection extends React.Component {
                         </span>
                         <span className="form-input-container">
                             <div className="image-input-box">
-                                <input id="form-input-image" type="file" accept="image/*" onChange={this.props.handleFile} />
+                                <input 
+                                    id="form-input-image" 
+                                    className="project-required"
+                                    type="file" accept="image/*" 
+                                    onChange={this.props.handleFile} />
                             </div>
                             <div id="preview-container"
                                 className="hidden">
@@ -93,7 +97,7 @@ export default class BasicSection extends React.Component {
 
                     <div className="form-desc-frame">
                         <span className="form-desc-container">
-                            <h2 className="form-desc-title">Funding goal</h2>
+                            <h2 className="form-desc-title">Funding goal *</h2>
                             <h3 className="form-desc-body">
                                 <p>
                                     Set an achievable goal that covers what you need to complete your project.
@@ -107,20 +111,24 @@ export default class BasicSection extends React.Component {
                             <h2 className="label">Funding goal</h2>
                             <div className="currency-box-container last-container">
                                 <p className="currency-box">$</p>
-                                <input type="number" className="form-input start-input currency-input" onChange={this.props.handleInput("target")} value={this.props.state.target} />
+                                <input 
+                                    type="number" 
+                                    className="form-input start-input currency-input project-required" 
+                                    onChange={this.props.handleInput("target")} 
+                                    value={this.props.state.target} />
                             </div>
                         </span>
                     </div>
 
                     <div className="form-desc-frame last-container">
                         <span className="form-desc-container">
-                            <h2 className="form-desc-title">Campaign duration</h2>
+                            <h2 className="form-desc-title">Campaign duration *</h2>
                             <h3 className="form-desc-body">Set a time limit for your campaign. You won’t be able to change this after you launch.</h3>
                         </span>
                         <span className="form-input-container">
                             <p className="label">End on a specific date</p>
                             <input
-                                className="form-input" id="input-date" type="date"
+                                className="form-input project-required" id="input-date" type="date"
                                 onChange={this.props.handleInput("dueDate")} />
                         </span>
                     </div>

@@ -233,33 +233,23 @@ select {
     width: 54%;
 }
 
-.textbox-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#form-story-textarea {
+    width: 100%;
+    height: 360px;
+    padding: 20px;
+    box-sizing: border-box;
     padding: 0 12px;
     margin-bottom: 48px;
     border: 1px solid $border-gray;
 }
 
-.textbox-container:hover {
+#form-story-textarea:focus{
+    outline: none;
     border: 1px solid $border-green;
 }
 
-#form-story-textarea {
-    width: 100%;
-    padding: 20px;
-    width: 640px;
-    height: 360px;
-    border: none;
-}
-
-#form-story-textarea:focus{
-    outline: none;
-}
-
 #form-story-textarea:hover{
-    border: none;
+    border: 1px solid $border-green;
 }
 
 .line-separator {
@@ -271,5 +261,5 @@ select {
 }
 
 .unfilled {
-    border: 1px solid $text-red;
+    border: 1px solid $text-red !important;
 }

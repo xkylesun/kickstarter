@@ -9,7 +9,7 @@ export default class RewardForm extends React.Component{
             minimum: "",
             quantity: "",
             month: "",
-            year: "",
+            year: ""
         }
     }
 
@@ -39,37 +39,35 @@ export default class RewardForm extends React.Component{
                     <h2 className="form-desc-body">Offer tangible or intangible things that bring backers closer to your project.</h2>
                 </div>
                 <div className="reward-input-frame">
-                    <h1 className="reward-desc-title">Title</h1>
+                    <h1 className="reward-desc-title">Title *</h1>
                     <h2 className="reward-desc-body">Briefly describe this reward.</h2>
                     <input 
-                        className="form-input start-input required" 
+                        className="form-input start-input reward-required" 
                         type="text" 
                         placeholder="Signed limited-edition" 
                         value={this.state.title} onChange={this.handleInput("title")}/>
                 </div>
 
                 <div className="reward-input-frame">
-                    <h1 className="reward-desc-title">Pledge amount</h1>
+                    <h1 className="reward-desc-title">Pledge amount *</h1>
                     <h2 className="reward-desc-body">Set a minimum pledge amount for this reward.</h2>
                     <div className="currency-box-container last-container">
                         <p className="currency-box">$</p>
                         <input 
-                            className="form-input start-input currency-input required" 
+                            className="form-input start-input currency-input reward-required" 
                             type="number" onChange={this.handleInput("minimum")} 
                             value={this.state.minimum}/>
                     </div>
                 </div>
 
                 <div className="reward-input-frame">
-                    <h1 className="reward-desc-title">Description</h1>
+                    <h1 className="reward-desc-title">Description *</h1>
                     <h2 className="reward-desc-body">Describe this reward in more detail.</h2>
                     <textarea 
-                        className="reward-textarea form-iput required"
+                        className="reward-textarea form-iput reward-required"
                         placeholder="Get an early copy - hot off the presses"
                         value={this.state.description}
                         onChange={this.handleInput("description")}>
-                    >
-
                     </textarea>
                 </div>
 
@@ -121,7 +119,7 @@ export default class RewardForm extends React.Component{
                         onChange={this.handleInput("quantity")} />
                 </div>
 
-                <div>
+                <div className="reward-submit-container">
                     <button className="btn btn-green" 
                         type="button" 
                         onClick={
@@ -140,6 +138,14 @@ export default class RewardForm extends React.Component{
                         }>
                     Save reward
                     </button>
+                    <p 
+                        className="underlined cancel-add-reward" 
+                        onClick={ () => {
+                                this.clearForm();
+                                this.props.hideForm();
+                            }}>
+                            Cancel
+                    </p>
                 </div>
             </div>
         );

@@ -62,7 +62,7 @@ export default class Project extends React.Component{
                 <div className="project-body-frame">
                     <div className="project-body-1-2">
                         <ul className="body-sidebar">
-                            <li className="underlined body-sidebar-item"><a>STORY</a></li>
+                            <li className="underlined body-sidebar-item">STORY</li>
                         </ul>
                         <div className="project-body-main">
                             <h1 className="project-body-title">Story</h1>

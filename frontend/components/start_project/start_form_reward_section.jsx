@@ -12,6 +12,10 @@ export default class BasicSection extends React.Component {
         document.getElementById("reward-form").classList.remove("hidden");
     }
 
+    hideForm() {
+        document.getElementById("reward-form").classList.add("hidden");
+    }
+
     render() {
         return (
             <div className="hidden" id="project-rewards">
@@ -44,7 +48,7 @@ export default class BasicSection extends React.Component {
                             </ul>
                         </div>
                     </div>
-                    <RewardForm addReward={this.props.addReward} />
+                    <RewardForm addReward={this.props.addReward} hideForm={this.hideForm}/>
                 </div>
 
                 <div className="bottom-bar">

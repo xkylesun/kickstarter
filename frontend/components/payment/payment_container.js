@@ -4,7 +4,7 @@ import { createPledge } from "../../actions/pledge_actions";
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        userId: state.session.currentUserId
+        userId: state.session.currentUser.id
     }
 }
 

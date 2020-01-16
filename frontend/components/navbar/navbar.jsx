@@ -7,7 +7,7 @@ const toggleShow = () => {
 }
 
 const Navbar = (props) => {
-    const userComp = Boolean(props.currentUserId) ? (
+    const userComp = Boolean(props.currentUser) ? (
     <button className="nav-button" onClick={props.logout}>Log out</button>
     ) : (
         <Link to="/login"><button className="nav-button">Log in</button></Link>

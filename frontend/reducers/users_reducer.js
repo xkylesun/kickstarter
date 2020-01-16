@@ -11,7 +11,7 @@ export const usersReducer = (state = {}, action) => {
             newState = Object.assign({}, newState, action.payload.creators)
             return newState;
         case RECEIVE_CURRENT_USER:
-            return Object.assign({}, state, {[action.user.id]: action.user});
+            return Object.assign({}, state, {[action.user.id]: action.user.user});
         case RECEIVE_PROJECT:
             return Object.assign({}, state, action.payload.creator);
         case RECEIVE_PROJECTS:

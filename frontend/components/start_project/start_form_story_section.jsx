@@ -19,12 +19,13 @@ export default class StorySection extends React.Component {
 
                 <div className="form-story-frame">
                     <div className="form-story-container">
-                        <h2 className="form-desc-title">Project description</h2>
+                        <h2 className="form-desc-title">Project description *</h2>
                         <h3 className="form-desc-body">Describe what you're raising funds to do, why you care about it, how you plan to make it happen, and who you are. Your description should tell backers everything they need to know. If possible, include images to show them what your project is all about and what rewards look like.</h3>
                     </div>
                     <div className="textbox-container">
                         <textarea
                             id="form-story-textarea"
+                            className="project-required"
                             placeholder="Write about your project like you're explaining it to a friend..." onChange={this.props.handleInput("body")}></textarea>
                     </div>
                 </div>
