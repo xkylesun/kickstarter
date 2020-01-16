@@ -17,7 +17,7 @@ export default class Discover extends React.Component {
     }
 
     componentDidUpdate(oldProps) {
-        if (oldProps.filterType !== this.props.filterType || oldProps.searchTerm != this.props.searchTerm){
+        if (oldProps.location.pathname !== this.props.location.pathname){
             const filter = { [this.props.filterType]: this.props.searchTerm, start: this.state.offset }
             this.props.fetchProjects(filter)
         }
@@ -28,7 +28,6 @@ export default class Discover extends React.Component {
     }
 
     render() {
-        <div></div>
         if (!this.props.filterType) {
             return null;
         } else {
@@ -40,15 +39,19 @@ export default class Discover extends React.Component {
             };
             
             let noResult = (
-                <div>
-                    <p>Oops! Looks like we couldn’t find any results. Why not change some things around or broaden your search?</p>
+                <div className="no-result-frame">
+                    <div className="no-result-box">
+                        <p className="no-result-text">Oops! Looks like we couldn’t find any results. Why not change some things around or broaden your search? You can also try:</p>
+                        <Link className="link" to="/discover/ref=category=games">Show me <span className="bolded">games</span> projects</Link>
+                        <Link className="link" to="/discover/ref=sort=magic">Show me all projects</Link>
+                    </div>
                 </div>
             );
 
             let body = (
                 <div className="discover-body-frame">
                     <div className="discover-grid-container">
-                        <ul className="projects-show-grid">
+                        <ul className="discover-grid">
                             {this.props.projects.map(
                                 project => (
                                     <li key={project.id}
@@ -60,7 +63,9 @@ export default class Discover extends React.Component {
                         </ul>
                     </div>
                     <div className="discover-bottom-bar">
-                        <button className="btn btn-green">Load more</button>
+                        <span className="btn-container">
+                            <button className="btn btn-green btn-load">Load more</button>
+                        </span>
                     </div>
                 </div>
             );

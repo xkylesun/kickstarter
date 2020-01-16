@@ -184,11 +184,11 @@ select {
 
 .btn-dark-green {
     background-color: $btn-dark-green;
+    transition: all 0.25s ease-in-out;
 }
 
 .btn-dark-green:hover {
     background-color: $btn-dark-green-hover;
-    transition: all 0.25s ease-in-out;
 }
 
 .back-button {

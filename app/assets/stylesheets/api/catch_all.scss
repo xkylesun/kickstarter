@@ -1,0 +1,50 @@
+@import "./style";
+
+.catch-all-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.catch-all-content {
+    width: 34%;
+}
+
+.catch-all-title {
+    font-size: 48px;
+    margin: 0 0 5px;
+}
+
+.catch-all-sub {
+    padding-right: 100px;
+    margin: 20px 0 18px;
+    font-size: 15.2px;
+}
+
+.catch-all-btn-container {
+    margin-top: 40px;
+    display: flex;
+}
+
+.btn-white {
+    background-color: #FFFFFF;
+    transition: all 0.25s ease-in-out;
+}
+
+#catch-all-home-btn {
+    margin-left: 5px;
+    padding: 0 18px;
+    color: $text-black;
+    z-index: 1;
+    border: 1px solid $border-gray;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+
+#catch-all-home-btn:hover{
+    border: 1px solid black;
+}
+
+.catch-all-image:hover {
+    transform: scale(1.09923) rotate(4.96129deg);
+}

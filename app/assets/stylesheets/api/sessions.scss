@@ -78,20 +78,20 @@
 
 .btn-green{
     background-color: $btn-green;
+    transition: all 0.25s ease-in-out;
 }
 
 .btn-green:hover {
     background-color: $btn-green-hover;
-    transition: all 0.25s ease-in-out;
 }
 
 .btn-blue {
     background-color: $btn-blue;
+    transition: all 0.25s ease-in-out;
 }
 
 .btn-blue:hover {
     background-color: $btn-blue-hover;
-    transition: all 0.25s ease-in-out;
 }
 
 .line {

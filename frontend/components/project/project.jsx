@@ -3,6 +3,8 @@ import Reward from "./reward";
 
 import {parseNum, countDays} from "../../utils/other_utils";
 
+
+
 export default class Project extends React.Component{
     constructor(props){
         super(props)

@@ -21,10 +21,10 @@
     background-color: black;
     width: inherit;
     padding: 0 24px;
+    transition: all 0.25s ease-in-out;
 }
 
 .btn-black:hover {
-    transition: all 0.25s ease-in-out;
     background-color: $btn-black-hover;
 }
 

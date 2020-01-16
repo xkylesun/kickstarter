@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import SearchBar from "./search_bar";
 
 const Navbar = (props) => {
     const userComp = Boolean(props.currentUserId) ? (
@@ -18,6 +19,7 @@ const Navbar = (props) => {
                 <a href="#"><button className="nav-button">Search<i id="search-icon" className="fa fa-search"></i></button></a>
                 {userComp}
             </span>
+            <SearchBar history={props.history}/>
 
         </div>)
 }

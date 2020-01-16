@@ -9,8 +9,9 @@ class Api::ProjectsController < ApplicationController
     if filter_params[:category]
       @projects = Project.where(category: filter_params[:category]).order("due_date asc").offset(filter_params[:start]).limit(filter_params[:limit]).includes(:creator, :pledges)
     elsif filter_params[:search_term]
-      regex = "%#{filter_params[:search_term].downcase}%"
-      @projects = Project.where("lower(projects.title) like '#{regex}'").order("due_date asc").offset(filter_params[:start]).limit(filter_params[:limit]).includes(:creator, :pledges)
+      term = filter_params[:search_term].downcase
+      regex = "%#{term}%"
+      @projects = Project.where("lower(projects.title) like ? or projects.category = ?", regex, term).distinct.order("due_date asc").offset(filter_params[:start]).limit(filter_params[:limit]).includes(:creator, :pledges)
     else
       @projects = Project.order("due_date asc").offset(filter_params[:start]).limit(filter_params[:limit]).includes(:creator, :pledges)
     end

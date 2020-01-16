@@ -3,11 +3,11 @@
 .reward-list-frame {
     letter-spacing: 0;
     font-weight: 300;
+    transition: all 0.25s ease-in-out;
 }
 
 .reward-list-item-frame:hover {
     box-shadow: 0 3px 6px 1px rgba(0,0,0,0.17);
-    transition: all 0.25s ease-in-out;
 }
 
 .reward-list-menu {
