@@ -9,8 +9,10 @@ export default class UserDropdown extends React.Component {
 
     componentDidMount(){
         $(document).mouseup(e => {
-            if (!e.target.closest("#user-dropdown")){
-                toggleHide("user-dropdown")
+            if (document.getElementById("user-dropdown")){
+                if (!e.target.closest("#user-dropdown")){
+                    toggleHide("user-dropdown")
+                }
             }
         });
     };
