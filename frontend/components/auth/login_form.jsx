@@ -32,7 +32,7 @@ export default class LoginForm extends React.Component {
     };
 
     demoLogin(){
-        let email = "demo_user@email.com";
+        let email = "demouser@email.com";
         let password = "password";
         this.typing(email, password);
     };
