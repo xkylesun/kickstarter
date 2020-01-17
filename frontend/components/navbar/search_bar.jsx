@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
+import { toggleShow, toggleHide } from "../../utils/other_utils";
 
 class SearchBar extends React.Component{
     constructor(props){
@@ -10,25 +11,25 @@ class SearchBar extends React.Component{
     handleSearch(e){
         if (e.key === "Enter"){
             let searchTerm = e.currentTarget.value.toLowerCase().replace(" ","%20");
-            this.toggleHidden();
+            toggleHide("search-bar");
             this.props.history.push(`/discover/ref=search&term=${searchTerm}`);
         }
     }
 
-    toggleHidden(){
-        document.getElementById("search-bar").classList.add("hidden");
-    }
+    // toggleHidden(){
+    //     document.getElementById("search-bar").classList.add("hidden");
+    // }
 
     render() {
         return (
-            <div className="hidden" id="search-bar">
+            <div className="search-bar" id="search-bar">
                 <div id="search-container">
                     <input 
                         id="search-input" 
                         type="text" 
                         placeholder="Search for projects or categories"
                         onKeyPress={this.handleSearch}/>
-                    <button id="search-close-btn" onClick={this.toggleHidden}>
+                    <button id="search-close-btn" onClick={() => toggleHide("search-bar")}>
                         <i className="fa fa-close"></i>
                     </button>
                 </div>

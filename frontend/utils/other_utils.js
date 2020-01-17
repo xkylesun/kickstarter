@@ -21,3 +21,12 @@ export const checkFilled = (eleId) => {
     }
     return completed;
 }
+
+export const toggleShow = (eleId) => {
+    document.getElementById(eleId).classList.add("show");
+}
+
+
+export const toggleHide = (eleId) => {
+    document.getElementById(eleId).classList.remove("show");
+}

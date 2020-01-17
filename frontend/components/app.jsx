@@ -12,10 +12,11 @@ import UserProfileContainer from "./user/user_profile_container";
 import ProjectContainer from "./project/project_container";
 import PaymentContainer from "./payment/payment_container";
 import IndexContainer from "./discover/discover_container";
+import FootBar from "./foot_bar";
 
 const App = () => (
     <div>
-        <NavbarContainer />
+        <NavbarContainer/>
         <Switch>
             <Route exact path="/" component={HomeContainer} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
@@ -23,11 +24,12 @@ const App = () => (
             <Route exact path="/profile/:userId/" component={UserProfileContainer} />
             <Route exact path="/projects/:projectId" component={ProjectContainer} />
             <Route exact path="/discover/ref=:filterType=:searchTerm" component={IndexContainer}/>
-            <ProtectedRoute exact path="/start" component={StartProjectContainer} />
             <ProtectedRoute exact path="/settings" component={UserProfileContainer} />
             <ProtectedRoute exact path="/checkouts/:rewardId/payments" component={PaymentContainer} />
+            <ProtectedRoute exact path="/start" component={StartProjectContainer} />
             <Route component={CatchAllContainer} />
         </Switch>
+        <FootBar />
     </div>
 );
 
