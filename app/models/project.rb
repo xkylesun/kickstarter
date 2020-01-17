@@ -18,7 +18,7 @@
 
 class Project < ApplicationRecord
     validates :title, :subtitle, :category, :due_date, :body, presence: true
-    validate :ensure_image
+    # validate :ensure_image
 
     belongs_to :creator, foreign_key: :creator_id, class_name: :User
 
@@ -34,9 +34,9 @@ class Project < ApplicationRecord
         Reward.new(project_id: Project.last.id, minimum: 1, title: "Back it because you believe in it.", description: "Support the project for no reward, just because it speaks to you.").save
     end
 
-    def ensure_image 
-        unless self.image.attached?
-            # errors[:image] << "must be attached"
-        end
-    end
+    # def ensure_image 
+    #     unless self.image.attached?
+    #         # errors[:image] << "must be attached"
+    #     end
+    # end
 end

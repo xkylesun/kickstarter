@@ -15,7 +15,7 @@
 class Pledge < ApplicationRecord
     validates :amount, presence: true
     validates :amount, numericality: {greater_than: 0}
-    validate :greater_than_min, :has_quantity, :ensure_project_id
+    validate :greater_than_min, :has_quantity
 
     belongs_to :backer, foreign_key: :backer_id, class_name: :User
     belongs_to :project
@@ -35,9 +35,9 @@ class Pledge < ApplicationRecord
         end
     end
 
-    def ensure_project_id
-        if self.reward.project_id != self.project_id
-            errors[:pledge] << "reward must match project"
-        end
-    end
+    # def ensure_project_id
+    #     if self.reward.project_id != self.project_id
+    #         self.reward.project_id = self.project_id
+    #     end
+    # end
 end
