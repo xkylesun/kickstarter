@@ -1,0 +1,116 @@
+@import "./style";
+
+
+.payment-frame {
+    max-width: 1366px;
+    padding: 60px 120px;
+    display: flex;
+    letter-spacing: 0.4px;
+    font-weight: 300;
+    border-bottom: 1px solid $border-gray;
+}
+
+.payment-left {
+    width: 60%;
+    padding: 0 36px;
+    box-sizing: border-box;
+    border-right: 1px solid $border-gray;
+}
+
+.payment-right {
+    width: 30%;
+    padding: 0 36px 30px;
+}
+
+.pledge-title {
+    font-size: 21px;
+    margin-bottom: 18px;
+}
+
+.payment-pledge-content {
+    padding: 18px;
+    display: flex;
+    background-color: #FBFBFA;
+    border: 1px solid $border-gray;
+    margin-bottom: 12px;
+}
+
+.summary-text {
+    font-size: 14px;
+    line-height: 24px;
+    color: $text-black;
+}
+
+.summary-text li {
+    margin-bottom: 6px;;
+}
+
+.summary-left {
+    width: 20%;
+}
+
+.payment-form-frame {
+    display: flex;
+    flex-direction: column;
+    // padding: 0 36px;
+}
+
+.payment-form-frame h3 {
+    font-size: 13px;
+    line-height: 19px;
+    color: black;
+}
+
+.payment-input {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 6px 0 15px;
+    height: 42.8px;
+}
+
+.payment-input::placeholder{
+    font-style: italic;
+    line-height: 16.8px;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+}
+
+.pay-inputs-container {
+    display: flex;
+}
+
+.pay-inputs-container span {
+    width: 100%;
+}
+
+.pay-exp {
+    margin-right: 6px;
+}
+
+.payment-info {
+    padding: 0 0 30px;
+    margin: 0 0 30px;
+    border-bottom: 1px solid $border-gray;
+}
+
+.disclaimer-title {
+    font-size: 14px;
+    margin-bottom: 12px;
+    font-weight: 400;
+}
+
+.disclaimer-sub {
+    font-size: 12px;
+}
+
+.disclaimer-paragraph {
+    font-size: 13px;
+    color: $text-gray;
+    line-height: 17px;
+}
+
+.disclaimer-p2 {
+    font-size: 12px;
+    color: $text-gray;
+    line-height: 18px;
+}

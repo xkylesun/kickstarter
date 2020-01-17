@@ -11,6 +11,10 @@ const FootBar = () => {
                     <img className="foot-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png"/>
                 </a>
             </div>
+            <div className="foot-credit">
+                <p>Kyle Sun</p>
+                <p>© 2020 Jumpstarter, NSC (No Such Company)</p>
+            </div>
         </div>
     )
 }

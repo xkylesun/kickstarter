@@ -34,7 +34,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    if params[:id] = "_random"
+    if params[:id] == "_random"
       @project = Project.order("RANDOM()").limit(1)[0]
     else
       @project = selected_project

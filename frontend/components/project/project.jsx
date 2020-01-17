@@ -26,7 +26,7 @@ export default class Project extends React.Component {
             const { title, subtitle, body, imageUrl, target, dueDate, currentFunding, backersCount } = this.props.project;
 
             return (
-                <div>
+                <div className="project-top-frame">
                     <div className="project-header-frame">
                         <div className="project-title-container">
                             <h1 className="project-header-title">{title}</h1>
@@ -39,7 +39,7 @@ export default class Project extends React.Component {
                             </span>
                             <span className="content-info-container">
                                 <div className="funding-bar-frame">
-                                    <div className="bar-green" style={{ width: `${currentFunding / target * 100}%` }}></div>
+                                    <div className="bar-light-green" style={{ width: `${currentFunding / target * 100}%` }}></div>
                                     <div className="bar-gray" style={{ width: `${(1 - currentFunding / target) * 100}%` }}></div>
                                 </div>
                                 <section className="content-info-number content-info-funding">${parseNum(currentFunding)}</section>

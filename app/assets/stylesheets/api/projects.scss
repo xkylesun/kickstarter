@@ -7,8 +7,11 @@
 .project-header-frame {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     background-color: $background-white;
+    padding: 0 60px;
+    // width: 1366px;
 }
 
 .project-title-container {
@@ -30,17 +33,18 @@
 }
 
 .project-content-container {
-    margin: 0 149px;
+    // margin: 0 149px;
     padding: 0 60px;
     display: flex;
     height: 520px;
     min-width: 700px;
     max-width: 1366px;
+    box-sizing: content-box;
 }
 
 .content-image-container {
     width: 66.6%;
-    padding: 0 18px;
+    padding: 0 18px 30px;
 }
 
 .content-image {
@@ -101,7 +105,8 @@
 }
 
 .project-body-frame {
-    // margin: 0 150px;
+    margin: 0 auto;
+    max-width: 1366px;
     padding: 48px 18px 48px 60px;
     display: flex;
 }
@@ -148,6 +153,7 @@
     padding: 0 0 30px 0;
     color: $text-black;
     font-weight: 300;
+    line-height: 150%;
 }
 
 .project-body-2-2 {
@@ -192,3 +198,6 @@
     font-size: 14px;
 }
 
+.bar-light-green {
+    background-color: #009E74;
+}

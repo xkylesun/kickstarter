@@ -37,7 +37,6 @@ export default class Reward extends React.Component {
         this.setState({ showForm: true });
         e.currentTarget.parentNode.childNodes[2].classList.remove("hidden");
         e.currentTarget.parentNode.childNodes[0].classList.add("hidden");
-        // console.dir(e.currentTarget.parentNode.childNodes[0].classList)
     }
 
     render() {
