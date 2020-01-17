@@ -18,7 +18,7 @@
 
 class Project < ApplicationRecord
     validates :title, :subtitle, :category, :due_date, :body, presence: true
-    # validate :ensure_image
+    validate :ensure_image
 
     belongs_to :creator, foreign_key: :creator_id, class_name: :User
 
@@ -36,7 +36,7 @@ class Project < ApplicationRecord
 
     def ensure_image 
         unless self.image.attached?
-            errors[:image] << "must be attached"
+            # errors[:image] << "must be attached"
         end
     end
 end

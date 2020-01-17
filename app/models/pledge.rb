@@ -15,15 +15,15 @@
 class Pledge < ApplicationRecord
     validates :amount, presence: true
     validates :amount, numericality: {greater_than: 0}
-    validate :greater_than_min, :has_quantity #need test
+    validate :greater_than_min, :has_quantity, :ensure_project_id
 
     belongs_to :backer, foreign_key: :backer_id, class_name: :User
     belongs_to :project
     belongs_to :reward
 
     def has_quantity
-        unless self.reward.quantity
-            if Pledge.where(reward_id: self.reward_id).length >= self.reward.validate_quantity
+        if self.reward.quantity
+            if self.reward.backers.length >= self.reward.quantity
                 errors[:pledge] << "must be on available reward"
             end
         end
@@ -32,6 +32,12 @@ class Pledge < ApplicationRecord
     def greater_than_min
         if self.amount < self.reward.minimum
             errors[:pledge] << "must be greater than minimum"
+        end
+    end
+
+    def ensure_project_id
+        if self.reward.project_id != self.project_id
+            errors[:pledge] << "reward must match project"
         end
     end
 end
