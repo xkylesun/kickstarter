@@ -2,9 +2,9 @@
 json.projects do
     @projects.each_with_index do |project, i|
         json.set! project.id do
-            json.extract! project, :id, :title, :subtitle, :creator_id, :image_url, :due_date, :target, :category
+            json.extract! project, :id, :title, :subtitle, :creator_id, :due_date, :target, :category
             json.funding @funding_by_projects[i]
-            # json.image_url url_for(project.image)
+            json.image_url url_for(project.image)
         end
     end
 end

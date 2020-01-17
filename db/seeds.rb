@@ -1,24 +1,24 @@
 require "faker"
 
-User.create(name: "Demo User", email: "demo_user@email.com", password: "password", biography: "Have a nice day!")
+# User.create(name: "Demo User", email: "demo_user@email.com", password: "password", biography: "Have a nice day!")
 
-50.times do 
-  User.create(
-    name: Faker::Name.unique.name,
-    email: Faker::Internet.email,
-    password: "password",
-    biography: Faker::Movies::BackToTheFuture.quote
-  )
-end
+# 50.times do 
+#   User.create(
+#     name: Faker::Name.unique.name,
+#     email: Faker::Internet.email,
+#     password: "password",
+#     biography: Faker::Movies::BackToTheFuture.quote
+#   )
+# end
 
-100.times do 
-  User.create(
-    name: Faker::Name.unique.name,
-    email: Faker::Internet.email,
-    password: "password",
-    biography: Faker::Quote.most_interesting_man_in_the_world
-  )
-end
+# 100.times do 
+#   User.create(
+#     name: Faker::Name.unique.name,
+#     email: Faker::Internet.email,
+#     password: "password",
+#     biography: Faker::Quote.most_interesting_man_in_the_world
+#   )
+# end
 
 # (1..100).each do |i|
 #   2.times do
