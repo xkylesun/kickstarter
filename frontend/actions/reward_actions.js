@@ -3,10 +3,10 @@ import * as RewardUtil from "../utils/reward_utils"
 export const RECEIVE_REWARD = "RECEIVE_REWARD";
 export const RECEIVE_REWARD_ERRORS = "RECEIVE_REWARD_ERRORS";
 
-const receiveReward = reward => {
+const receiveReward = payload => {
     return {
         type: RECEIVE_REWARD,
-        reward
+        payload
     };
 };
 
@@ -24,3 +24,10 @@ export const createReward = reward => dispatch => (
         errors => dispatch(receiveRewardErrors(errors))
     )
 );
+
+// export const fetchReward = id => dispatch => (
+//     RewardUtil.fetchReward(id).then(
+//         reward => dispatch(receiveReward(reward)),
+//         errors => dispatch(receiveRewardErrors(errors))
+//     )
+// )

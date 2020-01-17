@@ -4,18 +4,26 @@ class Api::ProjectsController < ApplicationController
 
   
   def index
-    # debugger
     @project = nil;
-    if filter_params[:category]
-      @projects = Project.where(category: filter_params[:category]).order("due_date asc").offset(filter_params[:start]).limit(filter_params[:limit]).includes(:creator, :pledges)
-    elsif filter_params[:search_term]
-      term = filter_params[:search_term].downcase
-      regex = "%#{term}%"
-      @projects = Project.where("lower(projects.title) like ? or projects.category = ?", regex, term).distinct.order("due_date asc").offset(filter_params[:start]).limit(filter_params[:limit]).includes(:creator, :pledges)
+    search = (filter_params[:search_term] || "").downcase
+    limit = filter_params[:limit] || 3
+    page = filter_params[:page]
+
+    case filter_params[:type]
+    when "category"
+      @projects = Project.where(category: search).order("due_date asc").includes(:creator, :pledges)
+        .page(page).per(limit)
+    when "search_term"
+      regex = "%#{search}%"
+      @projects = Project.where("lower(projects.title) like ? or projects.category = ?", regex, search).distinct.order("due_date asc").includes(:creator, :pledges)
+        .page(page).per(limit)
+    when "_home"
+      @projects = Project.order("due_date asc").includes(:creator, :pledges).limit(10)
     else
-      @projects = Project.order("due_date asc").offset(filter_params[:start]).limit(filter_params[:limit]).includes(:creator, :pledges)
+      @projects = Project.order("due_date asc").includes(:creator, :pledges).page(page).per(limit)
     end
-  
+    
+    @last_page = @projects.page(page).per(limit).last_page? || @projects.page(page).per(limit).out_of_range?
     @creators = @projects.map {|project| project.creator}
     @funding_by_projects = @projects.map do |project| 
       project.pledges.map do |pledge|
@@ -26,7 +34,11 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    @project = selected_project
+    if params[:id] == "_random"
+      @project = Project.order("RANDOM()").limit(1)[0]
+    else
+      @project = selected_project
+    end
     @creator = @project.creator
     @rewards = @project.rewards.includes(:pledges)
     @funding_by_reward = @rewards.map do |reward|
@@ -37,11 +49,9 @@ class Api::ProjectsController < ApplicationController
     @all_pledges = @funding_by_reward.flatten
 
     render :show
-    # render json: @funding_by_reward
   end
 
   def create
-
     @project = Project.new(project_params)
     if @project.save
       JSON.parse(params[:project][:rewards]).each do |rewardData|
@@ -97,8 +107,9 @@ class Api::ProjectsController < ApplicationController
   end
 
   def filter_params
-    params.require(:filters).permit(:category, :search_term, :start, :limit)
+    params.require(:filters).permit(:type, :search_term, :page, :limit)
   end
+
 end
 
 

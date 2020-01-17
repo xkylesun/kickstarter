@@ -2,32 +2,47 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import SearchBar from "./search_bar";
 
-const toggleShow = () => {
-    document.getElementById("search-bar").classList.remove("hidden");
+import { toggleShow } from "../../utils/other_utils";
+import UserDropdown from "./user_dropdown";
+import ExploreDropdown from "./explore_dropdown";
+
+
+export default class Navbar extends React.Component {
+    constructor(props){
+        super(props)
+    }
+
+    render() {
+        let userComp;
+        if (Boolean(this.props.currentUser)){
+            userComp = (
+                <UserDropdown logout={this.props.logout} avatar={this.props.currentUser.avatar}/>
+            );
+        } else {
+            userComp = (
+                <Link to="/login"><button className="nav-button">Log in</button></Link>
+            )
+        };
+    
+        return(
+            <div id = "navbar-frame" >
+                <SearchBar />
+                <ExploreDropdown />
+                <span className="nav-left">
+                    <button className="nav-button" onClick={() => toggleShow("explore-dropdown")}>Explore</button>
+                    {/* <ExploreDropdown /> */}
+                    <Link to="/start"><button className="nav-button">Start a project</button></Link>
+                </span>
+
+                <span className="nav-center">
+                    <Link to="/"><h1 id="nav-logo">Jumpstarter</h1></Link>
+                </span>
+
+                <span className="nav-right">
+                    <button className="nav-button" onClick={() => toggleShow("search-bar")}>Search<i id="search-icon" className="fa fa-search"></i></button>
+                    {userComp}
+                </span>
+            </div>
+            )
+    }
 }
-
-const Navbar = (props) => {
-    const userComp = Boolean(props.currentUser) ? (
-    <button className="nav-button" onClick={props.logout}>Log out</button>
-    ) : (
-        <Link to="/login"><button className="nav-button">Log in</button></Link>
-    );
-    return (
-        <div id="navbar-frame">
-            <SearchBar />
-            <span className="nav-left">
-                <Link to="/"><button className="nav-button">Explore</button></Link>
-                <Link to="/start"><button className="nav-button">Start a project</button></Link>
-            </span>
-            <span className="nav-center">
-                <Link to="/"><h1 id="nav-logo">Jumpstarter</h1></Link>
-            </span>
-            <span className="nav-right">
-                <button className="nav-button" onClick={toggleShow}>Search<i id="search-icon" className="fa fa-search"></i></button>
-                {userComp}
-            </span>
-
-        </div>)
-}
-
-export default Navbar;

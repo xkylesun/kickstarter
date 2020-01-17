@@ -1,0 +1,24 @@
+.footbar {
+    display: flex;
+    padding: 60px;
+    width: 100%;
+    margin-bottom: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.foot-icon-container {
+    justify-content: center;
+    align-items: center;
+    // margin: 0 auto;
+}
+
+.foot-icon {
+    height: 36px;
+    width: 36px;
+    margin: 0 30px;
+}
+
+.foot-credit {
+    margin-left: 36px;
+}

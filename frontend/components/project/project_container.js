@@ -1,11 +1,9 @@
-;
 import { connect } from "react-redux";
-import { fetchProject  } from "../../actions/project_actions";
+import { fetchProject } from "../../actions/project_actions";
 import { selectRewards } from "../../reducers/selector"
 import Project from "./project";
 
 const mapStateToProps = (state, ownProps) => {
-    console.dir(ownProps)
     const project = state.entities.projects[ownProps.match.params.projectId]
     var creator;
     if (project) {

@@ -12,7 +12,7 @@ export const rewardsReducer = (state = {}, action) => {
         case RECEIVE_PROJECT:
             return Object.assign({}, state, action.payload.rewards);
         case RECEIVE_REWARD:
-            return state;
+            return action.payload.rewards;
         case RECEIVE_PLEDGE:
             return state;
         default:

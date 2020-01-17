@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
 
     resources :projects, defaults: {format: :json}, except: [:new, :edit]
-    # resources :rewards, defaults: {format: :json}, only: [:create, :update, :destroy]
+    resources :rewards, defaults: {format: :json}, only: [:show, :create, :update, :destroy]
     resources :pledges, defaults: {format: :json}, only: [:create]
 
   end

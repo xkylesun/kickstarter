@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import {Featured, Recommended} from "./home_projects" 
+import CategoryBar from "../navbar/category_bar";
 
 export default class Discover extends React.Component{
 
@@ -14,7 +15,7 @@ export default class Discover extends React.Component{
     }
 
     componentDidMount(){
-        this.props.fetchProjects({limit: 10})
+        this.props.fetchProjects({type: "_home"})
     }
 
     handleShift(num) {
@@ -23,7 +24,6 @@ export default class Discover extends React.Component{
 
     pageUp() {
         if (this.state.page < 3){
-            // document.getElementById("slide-up").classList.remove("grayed-out")
             this.setState({ page: this.state.page + 1 })
         } 
     }
@@ -51,6 +51,7 @@ export default class Discover extends React.Component{
 
             return (
                 <div className="home-frame">
+                    <CategoryBar />
                     <div className="home-projects-frame">
                         <div className="home-featured-frame">
                             <h1 className="home-title">FEATURED PROJECT</h1>
