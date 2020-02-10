@@ -23,7 +23,7 @@ export default class Project extends React.Component {
         if (!this.props.project) {
             return null;
         } else {
-            const { title, subtitle, body, imageUrl, target, dueDate, currentFunding, backersCount } = this.props.project;
+            const { id, title, subtitle, body, imageUrl, target, dueDate, currentFunding, backersCount } = this.props.project;
 
             return (
                 <div className="project-top-frame">
@@ -91,7 +91,8 @@ export default class Project extends React.Component {
                                         (<Reward 
                                             reward={reward} 
                                             key={reward.id} 
-                                            project={this.props.project}
+                                            projectId={id}
+                                            currentUserId={this.props.currentUserId}
                                             createPledge={this.props.createPledge}
                                         />)
                                         )

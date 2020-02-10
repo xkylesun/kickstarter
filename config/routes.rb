@@ -16,11 +16,13 @@
 #                           PUT    /api/projects/:id(.:format)                                                              api/projects#update {:format=>:json}
 #                           DELETE /api/projects/:id(.:format)                                                              api/projects#destroy {:format=>:json}
 #               api_rewards POST   /api/rewards(.:format)                                                                   api/rewards#create {:format=>:json}
-#                api_reward GET    /api/rewards/:id(.:format)                                                               api/rewards#show {:format=>:json}
-#                           PATCH  /api/rewards/:id(.:format)                                                               api/rewards#update {:format=>:json}
+#                api_reward PATCH  /api/rewards/:id(.:format)                                                               api/rewards#update {:format=>:json}
 #                           PUT    /api/rewards/:id(.:format)                                                               api/rewards#update {:format=>:json}
 #                           DELETE /api/rewards/:id(.:format)                                                               api/rewards#destroy {:format=>:json}
 #               api_pledges POST   /api/pledges(.:format)                                                                   api/pledges#create {:format=>:json}
+#                api_pledge GET    /api/pledges/:id(.:format)                                                               api/pledges#show {:format=>:json}
+#                           PATCH  /api/pledges/:id(.:format)                                                               api/pledges#update {:format=>:json}
+#                           PUT    /api/pledges/:id(.:format)                                                               api/pledges#update {:format=>:json}
 #                      root GET    /                                                                                        static_pages#root
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show

@@ -6,16 +6,13 @@ import { selectRewards } from "../../reducers/selector"
 import Project from "./project";
 
 const mapStateToProps = (state, ownProps) => {
-    const project = state.entities.projects[ownProps.match.params.projectId]
-    var creator;
-    if (project) {
-        creator = state.entities.users[project.creatorId]
-    }
+    const project = state.entities.projects[ownProps.match.params.projectId]    
     return {
         id: ownProps.match.params.projectId,
         project: project,
-        creator: creator,
-        rewards: selectRewards(state, project)
+        creator: project ? state.entities.users[project.creatorId] : null,
+        rewards: selectRewards(state, project),
+        currentUserId: state.session.currentUser ? state.session.currentUser.id : null
     }
 }
 

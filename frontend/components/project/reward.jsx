@@ -1,6 +1,7 @@
 import React from "react";
+import { withRouter } from "react-router";
 
-export default class Reward extends React.Component {
+class Reward extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -22,17 +23,22 @@ export default class Reward extends React.Component {
     }
 
     handleSubmit() {
-        this.props.createPledge({
-            backer_id: this.props.userId,
-            project_id: this.props.projectId,
-            reward_id: this.props.rewardId,
-            amount: this.state.value
-        }).then(
-            (payload) => {
-                console.dir(payload)
-                // this.props.history.push(`/checkouts/${payload.pledgeID}/payments`)
-            }
-        )
+        if (!this.props.currentUserId){
+            this.props.history.push("/login")
+        } else {
+            debugger
+            this.props.createPledge({
+                backer_id: this.props.currentUserId,
+                project_id: this.props.projectId,
+                reward_id: this.props.reward.id,
+                amount: parseInt(this.state.value)
+            }).then(
+                (payload) => {
+                    console.dir(payload)
+                    this.props.history.push(`/checkouts/${payload.pledge.id}/payments`)
+                }
+            )
+        }
     }
 
     hoverShow(e) {
@@ -105,3 +111,5 @@ export default class Reward extends React.Component {
             </li>)
     }
 }
+
+export default withRouter(Reward);

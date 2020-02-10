@@ -1,6 +1,4 @@
 import React from "react";
-import { ProgressPlugin } from "webpack";
-
 
 export default class Payment extends React.Component {
     constructor(props) {
