@@ -4,13 +4,15 @@ import { createPledge } from "../../actions/pledge_actions";
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        userId: state.session.currentUser.id
+        currentUserId: state.session.currentUser.id,
+        pledge: state.entities.pledges[ownProps.match.params.pledgeId]
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        createPledge: (pledge) => dispatch(createPledge(pledge))
+        updatePledge: (id) => dispatch(updatePledge(id)),
+        fetchPledge: id => dispatch(fetchPledge(id))
     };
 }
 

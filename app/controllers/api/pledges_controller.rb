@@ -10,6 +10,16 @@ class Api::PledgesController < ApplicationController
     end
   end
   
+  def update
+    @pledge = Pledge.find(params[:pledge_id])
+    @pledge[:payment_status] = "success"
+    if @pledge.save
+      render json: @pledge
+    else
+      render json: @pledge.errors.full_messages, status: 401
+    end
+  end
+  
   private
   
   def pledge_params

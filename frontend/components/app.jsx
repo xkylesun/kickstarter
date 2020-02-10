@@ -25,7 +25,7 @@ const App = () => (
             <Route exact path="/projects/:projectId" component={ProjectContainer} />
             <Route exact path="/discover/ref=:filterType=:searchTerm" component={IndexContainer}/>
             <ProtectedRoute exact path="/settings" component={UserProfileContainer} />
-            <ProtectedRoute exact path="/checkouts/:rewardId/payments" component={PaymentContainer} />
+            <ProtectedRoute exact path="/checkouts/:pledgeId/payments" component={PaymentContainer} />
             <ProtectedRoute exact path="/start" component={StartProjectContainer} />
             <Route component={CatchAllContainer} />
         </Switch>

@@ -41,10 +41,11 @@ ActiveRecord::Schema.define(version: 2020_01_13_172844) do
     t.integer "reward_id", null: false
     t.integer "project_id", null: false
     t.integer "amount", null: false
+    t.string "payment_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["backer_id", "project_id"], name: "index_pledges_on_backer_id_and_project_id", unique: true
     t.index ["reward_id"], name: "index_pledges_on_reward_id"
+    t.index ["backer_id", "project_id"], name: "index_pledges_on_backer_id_and_project_id"
   end
 
   create_table "projects", force: :cascade do |t|

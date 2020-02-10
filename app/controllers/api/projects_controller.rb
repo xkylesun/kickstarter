@@ -10,17 +10,17 @@ class Api::ProjectsController < ApplicationController
     page = filter_params[:page]
 
     case filter_params[:type]
-    when "category"
-      @projects = Project.where(category: search).order("due_date asc").includes(:creator, :pledges)
-        .page(page).per(limit)
-    when "search_term"
-      regex = "%#{search}%"
-      @projects = Project.where("lower(projects.title) like ? or projects.category = ?", regex, search).distinct.order("due_date asc").includes(:creator, :pledges)
-        .page(page).per(limit)
-    when "_home"
-      @projects = Project.order("due_date asc").includes(:creator, :pledges).limit(10)
-    else
-      @projects = Project.order("due_date asc").includes(:creator, :pledges).page(page).per(limit)
+      when "category"
+        @projects = Project.where(category: search).order("due_date asc").includes(:creator, :pledges)
+          .page(page).per(limit)
+      when "search_term"
+        regex = "%#{search}%"
+        @projects = Project.where("lower(projects.title) like ? or projects.category = ?", regex, search).distinct.order("due_date asc").includes(:creator, :pledges)
+          .page(page).per(limit)
+      when "_home"
+        @projects = Project.order("due_date asc").includes(:creator, :pledges).limit(10)
+      else
+        @projects = Project.order("due_date asc").includes(:creator, :pledges).page(page).per(limit)
     end
     
     @last_page = @projects.page(page).per(limit).last_page? || @projects.page(page).per(limit).out_of_range?
@@ -30,6 +30,7 @@ class Api::ProjectsController < ApplicationController
         pledge.amount
       end.sum
     end
+    
     render :index
   end
 
@@ -39,6 +40,7 @@ class Api::ProjectsController < ApplicationController
     else
       @project = selected_project
     end
+
     @creator = @project.creator
     @rewards = @project.rewards.includes(:pledges)
     @funding_by_reward = @rewards.map do |reward|
@@ -46,6 +48,7 @@ class Api::ProjectsController < ApplicationController
         pledge.amount
       end
     end
+
     @all_pledges = @funding_by_reward.flatten
 
     render :show

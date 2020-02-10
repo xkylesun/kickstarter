@@ -1,5 +1,7 @@
 import { connect } from "react-redux";
 import { fetchProject } from "../../actions/project_actions";
+import { createPledge } from "../../actions/pledge_actions";
+
 import { selectRewards } from "../../reducers/selector"
 import Project from "./project";
 
@@ -19,7 +21,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchProject: (id) => dispatch(fetchProject(id))
+        fetchProject: (id) => dispatch(fetchProject(id)),
+        createPledge: (pledge) => dispatch(createPledge(pledge))
     };
 }
 

@@ -2,13 +2,14 @@
 #
 # Table name: pledges
 #
-#  id         :bigint           not null, primary key
-#  backer_id  :integer          not null
-#  reward_id  :integer          not null
-#  project_id :integer          not null
-#  amount     :integer          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id             :bigint           not null, primary key
+#  backer_id      :integer          not null
+#  reward_id      :integer          not null
+#  project_id     :integer          not null
+#  amount         :integer          not null
+#  payment_status :string           not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 

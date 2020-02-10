@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 
 export default class Reward extends React.Component {
     constructor(props) {
@@ -9,6 +8,7 @@ export default class Reward extends React.Component {
             showForm: false
         }
         this.handleInput = this.handleInput.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.hoverShow = this.hoverShow.bind(this);
         this.hoverHide = this.hoverHide.bind(this);
         this.clickShow = this.clickShow.bind(this);
@@ -19,6 +19,20 @@ export default class Reward extends React.Component {
         this.setState({
             value: event.currentTarget.value
         });
+    }
+
+    handleSubmit() {
+        this.props.createPledge({
+            backer_id: this.props.userId,
+            project_id: this.props.projectId,
+            reward_id: this.props.rewardId,
+            amount: this.state.value
+        }).then(
+            (payload) => {
+                console.dir(payload)
+                // this.props.history.push(`/checkouts/${payload.pledgeID}/payments`)
+            }
+        )
     }
 
     hoverShow(e) {
@@ -78,23 +92,13 @@ export default class Reward extends React.Component {
                                 onChange={this.handleInput}>
                             </input>
 
-                            <Link
-                                to={{
-                                    pathname: `/checkouts/${this.props.reward.id}/payments`,
-                                    state: {
-                                        title: this.props.reward.title,
-                                        minimum: this.props.reward.minimum,
-                                        value: this.state.value,
-                                        projectId: this.props.project.id,
-                                        projectTitle: this.props.project.title
-                                    }
-                                }}
-                            >
-                                <button
-                                    className="btn btn-green"
-                                    id="plege-form-btn"
-                                    type="button">Continue</button>
-                            </Link>
+                            <button
+                                className="btn btn-green"
+                                id="plege-form-btn"
+                                type="button"
+                                onClick={this.handleSubmit}
+                            >Continue
+                            </button>
                         </form>
                     </div>
                 </div>
