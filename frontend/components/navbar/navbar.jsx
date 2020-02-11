@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import SearchBar from "./search_bar";
-
 import { toggleShow } from "../../utils/other_utils";
 import UserDropdown from "./user_dropdown";
 import ExploreDropdown from "./explore_dropdown";
@@ -10,6 +9,13 @@ import ExploreDropdown from "./explore_dropdown";
 export default class Navbar extends React.Component {
     constructor(props){
         super(props)
+    }
+
+    componentDidMount(){
+        let name = this.props.currentUser ? this.props.currentUser.name : null;
+        if (!name && this.props.currentUser){
+            this.props.fetchCurrentUser(this.props.currentUser)
+        }
     }
 
     render() {

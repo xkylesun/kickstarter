@@ -3,7 +3,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
-      render "api/sessions/show"
+      redirect_to api_user_url(@user)
     else
       render json: @user.errors.full_messages, status: 401
     end
@@ -12,7 +12,7 @@ class Api::UsersController < ApplicationController
   def update
     @user = selected_user
     if @user && @user.update_attributes(user_params)
-      render :show
+      redirect_to api_user_url(@user)
     elsif !@user
       render json: ['Could not locate user'], status: 400
     else
@@ -22,7 +22,6 @@ class Api::UsersController < ApplicationController
   
   def show
     @user = selected_user
-    # @backed_projects = @user.backed_projects.includes(:creator)
     @backed_projects = Project.joins(:backers).where("pledges.backer_id = ?", @user.id).distinct.includes(:creator)
     @creators = @backed_projects.map {|project| project.creator}
     @backed_project_ids = @user.backed_project_ids.uniq

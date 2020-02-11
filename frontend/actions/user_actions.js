@@ -1,4 +1,6 @@
 import * as UserUtil from "../utils/user_util"
+import { RECEIVE_PLEDGE_ERRORS } from "./pledge_actions";
+import { receiveCurrentUser } from "./session_actions";
 
 export const RECEIVE_USER = "RECEIVE_USER";
 
@@ -15,3 +17,10 @@ export const fetchUser = userId => dispatch => (
             payload => dispatch(receiveUser(payload)),
         )
 );
+
+export const fetchCurrentUser = userId => dispatch => (
+    UserUtil.fetchUser(userId)
+        .then(
+            user => dispatch(receiveCurrentUser(user)),
+        )
+)

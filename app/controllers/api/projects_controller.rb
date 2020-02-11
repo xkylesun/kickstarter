@@ -62,16 +62,7 @@ class Api::ProjectsController < ApplicationController
         reward.project_id = @project.id
         reward.save
       end
-
-      @creator = @project.creator
-      @rewards = @project.rewards
-      @funding_by_reward = @rewards.map do |reward|
-        reward.pledges.map do |pledge|
-          pledge.amount
-        end
-      end
-      @all_pledges = @funding_by_reward.flatten
-      render :show
+      redirect_to api_project_url(@project)
     else
       render json: @project.errors.full_messages, status: 401
     end
@@ -80,7 +71,7 @@ class Api::ProjectsController < ApplicationController
   def update
     @project = selected_project
     if @project && @project.update_attributes(project_params)
-      render :show
+      redirect_to api_project_url(@project)
     elsif !@project
       render json: ['Could not locate project'], status: 400
     else
