@@ -1,26 +1,26 @@
-# Jumpstarter - a kickstarter clone
+# Jumpstarter - a Kickstarter clone
 [Link to Live Site](https://jumpstarter-ks.herokuapp.com/?#/)
 
 ## Features
-This site allow user to:
-* Create new account or login to existing account
+This site allows user to:
+* Create a new account or login to an existing account
 * Create, update, or delete projects
 * Support project ideas by backing other people's projects
-* Search for project based on project name
+* Search for project based on the project title
 * Explore projects within different project categories
   
 ## Build Process
-This site incorporate the following technologies / modules:
+This site incorporates the following technologies / modules:
 * React + Redux for frontend rendering / navigating
-* Rails for backend api and transfering data in JSON format
+* Rails for backend API and transferring data in JSON format
 * Kaminari gem for page separation / loading
 * Heroku and Heroku Postgres for hosting the main site
-* Active Storage for managing reference to image hosted separately on AWS S3 cloud storage
+* Active Storage for managing reference to images hosted separately on AWS S3 cloud storage
 
 ## Documentation
 * Search
 
-  Navbar incorporates a search feature that is only made visible when user click the search button. Upon user hit the enter key, the user input is translated into search queries embeded in the url and transfer user to the designated url. The destination site, within the componentDidMount react lifecycle method, will fire the query to the database and render the the receiving contents.
+  Navbar incorporates a search feature that is only made visible when the user clicks the search button. Upon user hit the enter key, the user input is translated into search queries embedded in the URL and transfer the user to the designated URL. The destination site, within the componentDidMount react lifecycle method, will fire the query to the database and render the receiving contents.
 
 ```Javascript
   // search_bar.jsx
@@ -30,7 +30,8 @@ This site incorporate the following technologies / modules:
           this.props.history.push(`/discover/ref=search&term=${searchTerm}`);
       }
 ```
-    A simple regular expression is used within the SQL query to filter projects that meet the user's search criteria. 
+    A simple regular expression is used within the SQL query to filter projects that meet the user's search criteria.
+    
 ```ruby
     # projects_controller.rb
       regex = "%#{search}%"
@@ -40,7 +41,7 @@ This site incorporate the following technologies / modules:
 
 * Infinite Scrolling
 
-  Infinite scrolling is implemented to improve user experience while navigating the site. Whenever user navigate to the bottom of the page, function is triggered to load additional contents and append to the bottom of the page. In addition, the scrolling event is throttled to optimize performance.
+  Infinite scrolling is implemented to improve the user experience while navigating the site. Whenever the user navigates to the bottom of the page, a callback is triggered to load additional contents and append to the bottom of the page. In addition, the scrolling event is throttled to optimize performance.
 
 ```Javascript 
   // util.js
@@ -53,7 +54,7 @@ This site incorporate the following technologies / modules:
       document.addEventListener('scroll', _.throttle(callback, 1000));
 ```
 
-  On the backend, a paginator (Kaminari) separates projects queried from the database into pages and keeps track of the amount of data to be transmitted to the frontend. Due to the number of project seeded on the database, items per page was set to 3 to enable multiple loadings. 
+  On the backend, a paginator (Kaminari) separates projects queried from the database into pages and keeps track of the amount of data to be transmitted to the frontend. Due to the number of projects seeded on the database, items per page was set to 3 to enable multiple loadings. 
 
 ```ruby
   # projects_controller.rb 
@@ -68,9 +69,9 @@ This site incorporate the following technologies / modules:
 ```
 * User Input Validation
 
-  In addition to the validation on Rails Models and PostgreSQL database, input validation is also implemented on frontend to ensure user fill out all required fields before sending the form to the database, thus reducing unnecessary data transfering and improving the integrity of the database. 
+  In addition to the validation on Rails Models and PostgreSQL database, input validation is also implemented on the frontend to ensure the user fills out all required fields before sending the form to the database, thus reducing unnecessary data transferring and improving the integrity of the database. 
 
-  Upon submitting the form, a query will run to collect all HTML elements sharing the classname for required fields and check if any input has black value.
+  Upon submitting the form, a query will run to collect all HTML elements sharing the class name for required fields and check if any input has black value.
 
 ```Javascript
       let checklist = Array.from(document.getElementsByClassName(eleId));
@@ -83,8 +84,6 @@ This site incorporate the following technologies / modules:
       }
       return completed;
 ```
-
-
 
 ## Acknowledgement
 Page layout and design inspired by [Kickstarter](https://www.kickstarter.com/)
