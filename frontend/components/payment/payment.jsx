@@ -4,6 +4,13 @@ export default class Payment extends React.Component {
     constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
+            cardNumber: 123456789012345,
+            cardHolder: "It's on me",
+            expire: "06 / 2023",
+            ccv: "666",
+            zipcode: "94105"
+        }
     }
 
     componentDidMount(){
@@ -11,21 +18,21 @@ export default class Payment extends React.Component {
     }
 
     handleSubmit() {
-        this.props.updatePledge()
+        let projectId = this.props.pledge.projectId;
+        this.props.updatePledge(this.props.pledge.id)
         .then(
             () => {
                 alert("Payment successful! You will be redirected to project page in 5s");
-                setTimeout(() => { this.props.history.push(`/projects/${this.props.pledge.projectId}`) }, 5000);
+                setTimeout(() => { this.props.history.push(`/projects/${projectId}`) }, 5000);
             }
         )
     }
 
     render() {
-        if (!this.props.pledge) {
+        if (!this.props.pledge.backerId) {
             return null;
         } else {
             const { backerId, amount, projectTitle, rewardTitle } = this.props.pledge;
-
             if (backerId !== this.props.currentUserId){
                 this.props.history.push("/page-not-found");
             } else {
@@ -50,23 +57,23 @@ export default class Payment extends React.Component {
                             <div className="payment-form-frame">
                                 <form id="payment-form" onSubmit={this.handleSubmit}>
                                     <h3>Card number</h3>
-                                    <input className="form-input payment-input" type="text" placeholder="Card number" />
+                                    <input className="form-input payment-input" type="password" placeholder="Card number" value={this.state.cardNumber} disabled={true}/>
 
                                     <h3>Cardholder name</h3>
-                                    <input className="form-input payment-input" type="text" placeholder="Cardholder name" />
+                                    <input className="form-input payment-input" type="text" placeholder="Cardholder name" value={this.state.cardHolder} disabled={true}/>
 
                                     <div className="pay-inputs-container">
                                         <span className="pay-exp">
                                             <h3>Expiration</h3>
-                                            <input className="form-input payment-input" type="date" placeholder="MM / YY" />
+                                            <input className="form-input payment-input" type="text" placeholder="MM / YY" value={this.state.expire} disabled={true}/>
                                         </span>
                                         <span>
                                             <h3>Security code</h3>
-                                            <input className="form-input payment-input" type="text" placeholder="CVC" />
+                                            <input className="form-input payment-input" type="text" placeholder="CVC" value={this.state.ccv} disabled={true}/>
                                         </span>
                                     </div>
                                     <h3>Zip/Postal code</h3>
-                                    <input className="form-input payment-input" type="text" placeholder="Zip/Postal code" />
+                                    <input className="form-input payment-input" type="text" placeholder="Zip/Postal code" value={this.state.zipcode} disabled={true}/>
 
                                     <button className="btn btn-green" type="submit">Pledge</button>
                                 </form>

@@ -11,16 +11,16 @@ class Api::ProjectsController < ApplicationController
 
     case filter_params[:type]
       when "category"
-        @projects = Project.where(category: search).order("due_date asc").includes(:creator, :pledges)
+        @projects = Project.where(category: search).order("due_date asc").includes(:creator, :pledges, image_attachment: :blob)
           .page(page).per(limit)
       when "search_term"
         regex = "%#{search}%"
-        @projects = Project.where("lower(projects.title) like ? or projects.category = ?", regex, search).distinct.order("due_date asc").includes(:creator, :pledges)
+        @projects = Project.where("lower(projects.title) like ? or projects.category = ?", regex, search).distinct.order("due_date asc").includes(:creator, :pledges, image_attachment: :blob)
           .page(page).per(limit)
       when "_home"
-        @projects = Project.order("due_date asc").includes(:creator, :pledges).limit(10)
+        @projects = Project.order("due_date asc").includes(:creator, :pledges, image_attachment: :blob).limit(10)
       else
-        @projects = Project.order("due_date asc").includes(:creator, :pledges).page(page).per(limit)
+        @projects = Project.order("due_date asc").includes(:creator, :pledges, image_attachment: :blob).page(page).per(limit)
     end
     
     @last_page = @projects.page(page).per(limit).last_page? || @projects.page(page).per(limit).out_of_range?
@@ -36,7 +36,7 @@ class Api::ProjectsController < ApplicationController
 
   def show
     if params[:id] == "_random"
-      @project = Project.order("RANDOM()").limit(1)[0]
+      @project = Project.order("RANDOM()").limit(1).includes(:creator, :rewards)[0]
     else
       @project = selected_project
     end
@@ -64,7 +64,7 @@ class Api::ProjectsController < ApplicationController
       end
 
       @creator = @project.creator
-      @rewards = @project.rewards.includes(:pledges)
+      @rewards = @project.rewards
       @funding_by_reward = @rewards.map do |reward|
         reward.pledges.map do |pledge|
           pledge.amount
@@ -106,7 +106,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def selected_project
-    Project.find(params[:id])
+    Project.where(id: params[:id]).includes(:creator, :rewards)[0]
   end
 
   def filter_params

@@ -17,7 +17,7 @@ class Pledge < ApplicationRecord
     validates :amount, :payment_status, presence: true
     validates :amount, numericality: {greater_than: 0}
     validate :greater_than_min, :has_quantity
-    validates_uniqueness_of :backer_id, scope: :project_id, conditions: -> { where(payment_status: "success") }
+    validates_uniqueness_of :backer_id, scope: :project_id, conditions: -> { where(payment_status: "success") }, message: "has already backed this project"
     after_initialize :ensure_payment_status
 
     belongs_to :backer, foreign_key: :backer_id, class_name: :User

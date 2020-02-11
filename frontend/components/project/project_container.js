@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { fetchProject } from "../../actions/project_actions";
-import { createPledge } from "../../actions/pledge_actions";
+import { createPledge, CLEAR_PLEDGE_ERRORS } from "../../actions/pledge_actions";
 
 import { selectRewards } from "../../reducers/selector"
 import Project from "./project";
@@ -12,14 +12,16 @@ const mapStateToProps = (state, ownProps) => {
         project: project,
         creator: project ? state.entities.users[project.creatorId] : null,
         rewards: selectRewards(state, project),
-        currentUserId: state.session.currentUser ? state.session.currentUser.id : null
+        currentUserId: state.session.currentUser ? state.session.currentUser.id : null,
+        errors: state.errors.pledge || []
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         fetchProject: (id) => dispatch(fetchProject(id)),
-        createPledge: (pledge) => dispatch(createPledge(pledge))
+        createPledge: (pledge) => dispatch(createPledge(pledge)),
+        clearErrors: () => dispatch({ type: CLEAR_PLEDGE_ERRORS })
     };
 }
 

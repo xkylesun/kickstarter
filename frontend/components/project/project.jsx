@@ -1,7 +1,7 @@
 import React from "react";
 import Reward from "./reward";
 
-import { parseNum, countDays } from "../../utils/other_utils";
+import { parseNum, countDays, scrollTo } from "../../utils/other_utils";
 
 
 
@@ -17,6 +17,10 @@ export default class Project extends React.Component {
         if (this.props.match.params.projectId !== prevProps.id) {
             this.props.fetchProject(this.props.match.params.projectId)
         }
+    }
+
+    componentWillUnmount(){
+        this.props.clearErrors();
     }
 
     render() {
@@ -48,7 +52,7 @@ export default class Project extends React.Component {
                                 <section className="content-info-unit">backers</section>
                                 <section className="content-info-number">{countDays(dueDate)}</section>
                                 <section className="content-info-unit">days to go</section>
-                                <button className="btn btn-green" type="button">Back this project</button>
+                                <button className="btn btn-green" type="button" onClick={() => scrollTo("reward-frame")}>Back this project</button>
                                 <p className="disclaimer"><span className="underlined">All or nothing.</span> This project will only be funded if it reaches its goal by {"date"}.</p>
                             </span>
                         </div>
@@ -84,7 +88,7 @@ export default class Project extends React.Component {
 
                             </div>
 
-                            <div className="reward-frame">
+                            <div className="reward-frame" id="reward-frame">
                                 <h1 className="rewards-title">Support</h1>
                                 <ul className="rewards">
                                     {this.props.rewards.map(reward => 
@@ -94,6 +98,7 @@ export default class Project extends React.Component {
                                             projectId={id}
                                             currentUserId={this.props.currentUserId}
                                             createPledge={this.props.createPledge}
+                                            errors={this.props.errors}
                                         />)
                                         )
                                     }

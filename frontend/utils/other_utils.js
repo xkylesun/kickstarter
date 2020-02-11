@@ -28,6 +28,9 @@ export const toggleShow = (eleId) => {
 
 
 export const toggleHide = (eleId) => {
-    // debugger
     document.getElementById(eleId).classList.remove("show");
+}
+
+export const scrollTo = (eleId) => {
+    document.getElementById(eleId).scrollIntoView();
 }

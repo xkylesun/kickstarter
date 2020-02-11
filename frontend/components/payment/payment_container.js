@@ -1,11 +1,11 @@
 import Payment from "./payment";
 import { connect } from "react-redux";
-import { createPledge } from "../../actions/pledge_actions";
+import { updatePledge, fetchPledge } from "../../actions/pledge_actions";
 
 const mapStateToProps = (state, ownProps) => {
     return {
         currentUserId: state.session.currentUser.id,
-        pledge: state.entities.pledges[ownProps.match.params.pledgeId]
+        pledge: state.entities.pledges
     }
 }
 

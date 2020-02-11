@@ -1,12 +1,22 @@
 
+// @font-face {
+//     font-family: "RNS BARUTA BLACK"; 
+//     src: url("https://jumpstarter-pub.s3-us-west-1.amazonaws.com/bbsnr.woff") format("woff"); 
+// }
+
+// @font-face {
+//     font-family: "Cooper Lt BT"; 
+//     src: url("https://jumpstarter-pub.s3-us-west-1.amazonaws.com/tblc.woff") format("woff"); 
+// }
+
 @font-face {
     font-family: "RNS BARUTA BLACK"; 
-    src: url("https://jumpstarter-pub.s3-us-west-1.amazonaws.com/bbsnr.woff") format("woff"); 
+    src: url("../font/bbsnr.woff") format("woff"); 
 }
 
 @font-face {
     font-family: "Cooper Lt BT"; 
-    src: url("https://jumpstarter-pub.s3-us-west-1.amazonaws.com/tblc.woff") format("woff"); 
+    src: url("../font/tblc.woff") format("woff"); 
 }
 
 $btn-green: #009E74;

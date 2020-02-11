@@ -6,7 +6,7 @@ class Reward extends React.Component {
         super(props)
         this.state = {
             value: this.props.reward.minimum,
-            showForm: false
+            showForm: false,
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,7 +26,6 @@ class Reward extends React.Component {
         if (!this.props.currentUserId){
             this.props.history.push("/login")
         } else {
-            debugger
             this.props.createPledge({
                 backer_id: this.props.currentUserId,
                 project_id: this.props.projectId,
@@ -57,6 +56,21 @@ class Reward extends React.Component {
         this.setState({ showForm: true });
         e.currentTarget.parentNode.childNodes[2].classList.remove("hidden");
         e.currentTarget.parentNode.childNodes[0].classList.add("hidden");
+    }
+
+    renderErrors() {
+        if (this.props.errors.length === 0) return null;
+        return (
+            <section className="display-error">
+                <ul>
+                    {this.props.errors.map((error, i) => (
+                        <li key={`error-${i}`}>
+                            {error}
+                        </li>
+                    ))}
+                </ul>
+            </section>
+        );
     }
 
     render() {
@@ -105,6 +119,7 @@ class Reward extends React.Component {
                                 onClick={this.handleSubmit}
                             >Continue
                             </button>
+                            {this.renderErrors()}
                         </form>
                     </div>
                 </div>

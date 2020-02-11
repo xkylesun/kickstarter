@@ -18,7 +18,7 @@ class Reward < ApplicationRecord
     validates :minimum, numericality: {greater_than: 0}
 
     belongs_to :project
-    has_many :pledges
+    has_many :pledges, -> { where(payment_status: "success")}
 
     has_many :backers, through: :pledges, source: :backer
 end
