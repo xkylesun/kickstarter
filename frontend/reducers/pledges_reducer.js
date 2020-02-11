@@ -1,5 +1,5 @@
 
-import { RECEIVE_PLEDGE, REMOVE_PLEDGE } from "../actions/pledge_actions";
+import { RECEIVE_PLEDGE, RECEIVE_PAYMENT } from "../actions/pledge_actions";
 
 export const pledgesReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -7,7 +7,7 @@ export const pledgesReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_PLEDGE:
             return action.pledge;
-        case REMOVE_PLEDGE:
+        case RECEIVE_PAYMENT:
             return {};
         default:
             return state;

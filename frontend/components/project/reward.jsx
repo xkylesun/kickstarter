@@ -59,7 +59,7 @@ class Reward extends React.Component {
         this.setState({ showForm: true });
         document.getElementById(`screen-${this.props.reward.id}`).classList.remove("show")
         document.getElementById(`screen-${this.props.reward.id}`).classList.add("clicked")
-        e.currentTarget.parentNode.childNodes[2].classList.remove("hidden");
+        e.currentTarget.parentNode.childNodes[3].classList.remove("hidden");
         // e.currentTarget.parentNode.childNodes[0].classList.add("hidden");
     }
 
@@ -101,7 +101,6 @@ class Reward extends React.Component {
         var estimatedDelivery;
         let backedProject = this.checkBackedProject();
         let backedReward = this.checkBackedReward();
-
         if (this.props.reward.quantity) {
             limited = <p className="reward-remaining">Limited ({this.props.reward.quantity - this.props.reward.count} of {this.props.reward.quantity})</p>
         }
@@ -116,6 +115,7 @@ class Reward extends React.Component {
         return (
             <li>
                 <div className="reward-item-frame" onMouseEnter={this.hoverShow} onMouseLeave={this.hoverHide} >
+                    {backedReward ? <div className="backed-reward-frame">You selected</div> : <div></div>}
                     <div 
                         id={`screen-${this.props.reward.id}`}
                         className={backedProject ? "pledge-form-screen gray-screen" : "pledge-form-screen green-screen"} 

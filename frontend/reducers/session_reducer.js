@@ -1,4 +1,5 @@
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from "../actions/session_actions";
+import { RECEIVE_PAYMENT } from "../actions/pledge_actions";
 
 const _nullSession = {
     currentUser: null
@@ -12,6 +13,11 @@ export const sessionReducer = (state = _nullSession, action) => {
             return Object.assign({}, { currentUser: action.user });
         case LOGOUT_CURRENT_USER:
             return _nullSession;
+        case RECEIVE_PAYMENT:
+            let newState = Object.assign({}, state);
+            newState.currentUser.backedProjectIds = action.payload.backedProjectIds;
+            newState.currentUser.backedRewardIds = action.payload.backedRewardIds;
+            return newState;
         default:
             return state;
     }

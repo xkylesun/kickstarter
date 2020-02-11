@@ -16,7 +16,10 @@ class Api::PledgesController < ApplicationController
     @pledge = Pledge.find(params[:id])
     @pledge[:payment_status] = "success"
     if @pledge.save
-      render json: @pledge.project.id
+      backer_id = @pledge.backer.id
+      @backed_project_ids = Project.joins(:pledges).where(pledges: { backer_id: backer_id}).pluck(:id)
+      @backed_reward_ids = Reward.joins(:pledges).where(pledges: { backer_id: backer_id}).pluck(:id)
+      render :update
     else
       render json: [@pledge.errors.full_messages], status: 401
     end

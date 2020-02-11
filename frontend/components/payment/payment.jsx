@@ -6,7 +6,7 @@ export default class Payment extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             cardNumber: 123456789012345,
-            cardHolder: "It's on me",
+            cardHolder: "It's on me!",
             expire: "06 / 2023",
             ccv: "666",
             zipcode: "94105"
@@ -22,8 +22,8 @@ export default class Payment extends React.Component {
         this.props.updatePledge(this.props.pledge.id)
         .then(
             () => {
-                alert("Payment successful! You will be redirected to project page in 5s");
-                setTimeout(() => { this.props.history.push(`/projects/${projectId}`) }, 5000);
+                alert("Payment successful! You will be redirected to the project page");
+                setTimeout(() => { this.props.history.push(`/projects/${projectId}`) }, 100);
             }
         )
     }

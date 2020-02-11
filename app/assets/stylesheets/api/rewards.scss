@@ -138,10 +138,21 @@
     background-color: $btn-gray;
 }
 
+.backed-reward-frame {
+    background-color: rgba(43, 96, 255, 1);
+    font-size: 12px;
+    width: 90px;
+    color: white;
+    padding: 10px 0;
+    margin-left: 20px;
+    text-align: center;
+}
+
 .show {
     display: block
 }
 
 .clicked {
     opacity: 0;
+    z-index: -1;
 }
