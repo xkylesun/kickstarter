@@ -96,7 +96,7 @@ export default class Project extends React.Component {
                                             reward={reward} 
                                             key={reward.id} 
                                             projectId={id}
-                                            currentUserId={this.props.currentUserId}
+                                            currentUser={this.props.currentUser}
                                             createPledge={this.props.createPledge}
                                             errors={this.props.errors}
                                         />)

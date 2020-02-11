@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
+import { toggleHide, toggleShow } from "../../utils/other_utils";
 
 class Reward extends React.Component {
     constructor(props) {
@@ -23,11 +24,11 @@ class Reward extends React.Component {
     }
 
     handleSubmit() {
-        if (!this.props.currentUserId){
+        if (!this.props.currentUser){
             this.props.history.push("/login")
         } else {
             this.props.createPledge({
-                backer_id: this.props.currentUserId,
+                backer_id: this.props.currentUser.id,
                 project_id: this.props.projectId,
                 reward_id: this.props.reward.id,
                 amount: parseInt(this.state.value)
@@ -42,20 +43,24 @@ class Reward extends React.Component {
 
     hoverShow(e) {
         if (!this.state.showForm) {
-            e.currentTarget.childNodes[0].classList.remove("hidden")
+            // e.currentTarget.childNodes[0].classList.add("show")
+            document.getElementById(`screen-${this.props.reward.id}`).classList.add("show")
         }
     }
 
     hoverHide(e) {
         if (!this.state.showForm) {
-            e.currentTarget.childNodes[0].classList.add("hidden")
+            // e.currentTarget.childNodes[0].classList.remove("show")
+            document.getElementById(`screen-${this.props.reward.id}`).classList.remove("show")
         }
     }
 
     clickShow(e) {
         this.setState({ showForm: true });
+        document.getElementById(`screen-${this.props.reward.id}`).classList.remove("show")
+        document.getElementById(`screen-${this.props.reward.id}`).classList.add("clicked")
         e.currentTarget.parentNode.childNodes[2].classList.remove("hidden");
-        e.currentTarget.parentNode.childNodes[0].classList.add("hidden");
+        // e.currentTarget.parentNode.childNodes[0].classList.add("hidden");
     }
 
     renderErrors() {
@@ -73,9 +78,30 @@ class Reward extends React.Component {
         );
     }
 
+    checkBackedProject(){
+        if (this.props.currentUser){
+            if (this.props.currentUser.backedProjectIds.includes(this.props.projectId)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    checkBackedReward(){
+        if (this.props.currentUser) {
+            if (this.props.currentUser.backedRewardIds.includes(this.props.reward.id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     render() {
         var limited;
         var estimatedDelivery;
+        let backedProject = this.checkBackedProject();
+        let backedReward = this.checkBackedReward();
+
         if (this.props.reward.quantity) {
             limited = <p className="reward-remaining">Limited ({this.props.reward.quantity - this.props.reward.count} of {this.props.reward.quantity})</p>
         }
@@ -86,11 +112,15 @@ class Reward extends React.Component {
                 <p className="reward-delivery-date">{this.props.reward.estimatedDelivery}</p>
             </div>
         }
-
+        
         return (
             <li>
                 <div className="reward-item-frame" onMouseEnter={this.hoverShow} onMouseLeave={this.hoverHide} >
-                    <div className="pledge-form-screen hidden" onClick={this.clickShow}><p>Select this reward</p></div>
+                    <div 
+                        id={`screen-${this.props.reward.id}`}
+                        className={backedProject ? "pledge-form-screen gray-screen" : "pledge-form-screen green-screen"} 
+                        onClick={this.clickShow}>
+                        {backedProject ? "You have already backed this project" : "Select this reward"}</div>
                     <div className="pledge-info-container">
                         <h1 className="reward-amount">Pledge ${this.props.reward.minimum} or more</h1>
                         <h2 className="reward-title">{this.props.reward.title}</h2>
@@ -109,17 +139,19 @@ class Reward extends React.Component {
                                 type="number"
                                 min={this.props.reward.miminum}
                                 value={this.state.value}
+                                disabled={backedProject}
                                 onChange={this.handleInput}>
                             </input>
 
                             <button
-                                className="btn btn-green"
-                                id="plege-form-btn"
+                                className={backedProject ? "btn btn-gray" : "btn btn-green"}
                                 type="button"
                                 onClick={this.handleSubmit}
-                            >Continue
+                                disabled={backedProject}
+                            >{backedReward ? "Backed" : "Continue"}
                             </button>
-                            {this.renderErrors()}
+                            {/* {this.renderErrors()} */}
+                            {/* {backedProject ? <p className="reward-backer-count">You have already backed this project</p> : null} */}
                         </form>
                     </div>
                 </div>

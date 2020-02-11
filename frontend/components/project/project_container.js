@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
         project: project,
         creator: project ? state.entities.users[project.creatorId] : null,
         rewards: selectRewards(state, project),
-        currentUserId: state.session.currentUser ? state.session.currentUser.id : null,
+        currentUser: state.session.currentUser,
         errors: state.errors.pledge || []
     }
 }
