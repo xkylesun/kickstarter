@@ -1,5 +1,4 @@
 import * as UserUtil from "../utils/user_util"
-import { RECEIVE_PLEDGE_ERRORS } from "./pledge_actions";
 import { receiveCurrentUser } from "./session_actions";
 
 export const RECEIVE_USER = "RECEIVE_USER";

@@ -7,7 +7,7 @@ export const usersReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_USER:
-            var newState = Object.assign({}, state, { [action.payload.user.id]: action.payload.user });
+            let newState = Object.assign({}, state, { [action.payload.user.id]: action.payload.user });
             newState = Object.assign({}, newState, action.payload.creators)
             return newState;
         case RECEIVE_PROJECT:

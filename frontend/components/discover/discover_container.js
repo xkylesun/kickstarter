@@ -4,7 +4,7 @@ import Discover from "./discover";
 import { fetchProjects, fetchMoreProjects } from "../../actions/project_actions";
 
 const mapStateToProps = (state, ownProps) => {
-    const projects = Object.values(state.entities.projects)
+    const projects = Object.values(state.entities.projects.all)
     return {
         projects: projects,
         users: state.entities.users,

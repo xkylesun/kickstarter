@@ -4,7 +4,8 @@ export const RECEIVE_PROJECTS = "RECEIVE_PROJECTS";
 export const APPEND_PROJECTS = "APPEND_PROJECTS";
 export const RECEIVE_PROJECT = "RECEIVE_PROJECT";
 export const RECEIVE_PROJECT_ERRORS = "RECEIVE_PROJECT_ERRORS";
-export const REMOVE_PROJECT = "REMOVE_PROJECT"
+export const REMOVE_PROJECT = "REMOVE_PROJECT";
+export const RECEIVE_USER_PROJECTS = "RECEIVE_USER_PROJECTS";
 
 const receiveProjects = payload => {
     return {
@@ -12,6 +13,13 @@ const receiveProjects = payload => {
         payload
     };
 };
+
+const receiveUserProjects = payload => {
+    return {
+        type: RECEIVE_USER_PROJECTS,
+        payload
+    }
+}
 
 const appendProjects = payload => {
     return {
@@ -57,6 +65,14 @@ export const fetchMoreProjects = (filters) => dispatch => {
         )
 };
 
+export const fetchUserProjects = (filter) => dispatch => {
+    return ProjectUtil.fetchProject(filter)
+        .then(
+            payload => dispatch(receiveUserProjects(payload)),
+            errors => dispatch(receiveErrors(errors))
+        )
+}
+
 export const fetchProject = projectId => dispatch => (
     ProjectUtil.fetchProject(projectId)
         .then(
@@ -88,5 +104,4 @@ export const deleteProject = projectId => dispatch => (
             errors => dispatch(receiveErrors(errors))
         )
 );
-
 

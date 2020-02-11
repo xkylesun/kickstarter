@@ -1,8 +1,8 @@
-export const selectBackedProjects = (state, user) => {
-    return user ? user.backedProjectIds.map(
-        id => state.entities.projects[id]
-    ) : [];
-}
+// export const selectBackedProjects = (state, user) => {
+//     return user ? user.backedProjectIds.map(
+//         id => state.entities.projects[id]
+//     ) : [];
+// }
 
 export const selectRewards = (state, project) => {
     if (project){
