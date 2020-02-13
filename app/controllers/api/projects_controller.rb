@@ -25,10 +25,7 @@ class Api::ProjectsController < ApplicationController
       when "_home"
         @projects = Project.limit(10).order("due_date asc")
           .includes(:creator, :pledges, image_attachment: :blob)
-      
-      when "_user"
-        @projects = Project.where(creator_id: search).order("due_date asc")
-
+          
       else
         @projects = Project.order("due_date asc")
           .includes(:creator, :pledges, image_attachment: :blob)

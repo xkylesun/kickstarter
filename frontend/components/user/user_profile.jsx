@@ -7,18 +7,13 @@ import { Link } from 'react-router-dom';
      };
 
      componentDidMount(){
-         let filter = {
-             type: "_user",
-             search: this.props.match.params.userId
-         }
-        //  this.props.fetchUserProjects(this.props.match.params.userId);
+         this.props.fetchUser(this.props.match.params.userId);
      }
 
      render(){
          if (!this.props.backedProjects){
              return null;
          }
-         console.dir(this.props)
          return (
              <div>USER PROFILE
                  <div>

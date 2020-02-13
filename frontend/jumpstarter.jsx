@@ -18,14 +18,3 @@ document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
     ReactDOM.render(<Root store={store} />, root);
 });
-
-
-// fetchUser(currentUser.id).then(
-//     (payload) => {
-//         console.log(payload);
-//         preloadedState = {
-//             session: { currentUser: payload }
-//         };
-//         store = configureStore(preloadedState);
-//     }
-// )

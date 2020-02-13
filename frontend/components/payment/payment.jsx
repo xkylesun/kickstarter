@@ -19,7 +19,7 @@ export default class Payment extends React.Component {
 
     handleSubmit() {
         let projectId = this.props.pledge.projectId;
-        this.props.updatePledge(this.props.pledge.id)
+        this.props.payPledge(this.props.pledge.id)
         .then(
             () => {
                 alert("Payment successful! You will be redirected to the project page");

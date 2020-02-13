@@ -1,8 +1,17 @@
 class Api::PledgesController < ApplicationController
 
   def create
-    @pledge = Pledge.new(pledge_params)
-    @pledge[:project_id] = Reward.find(pledge_params[:reward_id]).project.id
+
+    project_id = Reward.find(pledge_params[:reward_id]).project_id
+    @pledge = Pledge.where(backer_id: pledge_params[:backer_id], project_id: project_id)[0]
+
+    if @pledge
+      @pledge.assign_attributes(pledge_params)
+    else
+      @pledge = Pledge.new(pledge_params)
+      @pledge[:project_id] = project_id
+    end
+
     if @pledge.save
       @reward = @pledge.reward
       @project = @pledge.project
@@ -11,9 +20,15 @@ class Api::PledgesController < ApplicationController
       render json: @pledge.errors.full_messages, status: 401
     end
   end
+
+  # # merged with create
+  # def update
+  #   debugger
+  #   @pledge = Pledge.find(params[:id])
+  # end
   
-  def update
-    @pledge = Pledge.find(params[:id])
+  def pay
+    @pledge = Pledge.find(params[:pledge_id])
     @pledge[:payment_status] = "success"
     if @pledge.save
       backer_id = @pledge.backer.id
@@ -35,6 +50,6 @@ class Api::PledgesController < ApplicationController
   private
   
   def pledge_params
-    params.require(:pledge).permit(:id, :backer_id, :reward_id, :amount, :project_id)
+    params.require(:pledge).permit(:id, :backer_id, :reward_id, :amount)
   end
 end

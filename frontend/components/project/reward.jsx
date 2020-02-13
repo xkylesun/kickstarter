@@ -29,12 +29,10 @@ class Reward extends React.Component {
         } else {
             this.props.createPledge({
                 backer_id: this.props.currentUser.id,
-                project_id: this.props.projectId,
                 reward_id: this.props.reward.id,
                 amount: parseInt(this.state.value)
             }).then(
                 (payload) => {
-                    console.dir(payload)
                     this.props.history.push(`/checkouts/${payload.pledge.id}/payments`)
                 }
             )

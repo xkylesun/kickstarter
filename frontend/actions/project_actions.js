@@ -14,13 +14,6 @@ const receiveProjects = payload => {
     };
 };
 
-const receiveUserProjects = payload => {
-    return {
-        type: RECEIVE_USER_PROJECTS,
-        payload
-    }
-}
-
 const appendProjects = payload => {
     return {
         type: APPEND_PROJECTS,
@@ -64,14 +57,6 @@ export const fetchMoreProjects = (filters) => dispatch => {
             errors => dispatch(receiveErrors(errors))
         )
 };
-
-export const fetchUserProjects = (filter) => dispatch => {
-    return ProjectUtil.fetchProject(filter)
-        .then(
-            payload => dispatch(receiveUserProjects(payload)),
-            errors => dispatch(receiveErrors(errors))
-        )
-}
 
 export const fetchProject = projectId => dispatch => (
     ProjectUtil.fetchProject(projectId)

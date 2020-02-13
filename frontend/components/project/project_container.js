@@ -6,7 +6,7 @@ import { selectRewards } from "../../reducers/selector"
 import Project from "./project";
 
 const mapStateToProps = (state, ownProps) => {
-    const project = state.entities.projects.all[ownProps.match.params.projectId]    
+    const project = state.entities.projects[ownProps.match.params.projectId]    
     return {
         id: ownProps.match.params.projectId,
         project: project,

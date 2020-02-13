@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import StartForm from './start_form';
+import StartForm from './edit_form';
 import { createProject } from "../../actions/project_actions";
 import { createReward } from "../../actions/reward_actions";
  

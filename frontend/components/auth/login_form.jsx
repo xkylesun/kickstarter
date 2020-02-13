@@ -27,8 +27,10 @@ export default class LoginForm extends React.Component {
             email: this.state.email,
             password: this.state.password
         })
-            .then(() => this.props.history.push("/"),
-            () => {this.setState({errors: [...this.props.errors]})});
+        .then(
+            () => this.props.history.push("/"),
+            () => {this.setState({errors: [...this.props.errors]})}
+        );
     };
 
     demoLogin(){
@@ -50,7 +52,9 @@ export default class LoginForm extends React.Component {
                     this.typing(false, password.slice(1));
                 }, 100) 
             } else {
-                setTimeout(() => this.props.login({email: this.state.email, password: this.state.password}), 500);
+                setTimeout(() => this.props.login(
+                    {email: this.state.email, password: this.state.password}
+                ).then(() => this.props.history.push("/")), 500);
             }
         }
     };

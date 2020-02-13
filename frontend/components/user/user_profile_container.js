@@ -1,19 +1,17 @@
 import { connect } from 'react-redux';
 import UserProfile from './user_profile';
-import { fetchUserProjects } from "../../actions/project_actions";
+import { fetchUser } from "../../actions/user_actions";
 
 const mapStateToProps = (state, ownProps) => {
     return {
         currentUser: state.session.currentUser,
-        createdProject: state.entities.projects.all
+        createdProject: state.entities.projects
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        // fetchBackedProject: userId => dispatch(fetchBackedProject(userId)),
-        // fetchCreatedProject: userId => dispatch(fetchCreatedProject(userId)),
-        fetchUserProjects: filter => dispatch(fetchUserProjects(filter))
+        fetchUser: id => dispatch(fetchUser(id))
     }
 };
 

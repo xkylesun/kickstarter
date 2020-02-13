@@ -5,7 +5,7 @@ import { fetchProjects } from "../../actions/project_actions"
 
 const mapStateToProps = (state, ownProps) => {
 
-    let projects = Object.values(state.entities.projects.all).sort(function (a, b) { return 0.5 - Math.random() });
+    let projects = Object.values(state.entities.projects).sort(function (a, b) { return 0.5 - Math.random() });
     let featured = projects.shift();
 
     return {

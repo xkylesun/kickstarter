@@ -11,12 +11,12 @@ export default class Navbar extends React.Component {
         super(props)
     }
 
-    componentDidMount(){
-        let name = this.props.currentUser ? this.props.currentUser.name : null;
-        if (!name){
-            this.props.fetchCurrentUser(this.props.currentUser)
-        }
-    }
+    // componentDidMount(){
+    //     let name = this.props.currentUser ? this.props.currentUser.name : null;
+    //     if (!name){
+    //         this.props.fetchCurrentUser(this.props.currentUser)
+    //     }
+    // }
 
     render() {
         let userComp;

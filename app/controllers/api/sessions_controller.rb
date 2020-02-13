@@ -5,7 +5,8 @@ class Api::SessionsController < ApplicationController
             render json: ['The email address and password you entered do not match.'], status: 401
         else
             login(@user)
-            redirect_to api_user_url(@user)
+            # redirect_to api_user_url(@user)
+            render "api/sessions/show"
         end
     end
 

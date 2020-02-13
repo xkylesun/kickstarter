@@ -1,6 +1,6 @@
 import Payment from "./payment";
 import { connect } from "react-redux";
-import { updatePledge, fetchPledge } from "../../actions/pledge_actions";
+import { payPledge, fetchPledge } from "../../actions/pledge_actions";
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        updatePledge: (id) => dispatch(updatePledge(id)),
+        payPledge: (id) => dispatch(payPledge(id)),
         fetchPledge: id => dispatch(fetchPledge(id))
     };
 }

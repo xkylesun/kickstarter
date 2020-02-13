@@ -1,5 +1,5 @@
 
-json.projects do 
+json.project do 
     json.set! @project.id do
         # json.extract! @project, :id, :title, :subtitle, :creator_id, :category, :due_date, :body, :created_at, :image_url, :target, :reward_ids
         json.extract! @project, :id, :title, :subtitle, :creator_id, :category, :due_date, :body, :created_at, :target, :reward_ids
