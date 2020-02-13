@@ -11,16 +11,29 @@ class Api::ProjectsController < ApplicationController
 
     case filter_params[:type]
       when "category"
-        @projects = Project.where(category: search).order("due_date asc").includes(:creator, :pledges, image_attachment: :blob)
+        @projects = Project.where(category: search).order("due_date asc")
+          .includes(:creator, :pledges, image_attachment: :blob)
           .page(page).per(limit)
+
       when "search_term"
         regex = "%#{search}%"
-        @projects = Project.where("lower(projects.title) like ? or projects.category = ?", regex, search).distinct.order("due_date asc").includes(:creator, :pledges, image_attachment: :blob)
+        @projects = Project.where("lower(projects.title) like ? or projects.category = ?", regex, search)
+          .distinct.order("due_date asc")
+          .includes(:creator, :pledges, image_attachment: :blob)
           .page(page).per(limit)
+
       when "_home"
-        @projects = Project.order("due_date asc").includes(:creator, :pledges, image_attachment: :blob).limit(10)
+        @projects = Project.limit(10).order("due_date asc")
+          .includes(:creator, :pledges, image_attachment: :blob)
+      
+      when "_user"
+        @projects = Project.where(creator_id: search).order("due_date asc")
+
       else
-        @projects = Project.order("due_date asc").includes(:creator, :pledges, image_attachment: :blob).page(page).per(limit)
+        @projects = Project.order("due_date asc")
+          .includes(:creator, :pledges, image_attachment: :blob)
+          .page(page).per(limit)
+
     end
     
     @last_page = @projects.page(page).per(limit).last_page? || @projects.page(page).per(limit).out_of_range?

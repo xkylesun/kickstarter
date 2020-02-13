@@ -3,9 +3,10 @@ import { logout } from '../../actions/session_actions';
 import { fetchCurrentUser } from "../../actions/user_actions";
 import Navbar from './navbar';
 
-const mapStateToProps = (props) => {
+const mapStateToProps = (state) => {
+    console.dir(state.session.currentUser)
     return {
-        currentUser: props.session.currentUser
+        currentUser: state.session.currentUser
     };
 };
 

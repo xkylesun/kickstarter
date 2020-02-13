@@ -37,10 +37,10 @@ export default class Discover extends React.Component {
     }
 
     autoLoad() {
-        var _ = require('lodash');
-        let callback = (event) => {
-            var element = event.target.scrollingElement
-            if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+        let _ = require('lodash');
+        let callback = (e) => {
+            let ele = e.target.scrollingElement
+            if (ele.scrollHeight - ele.scrollTop === ele.clientHeight) {
                 this.loadMore();
             }
         };

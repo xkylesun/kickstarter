@@ -7,10 +7,18 @@ import { Link } from 'react-router-dom';
      };
 
      componentDidMount(){
-         this.props.fetchUserProjects();
+         let filter = {
+             type: "_user",
+             search: this.props.match.params.userId
+         }
+        //  this.props.fetchUserProjects(this.props.match.params.userId);
      }
 
      render(){
+         if (!this.props.backedProjects){
+             return null;
+         }
+         console.dir(this.props)
          return (
              <div>USER PROFILE
                  <div>
@@ -18,16 +26,16 @@ import { Link } from 'react-router-dom';
                         {this.props.backedProjects.map( project => (
                             <li key={project.id}>
                                 <div className="image-container-16-9 discover-image">
-                                    <Link to={`/projects/${props.project.id}`}>
-                                        <img className="image-16-9" src={props.project.imageUrl} />
+                                    <Link to={`/projects/${project.id}`}>
+                                        <img className="image-16-9" src={project.imageUrl} />
                                     </Link>
                                 </div>
                                 <div className="discover-title-frame">
-                                    <Link to={`/projects/${props.project.id}`}>
-                                        <h2 className="discover-title">{props.project.title}</h2>
-                                        <h3 className="discover-sub">{props.project.subtitle}</h3>
+                                    <Link to={`/projects/${project.id}`}>
+                                        <h2 className="discover-title">{project.title}</h2>
+                                        <h3 className="discover-sub">{project.subtitle}</h3>
                                     </Link>
-                                    <p className="discover-creator">by {props.creator.name}</p>
+                                    <p className="discover-creator">by {creator.name}</p>
                                 </div>
                             </li>
                         ))}

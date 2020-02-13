@@ -5,9 +5,7 @@ import { fetchUserProjects } from "../../actions/project_actions";
 const mapStateToProps = (state, ownProps) => {
     return {
         currentUser: state.session.currentUser,
-        targetUser: ownProps.match.params.userId,
-        backedProject: state.entities.projects.backed,
-        createdProject: state.entities.projects.created
+        createdProject: state.entities.projects.all
     };
 };
 
