@@ -10,12 +10,38 @@ export default class Project extends React.Component {
         super(props)
     }
     componentDidMount() {
-        this.props.fetchProject(this.props.match.params.projectId)
+        let id = this.props.match.params.projectId;
+        this.props.fetchProject(id)
+            .then(
+                res => {
+                    let project = res.payload.project[id];
+                    if(!project){
+                        this.props.history.push("/project-not-found");
+                    } else {
+                        if (project.status !== "launched") {
+                            this.props.history.push("/project-not-launched");
+                        }
+                    }
+                }
+            )
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.match.params.projectId !== prevProps.id) {
-            this.props.fetchProject(this.props.match.params.projectId)
+        let id = this.props.match.params.projectId;
+        if (id !== prevProps.id) {
+            this.props.fetchProject(id)
+                .then(
+                    res => {
+                        let project = res.payload.project[id];
+                        if (!project) {
+                            this.props.history.push("/project-not-found");
+                        } else {
+                            if (project.status !== "launched") {
+                                this.props.history.push("/project-not-launched");
+                            }
+                        }
+                    }
+                )
         }
     }
 

@@ -126,6 +126,7 @@ export default class RewardForm extends React.Component{
                             () => {
                                 if (this.props.addReward(
                                     {
+                                        project_id: this.props.projectId,
                                         title: this.state.title,
                                         description: this.state.description,
                                         minimum: this.state.minimum,
@@ -133,6 +134,7 @@ export default class RewardForm extends React.Component{
                                         estimated_delivery: this.state.month + " " + this.state.year
                                     })){
                                 this.clearForm();
+                                this.props.hideForm();
                                 };
                             }
                         }>

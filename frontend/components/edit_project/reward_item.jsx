@@ -19,11 +19,11 @@ export default class RewardItem extends React.Component {
                         <p className="cell-first">${this.props.reward.minimum}</p>
                         <div className="cell-second">
                             <p className="list-reward-title">{this.props.reward.title}</p>
-                            <p className="list-delivery">Estimated delivery: {this.props.reward.estimated_delivery}</p>
+                            <p className="list-delivery">Estimated delivery: {this.props.reward.estimatedDelivery}</p>
                         </div>
                     </div>
                     <div className="reward-list-bottom">
-                        <button className="btn-delete" onClick={ () => this.props.deleteReward(this.props.idx) }>Delete</button>
+                        <button className="btn-delete" onClick={() => this.props.removeReward(this.props.reward.id) }>Delete</button>
                     </div>
                 </div>
             </div>

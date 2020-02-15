@@ -1,11 +1,23 @@
 import { connect } from 'react-redux';
 import UserProfile from './user_profile';
 import { fetchUser } from "../../actions/user_actions";
+import { selectProjects, selectUser } from "../../reducers/selector";
 
 const mapStateToProps = (state, ownProps) => {
+    let currentUser = state.session.currentUser;
+    let targetId = ownProps.match.params.userId ? ownProps.match.params.userId : currentUser.id;
+
+    let targetUser = selectUser(state, targetId);
+    let backedProjects = selectProjects(state, targetUser.backedProjectIds);
+    // let creators = backedProjects.map(project => {
+    //     return selectUser(state, project.creatorId);
+    // })
+
     return {
-        currentUser: state.session.currentUser,
-        createdProject: state.entities.projects
+        currentUser: currentUser,
+        targetId: parseInt(targetId),
+        backedProjects: backedProjects,
+        creators: state.entities.users
     };
 };
 

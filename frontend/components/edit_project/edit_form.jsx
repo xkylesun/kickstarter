@@ -5,19 +5,18 @@ import RewardSection from "./edit_reward_section";
 import BasicSection from "./edit_basic_section";
 import { checkFilled } from "../../utils/other_utils";
 
-export default class StartForm extends React.Component {
+export default class EditForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             category: "",
             title: "",
             subtitle: "",
-            target: "",
+            target: 0,
             body: "",
             dueDate: "",
             imageFile: null,
             previewUrl: null,
-            rewards: [],
             errors: []
         }
         this.handleFile = this.handleFile.bind(this);
@@ -25,9 +24,26 @@ export default class StartForm extends React.Component {
         this.handleInput = this.handleInput.bind(this); // newline
         this.handleClick = this.handleClick.bind(this);
         this.addReward = this.addReward.bind(this);
-        this.deleteReward = this.deleteReward.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
     };
+
+    componentDidMount(){
+        this.props.fetchProjectDraft(this.props.match.params.projectId)
+            .then(
+                (res) => {
+                    // console.dir(res)
+                    if (res.payload.project.creatorId !== this.props.currentUser.id){
+                        this.props.history.push("/user-not-authorized")
+                    } else {
+                        const { category, title, subtitle, target, body, dueDate } = this.props.draft;
+                        const rewards = this.props.rewards;
+                        this.setState({
+                            category, title, subtitle, target, body, dueDate, rewards
+                        });
+                    }
+                }
+            );
+    }
 
     handleInput(stateName){
         return event => {
@@ -63,20 +79,12 @@ export default class StartForm extends React.Component {
 
     addReward(formReward){
         if (checkFilled("reward-required")){
-            let temp = JSON.parse(JSON.stringify(this.state.rewards));
-            temp.push(formReward);
-            this.setState({rewards: temp});
+            this.props.createReward(formReward);
             return true;
         } else {
             this.setState({errors: ["Please complete all require fields"]});
             return false;
         }
-    }
-
-    deleteReward(idx){
-        let temp = JSON.parse(JSON.stringify(this.state.rewards));
-        temp.splice(idx, 1);
-        this.setState({ rewards: temp });
     }
 
     handleSubmit(e) {
@@ -90,15 +98,17 @@ export default class StartForm extends React.Component {
             formData.append('project[body]', this.state.body);
             formData.append('project[target]', this.state.target);
             formData.append('project[due_date]', this.state.dueDate);
-            formData.append('project[image]', this.state.imageFile);
-            formData.append('project[rewards]', JSON.stringify(this.state.rewards));
+            if (this.state.imageFile){
+                formData.append('project[image]', this.state.imageFile);
+            }
             // this.props.createProject(formData);
             // for (var key of formData.entries()) {
             //     console.log(key[0] + ', ' + key[1]);
             // }
-            this.props.createProject(formData)
+            let projectId = this.props.match.params.projectId;
+            this.props.updateProject({formData, projectId})
                 .then(
-                    data => this.props.history.push(`/projects/${Object.keys(data.payload.projects)[0]}`)
+                    () => this.props.history.push(`/projects/${projectId}`)
                 );
 
         } else {
@@ -122,13 +132,28 @@ export default class StartForm extends React.Component {
     };
 
     render() {
+        let projectId = this.props.match.params.projectId;
         return (
             <div>
-                <BasicSection handleInput={this.handleInput} handleFile={this.handleFile} handleSubmit={this.handleSubmit} handleClick={this.handleClick} state={this.state} />
+                <BasicSection 
+                    handleInput={this.handleInput} 
+                    handleFile={this.handleFile} 
+                    handleSubmit={this.handleSubmit} 
+                    handleClick={this.handleClick} 
+                    state={this.state} />
 
-                <RewardSection handleClick={this.handleClick} addReward={this.addReward} deleteReward={this.deleteReward} rewards={this.state.rewards}/>
+                <RewardSection 
+                    handleClick={this.handleClick} 
+                    addReward={this.addReward} 
+                    removeReward={this.props.removeReward} 
+                    projectId={projectId}
+                    rewards={this.props.rewards}/>
 
-                <StorySection handleInput={this.handleInput} handleSubmit={this.handleSubmit} handleClick={this.handleClick} />
+                <StorySection 
+                    handleInput={this.handleInput} 
+                    handleSubmit={this.handleSubmit} 
+                    handleClick={this.handleClick} 
+                    body={this.state.body}/>
             
                 {this.renderErrors()}
             </div >

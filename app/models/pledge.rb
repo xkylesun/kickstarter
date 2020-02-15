@@ -16,7 +16,7 @@
 class Pledge < ApplicationRecord
     validates :amount, :payment_status, presence: true
     validates :amount, numericality: {greater_than: 0}
-    validate :greater_than_min, :has_quantity
+    validate :greater_than_min, :has_quantity, :ensure_valid_project
     validates_uniqueness_of :backer_id, scope: :project_id, message: "has already backed this project"
     after_initialize :ensure_payment_status
 
@@ -42,9 +42,9 @@ class Pledge < ApplicationRecord
         self.payment_status = "unpaid"
     end
 
-    # def ensure_project_id
-    #     if self.reward.project_id != self.project_id
-    #         self.reward.project_id = self.project_id
-    #     end
-    # end
+    def ensure_valid_project
+        if self.project.status != "launched"
+            errors[:pledge] << "invalid project"
+        end
+    end
 end

@@ -3,9 +3,9 @@ import React from "react";
 import RewardForm from "./reward_form";
 import RewardItem from "./reward_item";
 
-export default class BasicSection extends React.Component {
+export default class RewardSection extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     showForm() {
@@ -42,13 +42,21 @@ export default class BasicSection extends React.Component {
                         </div>
                         <div className="reward-item-display">
                             <ul>
-                                {this.props.rewards.map((reward, idx) => {
-                                    return (<li key={idx}><RewardItem reward={reward} idx={idx} deleteReward={this.props.deleteReward} /></li>)
+                                {this.props.rewards.map((reward) => {
+                                    return (
+                                        <li key={reward.id}>
+                                            <RewardItem 
+                                                reward={reward} 
+                                                removeReward={this.props.removeReward} />
+                                            </li>)
                                 })}
                             </ul>
                         </div>
                     </div>
-                    <RewardForm addReward={this.props.addReward} hideForm={this.hideForm}/>
+                    <RewardForm 
+                        addReward={this.props.addReward} 
+                        hideForm={this.hideForm}
+                        projectId={this.props.projectId}/>
                 </div>
 
                 <div className="bottom-bar">

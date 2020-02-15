@@ -7,14 +7,14 @@ export const usersReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_USER:
-            let newState = Object.assign({}, state, { [action.payload.user.id]: action.payload.user });
-            newState = Object.assign({}, newState, action.payload.creators)
+            let newState = Object.assign({}, newState, action.payload.creators)
+            newState[action.payload.user.id] = action.payload.user;
             return newState;
         case RECEIVE_PROJECT:
             return Object.assign({}, state, action.payload.creator);
         case RECEIVE_PROJECTS:
-            // return Object.assign({}, state, action.payload.creators);
-            return action.payload.creators || {};
+            return Object.assign({}, state, action.payload.creators);
+            // return action.payload.creators || {};
         case APPEND_PROJECTS:
             return Object.assign({}, state, action.payload.creators);
         default:

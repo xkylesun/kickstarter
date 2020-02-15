@@ -23,6 +23,7 @@ class User < ApplicationRecord
 
     has_many :backed_rewards, through: :pledges, source: :reward
     has_many :backed_projects, through: :pledges, source: :project
+    has_many :backed_creators, through: :backed_projects, source: :creator
 
     attr_reader :password
 

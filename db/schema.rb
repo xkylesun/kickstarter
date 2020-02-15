@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 2020_01_13_172844) do
     t.integer "reward_id", null: false
     t.integer "project_id", null: false
     t.integer "amount", null: false
-    t.string "payment_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "payment_status", null: false
+    t.index ["backer_id", "project_id"], name: "index_pledges_on_backer_id_and_project_id", unique: true
     t.index ["reward_id"], name: "index_pledges_on_reward_id"
-    t.index ["backer_id", "project_id"], name: "index_pledges_on_backer_id_and_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -56,11 +56,11 @@ ActiveRecord::Schema.define(version: 2020_01_13_172844) do
     t.integer "target", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "due_date", null: false
+    t.string "due_date", null: false
     t.text "body", null: false
-    t.string "image_url"
+    t.string "status", null: false
     t.index ["category"], name: "index_projects_on_category"
-    t.index ["creator_id", "title"], name: "index_projects_on_creator_id_and_title", unique: true
+    t.index ["creator_id", "title"], name: "index_projects_on_creator_id_and_title"
   end
 
   create_table "rewards", force: :cascade do |t|
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_01_13_172844) do
     t.integer "minimum", null: false
     t.string "title", null: false
     t.string "description", null: false
-    t.date "estimated_delivery"
+    t.string "estimated_delivery"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_rewards_on_project_id"

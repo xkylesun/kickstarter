@@ -11,23 +11,24 @@ class Api::ProjectsController < ApplicationController
 
     case filter_params[:type]
       when "category"
-        @projects = Project.where(category: search).order("due_date asc")
+        @projects = Project.where(category: search, status: "launched").order("due_date asc")
           .includes(:creator, :pledges, image_attachment: :blob)
           .page(page).per(limit)
 
       when "search_term"
         regex = "%#{search}%"
-        @projects = Project.where("lower(projects.title) like ? or projects.category = ?", regex, search)
+        @projects = Project.where(status: "launched")
+          .where("lower(projects.title) like ? or projects.category = ?", regex, search)
           .distinct.order("due_date asc")
           .includes(:creator, :pledges, image_attachment: :blob)
           .page(page).per(limit)
 
       when "_home"
-        @projects = Project.limit(10).order("due_date asc")
+        @projects = Project.where(status: "launched").limit(10).order("due_date asc")
           .includes(:creator, :pledges, image_attachment: :blob)
           
       else
-        @projects = Project.order("due_date asc")
+        @projects = Project.where(status: "launched").order("due_date asc")
           .includes(:creator, :pledges, image_attachment: :blob)
           .page(page).per(limit)
 
@@ -45,34 +46,46 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    if params[:id] == "_random"
-      @project = Project.order("RANDOM()").limit(1).includes(:creator, :rewards)[0]
-    else
-      @project = selected_project
-    end
+    @project = selected_project
 
-    @creator = @project.creator
-    @rewards = @project.rewards.includes(:pledges)
-    @funding_by_reward = @rewards.map do |reward|
-      reward.pledges.map do |pledge|
-        pledge.amount
+    if @project
+      @creator = @project.creator
+      @rewards = @project.rewards.includes(:pledges)
+      @funding_by_reward = @rewards.map do |reward|
+        reward.pledges.map do |pledge|
+          pledge.amount
+        end
       end
+      @all_pledges = @funding_by_reward.flatten
+      render :show
+    else
+      render json: {project: {}}
     end
+  end
 
-    @all_pledges = @funding_by_reward.flatten
+  def random
+    @project = Project.where(status: "launched").order("RANDOM()").limit(1)[0]
+    render json: {id: @project.id}
+  end
 
-    render :show
+  def draft 
+    @project = Project.find(params[:project_id])
+    @rewards = @project.rewards
+    # render json: { project: @project, rewards: @rewards }
+    render :draft
   end
 
   def create
     @project = Project.new(project_params)
+    @project[:status] = "draft"
     if @project.save
-      JSON.parse(params[:project][:rewards]).each do |rewardData|
-        reward = Reward.new(rewardData)
-        reward.project_id = @project.id
-        reward.save
-      end
-      redirect_to api_project_url(@project)
+      # JSON.parse(params[:project][:rewards]).each do |rewardData|
+      #   reward = Reward.new(rewardData)
+      #   reward.project_id = @project.id
+      #   reward.save
+      # end
+      # redirect_to api_project_url(@project)
+      render json: {project: @project}
     else
       render json: @project.errors.full_messages, status: 401
     end
@@ -80,20 +93,43 @@ class Api::ProjectsController < ApplicationController
   
   def update
     @project = selected_project
-    if @project && @project.update_attributes(project_params)
-      redirect_to api_project_url(@project)
-    elsif !@project
-      render json: ['Could not locate project'], status: 400
+    if @project
+      if @project.creator_id != project_params[:creator_id].to_i
+        render json: ["user not authorized"], status: 401
+      else
+
+        @project.assign_attributes(project_params)
+        @project.status = "launched"
+
+        if @project.save
+
+          @creator = @project.creator
+          @rewards = @project.rewards.includes(:pledges)
+          @funding_by_reward = @rewards.map do |reward|
+            reward.pledges.map do |pledge|
+              pledge.amount
+            end
+          end
+
+          @all_pledges = @funding_by_reward.flatten
+
+          render :show
+
+        else
+          render json: @project.errors.full_messages, status: 401
+        end
+      end
     else
-      render json: @project.errors.full_messages, status: 401
+      render json: ['Could not locate project'], status: 400
     end
   end
 
   def destroy
     @project = selected_project
+    id = @project.id
     if @project
       @project.destroy
-      render json: {projectId: @project.id}
+      render json: {projectId: id}
     else
       render json: ['Could not locate project'], status: 400
     end

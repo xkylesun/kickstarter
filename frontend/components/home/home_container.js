@@ -9,8 +9,8 @@ const mapStateToProps = (state, ownProps) => {
     let featured = projects.shift();
 
     return {
-        featured: featured,
-        recommended: projects,
+        featured: featured || {},
+        recommended: projects || [],
         users: state.entities.users
     };
 };

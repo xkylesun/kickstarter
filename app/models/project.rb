@@ -15,11 +15,10 @@
 #  image_url  :string
 #
 
-
 class Project < ApplicationRecord
-    validates :title, :subtitle, :category, :due_date, :body, presence: true
-    # validate :ensure_image
-
+    validates :title, :subtitle, :category, :target, :due_date, :body, presence: true, if: -> { :status == "launched" }
+    validate :ensure_image
+    
     belongs_to :creator, foreign_key: :creator_id, class_name: :User
 
     has_many :rewards, dependent: :destroy
@@ -31,12 +30,14 @@ class Project < ApplicationRecord
     has_one_attached :image
 
     def create_first_reward
-        Reward.new(project_id: Project.last.id, minimum: 1, title: "Back it because you believe in it.", description: "Support the project for no reward, just because it speaks to you.").save
+        if self.rewards.length == 0
+            Reward.new(project_id: Project.last.id, minimum: 1, title: "Back it because you believe in it.", description: "Support the project for no reward, just because it speaks to you.").save
+        end
     end
 
-    # def ensure_image 
-    #     unless self.image.attached?
-    #         # errors[:image] << "must be attached"
-    #     end
-    # end
+    def ensure_image
+     if !self.image.attached?
+        self.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'no-image.png')), filename: 'default-image.png', content_type: 'image/png')
+     end
+    end
 end

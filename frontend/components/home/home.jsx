@@ -8,7 +8,8 @@ export default class Discover extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            page: 1
+            page: 1,
+            loading: true
         }
         this.pageUp = this.pageUp.bind(this);
         this.pageDown = this.pageDown.bind(this);
@@ -16,6 +17,7 @@ export default class Discover extends React.Component{
 
     componentDidMount(){
         this.props.fetchProjects({type: "_home"})
+        .then(() => this.setState({loading: false}))
     }
 
     handleShift(num) {
@@ -35,7 +37,8 @@ export default class Discover extends React.Component{
     }
 
     render(){
-        if (!this.props.featured) {
+        console.dir(this.props)
+        if (this.state.loading) {
             return null;
         } else {
             const endIdx = this.state.page * 3;

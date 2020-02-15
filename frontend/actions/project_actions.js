@@ -3,6 +3,7 @@ import * as ProjectUtil from "../utils/project_util"
 export const RECEIVE_PROJECTS = "RECEIVE_PROJECTS";
 export const APPEND_PROJECTS = "APPEND_PROJECTS";
 export const RECEIVE_PROJECT = "RECEIVE_PROJECT";
+export const RECEIVE_PROJECT_DRAFT = "RECEIVE_PROJECT_DRAFT";
 export const RECEIVE_PROJECT_ERRORS = "RECEIVE_PROJECT_ERRORS";
 export const REMOVE_PROJECT = "REMOVE_PROJECT";
 export const RECEIVE_USER_PROJECTS = "RECEIVE_USER_PROJECTS";
@@ -27,6 +28,13 @@ const receiveProject = payload => {
         payload
     };
 };
+
+const receiveProjectDraft = payload => {
+    return {
+        type: RECEIVE_PROJECT_DRAFT,
+        payload
+    }
+}
 
 const removeProject = projectId => {
     return {
@@ -66,6 +74,14 @@ export const fetchProject = projectId => dispatch => (
         )
 );
 
+export const fetchProjectDraft = projectId => dispatch => (
+    ProjectUtil.fetchProjectDraft(projectId)
+        .then(
+            payload => dispatch(receiveProjectDraft(payload)),
+            errors => dispatch(receiveErrors(errors))
+        )
+);
+
 export const createProject = formData => dispatch => (
     ProjectUtil.createProject(formData)
         .then(
@@ -74,8 +90,8 @@ export const createProject = formData => dispatch => (
         )
 );
 
-export const updateProject = formProject => dispatch => (
-    ProjectUtil.updateProject(formProject)
+export const updateProject = ({formData, projectId}) => dispatch => (
+    ProjectUtil.updateProject(formData, projectId)
         .then(
             payload => dispatch(receiveProject(payload)),
             errors => dispatch(receiveErrors(errors))

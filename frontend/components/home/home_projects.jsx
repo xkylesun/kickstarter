@@ -4,19 +4,21 @@ import { Link } from 'react-router-dom';
 
 // only one project
 export const Featured = (props) => {
+    const { funding, imageUrl, target, title, subtitle } = props.project;
+    const name = props.creator ? props.creator.name : "";
     return (
     <div className="feat-frame">
         <div className="image-container-16-9">
-            <img className="image-16-9" src={props.project.imageUrl} />
+            <img className="image-16-9" src={imageUrl} />
         </div>
         <div className="bar-frame feat-bar">
-            <div className="bar-green" style={{ width: `${props.project.funding / props.project.target * 100}%`}}></div>
-            <div className="bar-gray" style={{ width: `${(1 - props.project.funding / props.project.target) * 100}%` }}></div>
+            <div className="bar-green" style={{ width: `${funding / target * 100}%`}}></div>
+            <div className="bar-gray" style={{ width: `${(1 - funding / target) * 100}%` }}></div>
         </div>
 
-        <h1 className="feat-project-title">{props.project.title}</h1>
-        <h2 className="feat-subtitle">{props.project.subtitle}</h2>
-        <p className="attr-creator">By {props.creator.name}</p>
+        <h1 className="feat-project-title">{title}</h1>
+        <h2 className="feat-subtitle">{subtitle}</h2>
+        <p className="attr-creator">By {name}</p>
     </div>)
 }
 

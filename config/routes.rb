@@ -33,11 +33,21 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api, defaults: {format: :json} do
+
     resources :users, except: [:new, :edit, :index]
+
     resource :session, only: [:create, :destroy]
 
-    resources :projects, defaults: {format: :json}, except: [:new, :edit]
+    resources :projects, defaults: {format: :json}, except: [:new, :edit] do
+      get :draft
+
+      collection do
+        get :random
+      end
+    end
+
     resources :rewards, defaults: {format: :json}, only: [:create, :update, :destroy]
+
     resources :pledges, defaults: {format: :json}, only: [:show, :create, :update] do
       patch :pay
     end

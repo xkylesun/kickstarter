@@ -22,11 +22,15 @@ class Api::UsersController < ApplicationController
   end
   
   def show
-    @user = selected_user
-    @backed_projects = Project.joins(:backers).where(pledges: { backer_id: @user.id }).distinct.includes(:creator)
-    @creators = @backed_projects.map {|project| project.creator}
-    @created_projects = Project.where(creator_id: @user.id)
-    render :show
+    @user = User.where(id: params[:id]).includes(:backed_rewards, :backed_creators, backed_projects: {image_attachment: :blob}, created_projects: {image_attachment: :blob })[0]
+    if @user
+      @backed_projects = @user.backed_projects
+      @created_projects = @user.created_projects
+      @creators = @user.backed_creators
+      render :show
+    else
+      render json: {user: {}}
+    end
   end
   
   def destroy

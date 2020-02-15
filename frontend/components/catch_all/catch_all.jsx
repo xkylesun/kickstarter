@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-
+import { fetchRandom } from "../../utils/project_util";
 
 export default class CatchAll extends React.Component {
     constructor(props){
@@ -8,11 +8,11 @@ export default class CatchAll extends React.Component {
     };
 
     redirectRandom() {
-        this.props.fetchProject()
-            .then(data => {
-                let projectId = Object.keys(data.payload.projects)[0];
-                this.props.history.push(`/projects/${projectId}`);
-            });
+        fetchRandom().then(
+            result => {
+                this.props.history.push(`/projects/${result.id}`)
+            }
+        )
     }
 
     render() {

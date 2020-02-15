@@ -7,9 +7,9 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :category, null: false
       t.integer :target, null: false
       t.timestamps
-      t.timestamp :due_date, null: false
+      t.string :due_date, null: false
       t.text :body, null: false
-      t.string :image_url
+      t.string :status
     end
     add_index :projects, [:creator_id, :title], unique: true
     add_index :projects, :category

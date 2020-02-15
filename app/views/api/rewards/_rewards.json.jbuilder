@@ -1,0 +1,1 @@
+json.extract! reward, :id, :title, :quantity, :minimum, :description, :estimated_delivery
