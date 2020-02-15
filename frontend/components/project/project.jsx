@@ -2,6 +2,7 @@ import React from "react";
 import Reward from "./reward";
 
 import { parseNum, countDays, scrollTo } from "../../utils/other_utils";
+import { Link } from "react-router-dom";
 
 
 
@@ -104,7 +105,9 @@ export default class Project extends React.Component {
                         <div className="project-body-2-2">
                             <div className="project-user-profile">
                                 <div className="project-avatar-container">
-                                    <img className="project-user-avatar" src={this.props.creator.avatar} />
+                                    <Link to={`profile/${this.props.creator.id}`}>
+                                        <img className="project-user-avatar" src={this.props.creator.avatar} />
+                                    </Link>
                                 </div>
 
                                 <div className="project-user-info">

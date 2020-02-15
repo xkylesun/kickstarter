@@ -36,10 +36,10 @@ const receiveProjectDraft = payload => {
     }
 }
 
-const removeProject = projectId => {
+const removeProject = payload => {
     return {
         type: REMOVE_PROJECT,
-        projectId
+        payload
     };
 };
 

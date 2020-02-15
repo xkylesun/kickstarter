@@ -39,8 +39,16 @@ export default class CreatedProjects extends Component {
                                         <h4>{project.subtitle}</h4>
                                     </span>
                                     <span>
-                                        <button>Edit</button>
-                                        <button>Delete</button>
+                                        <button
+                                            type="button"
+                                            className=""
+                                            onClick={() => this.props.history.push(`/projects/${project.id}/edit`)}
+                                        >Edit</button>
+                                        <button
+                                            type="button"
+                                            className=""
+                                            onClick={() => this.props.deleteProject(project.id)}
+                                        >Delete</button>
                                     </span>
                                 </li>
                             )

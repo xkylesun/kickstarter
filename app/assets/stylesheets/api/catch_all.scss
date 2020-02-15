@@ -4,10 +4,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+        overflow: hidden;
 }
 
 .catch-all-content {
     width: 34%;
+    z-index: 10;
 }
 
 .catch-all-title {
@@ -46,7 +48,7 @@
 }
 
 .catch-all-image:hover {
-    transform: scale(1.09923) rotate(4.96129deg);
+    transform: scale(1.1) rotate(4.96129deg);
 }
 
 // #catch-all-chance-btn {

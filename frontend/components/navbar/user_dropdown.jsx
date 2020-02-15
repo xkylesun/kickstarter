@@ -26,13 +26,11 @@ export default class UserDropdown extends React.Component {
                 <div id="user-dropdown" className="user-dropdown">
                     <div className="dropdown-container">
                         <h1 className="dropdown-title">YOUR ACCOUNT</h1>
-                        <ul className="dropdown-item-list">
-                            <li>Not Dead Links</li>
-                            <li>Just Placeholders</li>
-                            <li>to Hide</li>
-                            <li>Logout</li>
-                            <li>Button</li>
-                            <li>:)</li>
+                        <ul 
+                            onClick={() => toggleHide("user-dropdown")}
+                            className="dropdown-item-list">
+                            <li className="dropdown-btn"><Link to="/profile/">Profile</Link></li>
+                            <li className="dropdown-btn"><Link to="/profile/projects">Created projects</Link></li>
                         </ul>
                     </div>
                         <button className="logout-btn" onClick={this.props.logout}>Log out</button>
