@@ -16,6 +16,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         currentUser: currentUser,
         targetId: parseInt(targetId),
+        targetUser: targetUser,
         backedProjects: backedProjects,
         creators: state.entities.users
     };

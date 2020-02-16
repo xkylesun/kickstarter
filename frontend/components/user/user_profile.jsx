@@ -53,31 +53,40 @@ export default class UserProfile extends React.Component{
         }
 
         return (
-            <div>USER PROFILE
-                <div>
-                <ul>
-                    {this.props.backedProjects.map( project => {
-                        let creator = this.props.creators[project.creatorId]
-                        return (<li key={project.id}>
-                            <div className="image-container-16-9 discover-image">
-                                <Link to={`/projects/${project.id}`}>
-                                    <img className="image-16-9" src={project.imageUrl} />
-                                </Link>
-                            </div>
-                            <div className="discover-title-frame">
-                                <Link to={`/projects/${project.id}`}>
-                                    <h2 className="discover-title">{project.title}</h2>
-                                    <h3 className="discover-sub">{project.subtitle}</h3>
-                                </Link>
-                                <p className="discover-creator">by {creator.name}</p>
-                            </div>
-                        </li>)
-                        }
-                    )}
-                </ul>
+            <div>
+                <div className="project-user-profile">
+                    <div className="project-avatar-container">
+                        <img className="profile-user-avatar" src={this.props.targetUser.avatar} />
+                    </div>
+
+                    <div className="project-user-info">
+                        <h2 className="profile-name">{this.props.targetUser.name}</h2>
+                        <p className="profile-bio">{this.props.targetUser.biography}</p>
+                    </div>
+
                 </div>
                 <div>
-
+                    <div>Backed projects</div>
+                    <ul>
+                        {this.props.backedProjects.map(project => {
+                            let creator = this.props.creators[project.creatorId]
+                            return (<li key={project.id}>
+                                <div className="image-container-16-9 discover-image">
+                                    <Link to={`/projects/${project.id}`}>
+                                        <img className="image-16-9" src={project.imageUrl} />
+                                    </Link>
+                                </div>
+                                <div className="discover-title-frame">
+                                    <Link to={`/projects/${project.id}`}>
+                                        <h2 className="discover-title">{project.title}</h2>
+                                        <h3 className="discover-sub">{project.subtitle}</h3>
+                                    </Link>
+                                    <p className="discover-creator">by {creator.name}</p>
+                                </div>
+                            </li>)
+                        }
+                        )}
+                    </ul>
                 </div>
             </div>
         )

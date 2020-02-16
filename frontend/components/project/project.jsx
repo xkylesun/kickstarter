@@ -105,7 +105,7 @@ export default class Project extends React.Component {
                         <div className="project-body-2-2">
                             <div className="project-user-profile">
                                 <div className="project-avatar-container">
-                                    <Link to={`profile/${this.props.creator.id}`}>
+                                    <Link to={`/profile/${this.props.creator.id}`}>
                                         <img className="project-user-avatar" src={this.props.creator.avatar} />
                                     </Link>
                                 </div>
