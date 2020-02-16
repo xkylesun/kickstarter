@@ -10,7 +10,13 @@ export default class UserProfile extends React.Component{
         let targetId = parseInt(this.props.match.params.userId);
         let currentUserId = this.props.currentUser ? this.props.currentUser.id : null;
 
-        if (targetId && currentUserId && targetId !== currentUserId){
+        if (!targetId && !currentUserId || targetId === "projects"){
+            this.props.history.push("/login");
+        }
+
+        if (targetId && currentUserId && targetId === currentUserId){
+            this.props.history.push("/profile/")
+        } else if (targetId && currentUserId && targetId !== currentUserId){
             this.props.fetchUser(targetId)
                 .then(
                     res => {
@@ -19,10 +25,9 @@ export default class UserProfile extends React.Component{
                         }
                     }
                 )
-        } else if (!targetId) {
+        } 
+        else {
             this.props.fetchUser(currentUserId);
-        } else {
-            this.props.history.push("/profile/")
         }
     }
 
@@ -48,7 +53,7 @@ export default class UserProfile extends React.Component{
 
     render(){
         console.dir(this.props)
-        if (!this.props.backedProjects){
+        if (!this.props.targetUser){
             return null;
         }
 

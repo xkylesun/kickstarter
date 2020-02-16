@@ -5,10 +5,15 @@ import { selectProjects, selectUser } from "../../reducers/selector";
 
 const mapStateToProps = (state, ownProps) => {
     let currentUser = state.session.currentUser;
-    let targetId = ownProps.match.params.userId ? ownProps.match.params.userId : currentUser.id;
-
+    let targetId = ownProps.match.params.userId;
+    let backedProjects = [];
+    if (!targetId){
+        targetId = currentUser ? currentUser.id : null;
+    }
     let targetUser = selectUser(state, targetId);
-    let backedProjects = selectProjects(state, targetUser.backedProjectIds);
+    if (targetUser){
+        let backedProjects = selectProjects(state, targetUser.backedProjectIds);
+    }
     // let creators = backedProjects.map(project => {
     //     return selectUser(state, project.creatorId);
     // })

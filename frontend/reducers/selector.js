@@ -20,6 +20,7 @@ export const selectRewards = (state, project) => {
 }
 
 export const selectUser = (state, userId) => {
+    if (!userId) return null;
     let users = state.entities.users;
     if (userId){
         if (users[userId]){
