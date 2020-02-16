@@ -19,7 +19,6 @@ export const projectsReducer = (state = {}, action) => {
             newState[draftId] = action.payload.project;
             return newState;
         case REMOVE_PROJECT:
-            console.dir(newState)
             delete newState[action.payload.projectId];
             return newState;
         // case RECEIVE_REWARDS:

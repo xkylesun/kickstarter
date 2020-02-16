@@ -126,10 +126,12 @@ class Api::ProjectsController < ApplicationController
 
   def destroy
     @project = selected_project
-    id = @project.id
+    project_id = @project.id
+    creator_id = @project.creator_id
     if @project
       @project.destroy
-      render json: {projectId: id}
+      @created_project_ids = User.find(creator_id).created_project_ids
+      render json: {projectId: project_id, createdProjectIds: @created_project_ids}
     else
       render json: ['Could not locate project'], status: 400
     end

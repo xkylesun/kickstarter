@@ -25,7 +25,7 @@ class Project < ApplicationRecord
     has_many :pledges, -> { where(payment_status: "success")}
     has_many :backers, through: :pledges, source: :backer
     
-    after_commit :create_first_reward
+    after_commit :create_first_reward, on: :create
     
     has_one_attached :image
 
