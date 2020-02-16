@@ -17,7 +17,7 @@ export default class StartForm extends Component {
             body: ""
         }).then(
             (result) => {
-                let projectId = result.payload.project.id
+                let projectId = result.project.id
                 this.props.history.push(`/projects/${projectId}/edit`)
             }
         )

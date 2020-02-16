@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
     let currentUser = state.session.currentUser;
     return {
         currentUser: currentUser,
-        createdProjects: selectProjects(state, currentUser.createdProjectIds)
+        createdProjects: selectProjects(state, currentUser.createdProjectIds).filter(res => res !== undefined)
     };
 };
 
