@@ -10,7 +10,7 @@ export default class UserProfile extends React.Component{
         let targetId = parseInt(this.props.match.params.userId);
         let currentUserId = this.props.currentUser ? this.props.currentUser.id : null;
 
-        if (!targetId && !currentUserId || targetId === "projects"){
+        if (!targetId && !currentUserId){
             this.props.history.push("/login");
         }
 
