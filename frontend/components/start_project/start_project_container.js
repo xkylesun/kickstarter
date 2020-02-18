@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import StartForm from './start_form';
+import StartProject from './start_project';
 import { createProject } from "../../actions/project_actions";
  
 const mapStateToProps = (props) => {
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(StartForm);
+export default connect(mapStateToProps, mapDispatchToProps)(StartProject);

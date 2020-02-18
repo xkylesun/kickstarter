@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
     }
     let targetUser = selectUser(state, targetId);
     if (targetUser){
-        let backedProjects = selectProjects(state, targetUser.backedProjectIds);
+        backedProjects = selectProjects(state, targetUser.backedProjectIds);
     }
     // let creators = backedProjects.map(project => {
     //     return selectUser(state, project.creatorId);

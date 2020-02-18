@@ -138,12 +138,17 @@
 
 .dropdown-item-list {
     font-size: 14px;
-    padding: 0 36px 36px 24px;
+    padding: 0 36px 12px 24px;
     border-bottom: 1px solid $border-gray;
 }
 
 .dropdown-item-list li {
     margin: 12px 0;
+}
+
+.dropdown-item-list li:hover {
+    color: #4c6cf8;
+    text-decoration: underline;
 }
 
 .logout-btn {

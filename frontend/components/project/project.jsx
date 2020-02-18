@@ -111,8 +111,8 @@ export default class Project extends React.Component {
                                 </div>
 
                                 <div className="project-user-info">
-                                    <h2 className="profile-name">{this.props.creator.name}</h2>
-                                    <p className="profile-bio">{this.props.creator.biography}</p>
+                                    <h2 className="project-profile-name">{this.props.creator.name}</h2>
+                                    <p className="project-profile-bio">{this.props.creator.biography}</p>
                                 </div>
 
                             </div>

@@ -1,0 +1,95 @@
+// Place all the styles related to the api/pledges controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "./style";
+
+.created-projects-frame {
+    letter-spacing: 1px;
+    background-color: #f0f0f0;
+}
+
+.created-projects-subframe {
+    width: 75%;
+    min-width: 700px;
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+.created-header-title {
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.created-header-sub {
+    font-size: 22px;
+    margin: 24px 0 42px;
+}
+
+.created-body-title {
+    font-size: 22px;
+    margin: 0 0 20px;
+    line-height: 30px;
+}
+
+
+.created-item-frame {
+    height: 110px;
+    display: flex;
+    background-color: white;
+    margin: 18px 0;
+}
+
+.created-image-frame {
+    width: 157.5px;
+    // height: 88.5px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+}
+
+.created-image {
+    height: 88.5px;
+}
+
+.created-content-frame {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.created-content-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.created-content-subframe {
+    padding: 12px 18px;
+    font-size: 14px;
+}
+
+.created-content-title {
+    font-weight: 500;
+    margin: 0 0 12px;
+}
+
+.created-btn-container{
+    display: flex;
+    align-items: center;
+}
+
+.created-btn {
+    color: #2752FF;
+    font-size: 14px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    margin: 18px
+}
+
+.created-btn:hover{
+    color: $text-black;
+}
+

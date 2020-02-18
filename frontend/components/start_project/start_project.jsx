@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class StartForm extends Component {
+export default class StartProject extends Component {
     constructor(props){
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,10 +25,12 @@ export default class StartForm extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <h2>Bring your creative project to life</h2>
-                    <button className="btn btn-green" onClick={this.handleSubmit}>Get started</button>
+            <div className="start-project-frame">
+                <div className="start-project-background">
+                    <div className="start-project-content">
+                        <h2 className="start-project-title">Bring your creative project to life.</h2>
+                        <button className="btn btn-new-project" onClick={this.handleSubmit}>Get started</button>
+                    </div>
                 </div>
             </div>
         )

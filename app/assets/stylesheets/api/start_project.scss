@@ -1,0 +1,36 @@
+@import "./style";
+
+.start-project-frame {
+    // padding-bottom: 60px;
+    border-bottom: 1px solid $border-gray;
+}
+
+.start-project-background {
+    background-color: #0A007D;
+    height: 512px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.start-project-content {
+    width: 35%;
+    margin: 40px 60px;
+}
+
+.start-project-title {
+    font-size: 48px;
+    color: white;
+    font-weight: 500;
+}
+
+.btn-new-project {
+    background-color: #05CE78;
+    padding: 0 24px;
+    color: #0A007D;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.btn-new-project:hover {
+    background-color: #9BEBC9;
+}

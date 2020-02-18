@@ -52,46 +52,63 @@ export default class UserProfile extends React.Component{
     }
 
     render(){
-        console.dir(this.props)
         if (!this.props.targetUser){
             return null;
         }
-
+        console.dir(this.props)
         return (
-            <div>
-                <div className="project-user-profile">
-                    <div className="project-avatar-container">
-                        <img className="profile-user-avatar" src={this.props.targetUser.avatar} />
+            <div className="user-profile-frame">
+                <div className="user-profile-main">
+                    <div className="profile-avatar-container">
+                        <img className="profile-avatar" src={this.props.targetUser.avatar} />
                     </div>
 
                     <div className="project-user-info">
                         <h2 className="profile-name">{this.props.targetUser.name}</h2>
-                        <p className="profile-bio">{this.props.targetUser.biography}</p>
+                        <p className="profile-count">Backed {this.props.backedProjects.length} projects</p>
                     </div>
 
                 </div>
-                <div>
-                    <div>Backed projects</div>
-                    <ul>
+                <div className="profile-backed-frame">
+                    <div className="profile-menu">
+                        <span className="profile-menu-text">Backed
+                            <p className="backed-mark">{this.props.backedProjects.length > 0 ? this.props.backedProjects.length : ""}</p>
+                        </span>
+                    </div>
+                    <div className="backed-grid-container">
+                    <ul className="backed-projects-grid">
                         {this.props.backedProjects.map(project => {
                             let creator = this.props.creators[project.creatorId]
-                            return (<li key={project.id}>
-                                <div className="image-container-16-9 discover-image">
-                                    <Link to={`/projects/${project.id}`}>
-                                        <img className="image-16-9" src={project.imageUrl} />
-                                    </Link>
-                                </div>
-                                <div className="discover-title-frame">
-                                    <Link to={`/projects/${project.id}`}>
-                                        <h2 className="discover-title">{project.title}</h2>
-                                        <h3 className="discover-sub">{project.subtitle}</h3>
-                                    </Link>
-                                    <p className="discover-creator">by {creator.name}</p>
+                            return (
+                            <li key={project.id}>
+                                <div className="project-item-frame">
+                                    <div className="project-item">
+                                        <div className="image-container-16-9 discover-image">
+                                            <Link to={`/projects/${project.id}`}>
+                                                    <img className="image-16-9" src={project.imageUrl} />
+                                            </Link>
+                                        </div>
+                                        <div className="backed-title-frame">
+                                            <Link to={`/projects/${project.id}`}>
+                                                <h2 className="discover-title">{project.title}</h2>
+                                                <h3 className="discover-sub">{project.subtitle}</h3>
+                                            </Link>
+                                        </div>
+                                        <div className="backed-creator-frame">
+                                            <div className="backed-creator-main">
+                                                <Link to={`/profile/${creator.id}`}>
+                                                    <img className="backed-creator-avatar" src={creator.avatar} />
+                                                </Link>
+                                                <p className="backed-creator">by <span className="bold">{creator.name}</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </li>)
                         }
                         )}
                     </ul>
+                    </div>
                 </div>
             </div>
         )

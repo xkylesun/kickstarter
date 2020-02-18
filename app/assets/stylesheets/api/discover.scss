@@ -22,7 +22,9 @@
     border: 1px solid $border-gray;
     font-weight: 300;
     letter-spacing: 0.8px;
-    min-width: 389.33px;
+    max-width: 375px;
+    width: 100%;
+    min-width: 275px;
 }
 
 .discover-title-frame{

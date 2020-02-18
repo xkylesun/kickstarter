@@ -1,0 +1,123 @@
+// Place all the styles related to the api/users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "./style";
+
+.user-profile-frame {
+    background-color: #f7f6f9;
+    border-bottom: 1px solid $border-gray;
+}
+
+.user-profile-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px 15px;
+}
+
+.profile-avatar-container {
+    border-radius: 100%;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+}
+
+.project-user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-name {
+    font-size: 32px;
+    margin: 0 0 12px;
+}
+
+.profile-count {
+    font-size: 13px;
+    color: #80809E;
+}
+
+.profile-backed-frame {
+    background-color: white;
+    padding-bottom: 60px;
+}
+
+.profile-menu {
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid $border-gray;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.profile-menu-text {
+    position: relative;
+}
+
+.backed-mark {
+    position: absolute;
+    color: #007460;
+    top: -6px;
+    right: -12px;
+}
+
+.backed-grid-container {
+    margin: 45px 0 0 0;
+    // padding: 0 60px 30px 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.backed-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 36px;
+    max-width: 1282px;
+    width: 100%;
+    padding: 0 30px;
+}
+
+.backed-creator-frame {
+    border-top: 1px solid $border-light-gray;
+    height: 115px;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+}
+
+.backed-creator-main {
+    padding: 0 30px 30px;
+    display: flex;
+    align-items: center;
+}
+
+.backed-title-frame{
+    padding: 24px 18px 0;
+    margin: 0 0 18px 0;
+    height: 128px;
+}
+
+.backed-creator {
+    font-size: 13.5px;
+}
+
+.backed-creator-avatar {
+    border-radius: 100%;
+    width: 24px;
+    height: 24px;
+    margin: 0 12px 0 0;
+}
+
+.bold {
+    font-weight: 500;
+    font-size: 13.5px;
+}

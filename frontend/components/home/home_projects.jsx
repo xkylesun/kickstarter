@@ -64,7 +64,6 @@ export const ProjectItem = (props) => {
                         <p className="discover-creator">by {props.creator.name}</p>
                     </div>
                     <div>
-
                         <div className="discover-info-container">
                             <div className="bar-frame discover-bar-container">
                                 <div className="bar-green" style={{ width: `${props.project.funding / props.project.target * 100}%` }}></div>
