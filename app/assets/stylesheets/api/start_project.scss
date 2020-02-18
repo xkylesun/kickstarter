@@ -6,8 +6,9 @@
 }
 
 .start-project-background {
-    background-color: #0A007D;
-    height: 512px;
+    // background-color: #0A007D;
+    // height: 512px;
+    height: 800px;
     display: flex;
     flex-direction: column-reverse;
 }
@@ -33,4 +34,11 @@
 
 .btn-new-project:hover {
     background-color: #9BEBC9;
+}
+
+#start-video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
 }

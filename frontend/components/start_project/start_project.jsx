@@ -27,6 +27,10 @@ export default class StartProject extends Component {
         return (
             <div className="start-project-frame">
                 <div className="start-project-background">
+                    <iframe 
+                        id="start-video" 
+                        src="https://www.youtube.com/embed/y90yaLFoYoA?playlist=y90yaLFoYoA&controls=0&autoplay=1&mute=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
                     <div className="start-project-content">
                         <h2 className="start-project-title">Bring your creative project to life.</h2>
                         <button className="btn btn-new-project" onClick={this.handleSubmit}>Get started</button>
