@@ -11,12 +11,13 @@
 
 @font-face {
     font-family: "RNS BARUTA BLACK"; 
-    src: font-url("/assets/stylesheets/font/bbsnr.woff") format("woff"); 
+    src: asset-url("bbsnr.woff") format("woff"); 
+    // src: font-url("/assets/fonts/bbsnr.woff") format("woff"); 
 }
 
 @font-face {
     font-family: "Cooper Lt BT"; 
-    src: font-url("/assets/stylesheets/font/tblc.woff") format("woff"); 
+    src: asset-path("tblc.woff"); 
 }
 
 $btn-green: #009E74;
