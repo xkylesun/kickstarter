@@ -37,7 +37,7 @@ export default class Discover extends React.Component{
     }
 
     render(){
-        console.dir(this.props)
+        // console.dir(this.props)
         if (this.state.loading) {
             return null;
         } else {

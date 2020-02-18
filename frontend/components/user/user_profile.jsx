@@ -55,7 +55,7 @@ export default class UserProfile extends React.Component{
         if (!this.props.targetUser){
             return null;
         }
-        console.dir(this.props)
+        // console.dir(this.props)
         return (
             <div className="user-profile-frame">
                 <div className="user-profile-main">
