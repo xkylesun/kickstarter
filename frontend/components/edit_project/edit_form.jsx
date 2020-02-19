@@ -3,7 +3,7 @@ import React from "react";
 import StorySection from "./edit_story_section";
 import RewardSection from "./edit_reward_section";
 import BasicSection from "./edit_basic_section";
-import { checkFilled } from "../../utils/other_utils";
+import { checkFilled, checkGreaterThanToday } from "../../utils/other_utils";
 
 export default class EditForm extends React.Component {
     constructor(props) {
@@ -25,6 +25,7 @@ export default class EditForm extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.addReward = this.addReward.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+        this.clearErrors = this.clearErrors.bind(this);
     };
 
     componentDidMount(){
@@ -46,15 +47,25 @@ export default class EditForm extends React.Component {
     }
 
     handleInput(stateName){
-        return event => {
-            event.currentTarget.classList.remove("unfilled");
-            this.setState({ [stateName]: event.currentTarget.value});
+        return e => {
+            this.clearErrors();
+            e.currentTarget.classList.remove("unfilled");
+
+            if (stateName === "dueDate"){
+                if (new Date(e.currentTarget.value) < new Date()){
+                    this.setState({ errors: ["Date must not be in the past"]})
+                } else {
+                    this.setState({ [stateName]: e.currentTarget.value });
+                }
+            } else {
+                this.setState({ [stateName]: e.currentTarget.value});
+            }
         }
     }
 
     handleClick(divId1, divId2){
         return () => {
-            this.setState({errors: []});
+            this.clearErrors();
             document.getElementById(divId1).classList.add("hidden");
             document.getElementById(divId2).classList.remove("hidden");
         }
@@ -116,6 +127,10 @@ export default class EditForm extends React.Component {
         }
     }
 
+    clearErrors(){
+        if (this.state.errors.length > 0) this.setState({ errors: [] });
+    }
+
     renderErrors() {
         if (this.state.errors.length === 0) return null;
         return (
@@ -145,7 +160,8 @@ export default class EditForm extends React.Component {
                 <RewardSection 
                     handleClick={this.handleClick} 
                     addReward={this.addReward} 
-                    removeReward={this.props.removeReward} 
+                    removeReward={this.props.removeReward}
+                    clearErrors={this.clearErrors} 
                     projectId={projectId}
                     rewards={this.props.rewards}/>
 

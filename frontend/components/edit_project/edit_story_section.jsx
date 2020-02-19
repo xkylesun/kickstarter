@@ -25,7 +25,7 @@ export default class StorySection extends React.Component {
                     <div className="textbox-container">
                         <textarea
                             id="form-story-textarea"
-                            className="project-required"
+                            className="project-required form-input"
                             placeholder="Write about your project like you're explaining it to a friend..." 
                             onChange={this.props.handleInput("body")}
                             value={this.props.body}

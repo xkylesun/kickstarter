@@ -48,26 +48,12 @@
     border: 1px solid $border-gray;
     padding: 12px;
     font-weight: 300;
-    // height: 16px;
 }
 
 .auth-input {
     width: 312px;
     margin: 12px 0;
 }
-
-// animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-
-// @keyframes typing {
-//   from { width: 0 }
-//   to { width: 100% }
-// }
-
-// /* The typewriter cursor effect */
-// @keyframes blink-caret {
-//   from, to { border-color: transparent }
-//   50% { border-color: orange; }
-// }
 
 .form-input:focus {
     border: 1px solid $border-green;
@@ -76,6 +62,8 @@
 
 ::placeholder {
     color: $text-gray;
+    font-weight: 300;
+    font-size: 14px;
 }
 
 .btn{

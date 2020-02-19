@@ -2,9 +2,13 @@
 import { connect } from 'react-redux';
 import Discover from "./discover";
 import { fetchProjects, fetchMoreProjects } from "../../actions/project_actions";
+import { sortByDateAsc } from "../../utils/other_utils";
 
 const mapStateToProps = (state, ownProps) => {
-    const projects = Object.values(state.entities.projects)
+    const projects = Object.values(state.entities.projects).sort((a, b) => {
+        return new Date(a.dueDate) - new Date(b.dueDate);
+    });
+
     return {
         projects: projects,
         users: state.entities.users,

@@ -26,12 +26,15 @@ export default class RewardForm extends React.Component{
 
     handleInput(stateName) {
         return event => {
+            this.props.clearErrors();
             event.currentTarget.classList.remove("unfilled");
             this.setState({ [stateName]: event.currentTarget.value });
         }
     }
 
     render(){
+        let currYear = new Date().getFullYear();
+
         return (
             <div className="reward-form-frame hidden" id="reward-form">
                 <div className="reward-desc-frame">
@@ -54,6 +57,7 @@ export default class RewardForm extends React.Component{
                     <div className="currency-box-container last-container">
                         <p className="currency-box">$</p>
                         <input 
+                            id="pledge-amount-num"
                             className="form-input start-input currency-input reward-required" 
                             type="number" onChange={this.handleInput("minimum")} 
                             value={this.state.minimum}/>
@@ -76,34 +80,35 @@ export default class RewardForm extends React.Component{
                     <h2 className="reward-desc-body">Give yourself plenty of time. It's better to deliver to backers ahead of schedule than behind.</h2>
                     <div className="reward-delivery">
                         <select 
-                            className="start-dropdown form-input month-dropdown" 
+                            className="dropdown month-dropdown" 
                             value={this.state.month} 
                             onChange={this.handleInput("month")}>
 
-                                <option disabled value="">Month</option>
-                                <option value="Jan">January</option>
-                                <option value="Feb">February</option>
-                                <option value="Mar">March</option>
-                                <option value="Apr">April</option>
-                                <option value="May">May</option>
-                                <option value="Jun">June</option>
-                                <option value="Jul">July</option>
-                                <option value="Aug">August</option>
-                                <option value="Sep">September</option>
-                                <option value="Oct">October</option>
-                                <option value="Nov">November</option>
-                                <option value="Dec">December</option>
+                            <option disabled value="">Month</option>
+                            <option value="Jan">January</option>
+                            <option value="Feb">February</option>
+                            <option value="Mar">March</option>
+                            <option value="Apr">April</option>
+                            <option value="May">May</option>
+                            <option value="Jun">June</option>
+                            <option value="Jul">July</option>
+                            <option value="Aug">August</option>
+                            <option value="Sep">September</option>
+                            <option value="Oct">October</option>
+                            <option value="Nov">November</option>
+                            <option value="Dec">December</option>
                         </select>
                         <select 
-                            className="start-dropdown form-input year-dropdown" 
+                            id="reward-input-year"
+                            className="dropdown year-dropdown" 
                             value={this.state.year} 
                             onChange={this.handleInput("year")}>
-                                <option disabled value="">Year</option>
-                                <option value="2020">2020</option>
-                                <option value="2021">2021</option>
-                                <option value="2022">2022</option>
-                                <option value="2023">2023</option>
-                                <option value="2024">2024</option>
+                            <option disabled value="">Year</option>
+                            <option value={currYear.toString()}>{currYear}</option>
+                            <option value={(currYear + 1).toString()}>{currYear + 1}</option>
+                            <option value={(currYear + 2).toString()}>{currYear + 2}</option>
+                            <option value={(currYear + 3).toString()}>{currYear + 3}</option>
+                            <option value={(currYear + 4).toString()}>{currYear + 4}</option>
                         </select>
                     </div>
                 </div>

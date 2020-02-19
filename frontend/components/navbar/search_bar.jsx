@@ -11,6 +11,7 @@ class SearchBar extends React.Component{
     handleSearch(e){
         if (e.key === "Enter"){
             let searchTerm = e.currentTarget.value.toLowerCase().replace(" ","%20");
+            e.currentTarget.value="";
             toggleHide("search-bar");
             this.props.history.push(`/discover/ref=search&term=${searchTerm}`);
         }

@@ -17,6 +17,8 @@
 
 class Project < ApplicationRecord
     validates :title, :subtitle, :category, :target, :due_date, :body, presence: true, if: -> { :status == "launched" }
+    validates :target, numericality: {greater_than: 0}, if: -> { :status == "launched" }
+    validate :check_date, if: -> { :status == "launched" }
     validate :ensure_image
     
     belongs_to :creator, foreign_key: :creator_id, class_name: :User
@@ -39,5 +41,11 @@ class Project < ApplicationRecord
      if !self.image.attached?
         self.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'no-image.png')), filename: 'default-image.png', content_type: 'image/png')
      end
+    end
+
+    def check_date
+        if self.due_date < DateTime.now
+            errors[:project] << "launch date must be greater than today"
+        end
     end
 end

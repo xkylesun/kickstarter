@@ -11,7 +11,9 @@ class Api::ProjectsController < ApplicationController
 
     case filter_params[:type]
       when "category"
-        @projects = Project.where(category: search, status: "launched").order("due_date asc")
+        @projects = Project.where(category: search, status: "launched")
+          .where("due_date > ?", DateTime.now)
+          .order("due_date asc")
           .includes(:creator, :pledges, image_attachment: :blob)
           .page(page).per(limit)
 
@@ -19,19 +21,23 @@ class Api::ProjectsController < ApplicationController
         regex = "%#{search}%"
         @projects = Project.where(status: "launched")
           .where("lower(projects.title) like ? or projects.category = ?", regex, search)
+          .where("due_date > ?", DateTime.now)
           .distinct.order("due_date asc")
           .includes(:creator, :pledges, image_attachment: :blob)
           .page(page).per(limit)
 
       when "_home"
-        @projects = Project.where(status: "launched").limit(10).order("due_date asc")
+        @projects = Project.where(status: "launched").limit(10)
+          .where("due_date > ?", DateTime.now)
+          .order("due_date asc")
           .includes(:creator, :pledges, image_attachment: :blob)
           
       else
-        @projects = Project.where(status: "launched").order("due_date asc")
+        @projects = Project.where(status: "launched")
+          .where("due_date > ?", DateTime.now)
+          .order("due_date asc")
           .includes(:creator, :pledges, image_attachment: :blob)
           .page(page).per(limit)
-
     end
     
     @last_page = @projects.page(page).per(limit).last_page? || @projects.page(page).per(limit).out_of_range?
@@ -151,6 +157,8 @@ class Api::ProjectsController < ApplicationController
   def filter_params
     params.require(:filters).permit(:type, :search_term, :page, :limit)
   end
+
+
 
 end
 

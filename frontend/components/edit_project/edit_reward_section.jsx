@@ -56,12 +56,25 @@ export default class RewardSection extends React.Component {
                     <RewardForm 
                         addReward={this.props.addReward} 
                         hideForm={this.hideForm}
+                        clearErrors={this.props.clearErrors}
                         projectId={this.props.projectId}/>
                 </div>
 
                 <div className="bottom-bar">
-                    <button className="next-button btn-dark-green" type="button" onClick={this.props.handleClick("project-rewards", "project-story")}>Next: Story <i className="fa fa-angle-right"></i></button>
-                    <button className="back-button" type="button" onClick={this.props.handleClick("project-rewards", "project-basics")}><i className="fa fa-angle-left"></i> Back to Basics</button>
+                    <button 
+                        className="next-button btn-dark-green" 
+                        type="button" 
+                        onClick={this.props.handleClick("project-rewards", "project-story")}
+                    >
+                        Next: Story <i className="fa fa-angle-right"></i>
+                    </button>
+                    <button 
+                        className="back-button" 
+                        type="button" 
+                        onClick={this.props.handleClick("project-rewards", "project-basics")}
+                    >
+                        <i className="fa fa-angle-left"></i> Back to Basics
+                    </button>
                 </div>
                 <div className="line-separator"></div>
             </div>

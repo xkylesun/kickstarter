@@ -54,7 +54,7 @@ export default class BasicSection extends React.Component {
                             </h3>
                         </span>
                         <span className="form-input-container">
-                            <select className="start-dropdown form-input project-required" value={category} onChange={this.props.handleInput("category")}>
+                            <select className="dropdown start-dropdown project-required" value={category} onChange={this.props.handleInput("category")}>
                                 <option disabled value="">Category:</option>
                                 <option value="art">Art</option>
                                 <option value="comics">Comics</option>
@@ -118,6 +118,7 @@ export default class BasicSection extends React.Component {
                                 <p className="currency-box">$</p>
                                 <input 
                                     type="number" 
+                                    id="funding-goal"
                                     className="form-input start-input currency-input project-required" 
                                     onChange={this.props.handleInput("target")} 
                                     value={target} />
