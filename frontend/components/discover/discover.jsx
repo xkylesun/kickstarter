@@ -20,20 +20,25 @@ export default class Discover extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        let that = this;
         if (prevProps.location.pathname !== this.props.location.pathname){
-            const filter = { type: this.props.filterType, search_term: this.props.searchTerm, limit: 3 }
-            this.props.fetchProjects(filter)
-            this.setState({page: 1})
+            const filter = { type: this.props.filterType, search_term: this.props.searchTerm, limit: 3 };
+            this.props.fetchProjects(filter);
+            this.setState({ page: 1, lastPage: false });
         };
         if (prevState.page !== this.state.page) {
             let filters = { type: this.props.filterType, search_term: this.props.searchTerm, page: this.state.page, limit: 3 }
             this.props.fetchMoreProjects(filters)
-                .then(data => this.setState({ lastPage: data.payload.lastPage }))
+                .then(res => {
+                    that.setState({ lastPage: res.payload.lastPage });
+                })
         };
     }
 
     loadMore() {
-        this.setState({ page: this.state.page + 1 });
+        if (!this.state.lastPage){
+            this.setState({ page: this.state.page + 1 });
+        }
     }
 
     autoLoad() {
@@ -44,7 +49,7 @@ export default class Discover extends React.Component {
                 this.loadMore();
             }
         };
-        document.addEventListener('scroll', _.throttle(callback, 1000));
+        document.addEventListener('scroll', _.throttle(callback, 500));
     }
 
     render() {
