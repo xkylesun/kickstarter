@@ -28,17 +28,10 @@ module.exports = {
             }
           }
         ]
-      },
+      }, 
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'assets/javascripts/api/[name].[ext]',
-            }
-          }
-        ]
+        test: /\.mp4$/,
+        use: 'file-loader?name=[name].[ext]',
       }
     ],
   },
