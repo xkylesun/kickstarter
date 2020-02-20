@@ -173,19 +173,23 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.project-avatar-container {
     position: relative;
 }
 
-.project-user-avatar{
-    border-radius: 50%;
+.project-avatar-container {
+    position: absolute;
     height: 72px;
     width: 72px;
-    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
     top: -36px;
-    right: 38%
+    left: 50%;
+    margin-left: -36px;
+}
+
+.project-user-avatar{
+    height: 72px;
+    width: 72px;
 }
 
 .project-user-info {

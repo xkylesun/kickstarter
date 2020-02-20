@@ -75,7 +75,7 @@ export default class BasicSection extends React.Component {
                                     Add an image that clearly represents your project.
                                     </p>
                                 <p>
-                                    Choose one that looks good at different sizes. It will appear in different sizes in different places: on your project page, across the Kickstarter website and mobile apps, and (when shared) on social channels.
+                                    Choose one that looks good at different sizes. It will appear in different sizes in different places: on your project page, across the Jumpstarter website and mobile apps, and (when shared) on social channels.
                                     </p>
                                 <p>
                                     You may want to avoid including banners, badges, and text because they may not be legible at smaller sizes.

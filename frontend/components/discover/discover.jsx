@@ -125,7 +125,7 @@ export default class Discover extends React.Component {
                 <div className="home-frame">
                     <div className="form-header">
                         <div className="form-header-container">
-                            <h1 className="form-header-title">
+                            <h1 className="discover-header-title">
                                 {topMessage}
                             </h1>
                         </div>

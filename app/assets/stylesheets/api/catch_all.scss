@@ -4,7 +4,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-        overflow: hidden;
+    overflow: hidden;
+    padding-bottom: 60px;
+    border-bottom: 1px solid $border-gray;
 }
 
 .catch-all-content {

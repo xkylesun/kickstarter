@@ -23,3 +23,7 @@ input:hover, select:hover, textarea:hover{
 .unfilled {
     border: 1px solid $text-red !important;
 }
+
+body {
+    min-width: 1024px;
+}

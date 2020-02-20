@@ -78,7 +78,7 @@ export default class Payment extends React.Component {
                                     <button className="btn btn-green" type="submit">Pledge</button>
                                 </form>
                                 <section className="disclaimer-paragraph">
-                                    Your payment information is processed through Stripe. To complete transactions, we store the card type, last four digits, expiration, and name on the card. By pledging you agree to Kickstarter's Terms of Use, Privacy Policy and Cookie Policy. Our policies explain how we will use and store your data, and how you can control that use. You can edit your settings here.
+                                    Your payment information is not processed through Stripe. To complete transactions, we do not store the card type, last four digits, expiration, and name on the card. By pledging you agree to Jumpstarter's Terms of Use, Privacy Policy and Cookie Policy. Our policies explain how we will use and store your data, and how you can control that use. 
                         </section>
                             </div>
                         </div>
