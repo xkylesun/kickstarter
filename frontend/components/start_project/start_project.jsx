@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import bgVideo from "../../../app/assets/videos/test.mp4";
+import startVideo from "../../../app/assets/videos/start-video.mp4";
 // import bgVideo from "assets/videos/test.mp4";
 
 export default class StartProject extends Component {
@@ -26,6 +26,7 @@ export default class StartProject extends Component {
     }
 
     render() {
+        console.dir(startVideo)
         return (
             <div className="start-project-frame">
                 <div className="start-project-background">
@@ -33,9 +34,13 @@ export default class StartProject extends Component {
                         id="start-video" 
                         src="https://www.youtube.com/embed/y90yaLFoYoA?playlist=y90yaLFoYoA&controls=0&autoplay=1&mute=1&loop=1" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
                     </iframe> */}
-                    {/* <video className='videoTag' autoPlay loop muted> <source src={bgVideo} type='video/mp4' /> </video> */}
-                    <video id="start-video" autoPlay loop muted> <source src="assets/test.mp4" type='video/mp4' /> </video>
-                    <div className="start-project-content">
+                    {/* <video className='videoTag' autoPlay loop muted> <source src={startVideo} type='video/mp4' /> </video> */}
+                    {/* <div className="start-video-container"> */}
+                        <video id="start-video" autoPlay loop muted> <source src="assets/start-video.mp4" type='video/mp4' /> </video>
+                    {/* </div> */}
+                </div>
+                <div className="start-project-content">
+                    <div className="start-btn-container">
                         <h2 className="start-project-title">Bring your creative project to life.</h2>
                         <button className="btn btn-new-project" onClick={this.handleSubmit}>Get started</button>
                     </div>
