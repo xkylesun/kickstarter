@@ -1,8 +1,6 @@
 require 'json'
 
 class Api::ProjectsController < ApplicationController
-
-  
   def index
     @project = nil;
     search = (filter_params[:search_term] || "").downcase
@@ -10,34 +8,34 @@ class Api::ProjectsController < ApplicationController
     page = filter_params[:page]
 
     case filter_params[:type]
-      when "category"
-        @projects = Project.where(category: search, status: "launched")
-          .where("due_date > ?", DateTime.now)
-          .order("due_date asc")
-          .includes(:creator, :pledges, image_attachment: :blob)
-          .page(page).per(limit)
+    when "category"
+      @projects = Project.where(category: search, status: "launched")
+        .where("due_date > ?", DateTime.now)
+        .order("due_date asc")
+        .includes(:creator, :pledges, image_attachment: :blob)
+        .page(page).per(limit)
 
-      when "search_term"
-        regex = "%#{search}%"
-        @projects = Project.where(status: "launched")
-          .where("lower(projects.title) like ? or projects.category = ?", regex, search)
-          .where("due_date > ?", DateTime.now)
-          .distinct.order("due_date asc")
-          .includes(:creator, :pledges, image_attachment: :blob)
-          .page(page).per(limit)
+    when "search_term"
+      regex = "%#{search}%"
+      @projects = Project.where(status: "launched")
+        .where("lower(projects.title) like ? or projects.category = ?", regex, search)
+        .where("due_date > ?", DateTime.now)
+        .distinct.order("due_date asc")
+        .includes(:creator, :pledges, image_attachment: :blob)
+        .page(page).per(limit)
 
-      when "_home"
-        @projects = Project.where(status: "launched").limit(10)
-          .where("due_date > ?", DateTime.now)
-          .order("due_date asc")
-          .includes(:creator, :pledges, image_attachment: :blob)
-          
-      else
-        @projects = Project.where(status: "launched")
-          .where("due_date > ?", DateTime.now)
-          .order("due_date asc")
-          .includes(:creator, :pledges, image_attachment: :blob)
-          .page(page).per(limit)
+    when "_home"
+      @projects = Project.where(status: "launched").limit(10)
+        .where("due_date > ?", DateTime.now)
+        .order("due_date asc")
+        .includes(:creator, :pledges, image_attachment: :blob)
+        
+    else
+      @projects = Project.where(status: "launched")
+        .where("due_date > ?", DateTime.now)
+        .order("due_date asc")
+        .includes(:creator, :pledges, image_attachment: :blob)
+        .page(page).per(limit)
     end
     
     @last_page = @projects.page(page).per(limit).last_page? || @projects.page(page).per(limit).out_of_range?
@@ -77,7 +75,6 @@ class Api::ProjectsController < ApplicationController
   def draft 
     @project = Project.find(params[:project_id])
     @rewards = @project.rewards
-    # render json: { project: @project, rewards: @rewards }
     render :draft
   end
 
@@ -85,12 +82,6 @@ class Api::ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project[:status] = "draft"
     if @project.save
-      # JSON.parse(params[:project][:rewards]).each do |rewardData|
-      #   reward = Reward.new(rewardData)
-      #   reward.project_id = @project.id
-      #   reward.save
-      # end
-      # redirect_to api_project_url(@project)
       render json: {project: @project}
     else
       render json: @project.errors.full_messages, status: 401
@@ -147,7 +138,6 @@ class Api::ProjectsController < ApplicationController
   
   def project_params
     params.require(:project).permit(:title, :subtitle, :creator_id, :category, :due_date, :body, :target, :image)
-    # params.require(:project).permit(:title, :subtitle, :creator_id, :category, :due_date, :body, :target)
   end
 
   def selected_project

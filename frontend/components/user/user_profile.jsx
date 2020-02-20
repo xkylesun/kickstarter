@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export default class UserProfile extends React.Component{
     constructor(props){
         super(props)
+        this.handleChangeAvatar = this.handleChangeAvatar.bind(this);
     };
 
     componentDidMount(){
@@ -51,16 +52,44 @@ export default class UserProfile extends React.Component{
         }
     }
 
+    handleChangeAvatar(e){
+        if (this.props.currentUser){
+            if (this.props.currentUser.id === this.props.targetId){
+                const avatar = e.currentTarget.files[0];
+                if (avatar) {
+                    if (avatar.size > 2097152) {
+                        alert("File must be less than 2MB");
+                    } else {
+                        const formData = new FormData();
+                        const userId = this.props.currentUser.id;
+                        formData.append('user[avatar]', avatar);
+                        this.props.updateUser({ formData, userId });
+                    }
+                }
+            }
+        }
+    }
+
     render(){
         if (!this.props.targetUser){
             return null;
         }
+        console.log(this.props.match.params.userId)
         // console.dir(this.props)
         return (
             <div className="user-profile-frame">
                 <div className="user-profile-main">
                     <div className="profile-avatar-container">
-                        <img className="profile-avatar" src={this.props.targetUser.avatar} />
+                        <label 
+                            id="input-avatar-label"
+                            style={{ display: !this.props.match.params.userId ? "block" : "none" }}>
+                            Upload
+                            <input type="file" accept="image/*" id="input-avatar" onChange={this.handleChangeAvatar}/>
+                        </label>
+                        <img 
+                            className="profile-avatar" 
+                            src={this.props.targetUser.avatar} 
+                        />
                     </div>
 
                     <div className="project-user-info">

@@ -17,10 +17,6 @@ class SearchBar extends React.Component{
         }
     }
 
-    // toggleHidden(){
-    //     document.getElementById("search-bar").classList.add("hidden");
-    // }
-
     render() {
         return (
             <div className="search-bar" id="search-bar">

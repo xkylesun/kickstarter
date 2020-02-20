@@ -23,3 +23,13 @@ export const fetchCurrentUser = userId => dispatch => (
             user => dispatch(receiveCurrentUser(user)),
         )
 )
+
+export const updateUser = ({formData, userId}) => dispatch => (
+    UserUtil.updateUser(formData, userId)
+        .then(
+            user => {
+                dispatch(receiveCurrentUser(user));
+                dispatch(receiveUser({user}))
+            }
+        )
+)

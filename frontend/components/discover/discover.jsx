@@ -25,6 +25,10 @@ export default class Discover extends React.Component {
             const filter = { type: this.props.filterType, search_term: this.props.searchTerm, limit: 3 };
             this.props.fetchProjects(filter);
             this.setState({ page: 1, lastPage: false });
+            let btn = document.getElementById("load-more-btn");
+            if (btn) {
+                btn.classList.remove("hidden");
+            }
         };
         if (prevState.page !== this.state.page) {
             let filters = { type: this.props.filterType, search_term: this.props.searchTerm, page: this.state.page, limit: 3 }
@@ -33,6 +37,18 @@ export default class Discover extends React.Component {
                     that.setState({ lastPage: res.payload.lastPage });
                 })
         };
+        if (!prevState.lastPage && this.state.lastPage){
+            let btn = document.getElementById("load-more-btn");
+            if (btn){
+                btn.classList.add("hidden");
+            }
+        }
+        // if (prevState.lastPage && !this.state.lastPage){
+        //     let btn = document.getElementById("load-more-btn");
+        //     // if (btn){
+        //         btn.classList.remove("hidden");
+        //     // }
+        // }
     }
 
     loadMore() {
@@ -51,6 +67,13 @@ export default class Discover extends React.Component {
         };
         document.addEventListener('scroll', _.throttle(callback, 500));
     }
+
+    // buttonClass(){
+    //     let btn = document.getElementById("load-more-btn");
+    //     if (btn){
+    //         return this.state.lastPage ? "btn btn-green btn-load hidden" : "btn btn-green btn-load";
+    //     }
+    // }
 
     render() {
         if (!this.props.filterType) {
@@ -91,9 +114,8 @@ export default class Discover extends React.Component {
                         <span className="btn-container">
                             <button
                                 id="load-more-btn"
-                                className={this.state.lastPage ? "btn btn-green btn-load hidden" : "btn btn-green btn-load"}
+                                className={"btn btn-green btn-load"}
                                 type="button" 
-                                disabled={this.state.lastPage}
                                 onClick={this.loadMore}>Load more</button>
                         </span>
                     </div>

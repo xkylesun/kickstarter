@@ -11,7 +11,8 @@ end
 json.creators do
     @creators.each do |creator|
         json.set! creator.id do
-            json.extract! creator, :id, :name, :avatar
+            json.extract! creator, :id, :name
+            json.avatar url_for(creator.avatar)
         end
     end
 end

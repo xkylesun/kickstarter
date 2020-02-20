@@ -21,6 +21,29 @@
     overflow: hidden;
     width: 150px;
     height: 150px;
+    position: relative;
+}
+
+#input-avatar-label {
+    position: absolute;
+    padding: 10px 45px 15px 45px;
+    opacity: 0;
+    bottom: 0px;
+    right: 5px;
+    color: white;
+    z-index: 0;
+}
+
+#input-avatar-label:hover {
+    opacity: 70%;
+    background-color: #282828;
+}
+
+#input-avatar{
+    border: none;
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 .profile-avatar {

@@ -76,8 +76,8 @@ export default class EditForm extends React.Component {
         const fileReader = new FileReader();
         e.currentTarget.classList.remove("unfilled");
         if (file) {
-            if (file.size > 2097152) {
-                alert("File is too large");
+            if (file.size > 5242880) {
+                alert("File must be less than 5MB");
             } else {
                 fileReader.onloadend = () => {
                     this.setState({ imageFile: file, previewUrl: fileReader.result });
