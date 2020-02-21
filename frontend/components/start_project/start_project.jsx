@@ -34,10 +34,8 @@ export default class StartProject extends Component {
                         id="start-video" 
                         src="https://www.youtube.com/embed/y90yaLFoYoA?playlist=y90yaLFoYoA&controls=0&autoplay=1&mute=1&loop=1" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
                     </iframe> */}
-                    {/* <video className='videoTag' autoPlay loop muted> <source src={startVideo} type='video/mp4' /> </video> */}
-                    {/* <div className="start-video-container"> */}
-                        <video id="start-video" autoPlay loop muted> <source src="assets/start-video.mp4" type='video/mp4' /> </video>
-                    {/* </div> */}
+                    <video id="start-video" autoPlay loop muted> <source src={startVideo} type='video/mp4' /> </video>
+                    {/* <video id="start-video" autoPlay loop muted> <source src="assets/start-video.mp4" type='video/mp4' /> </video> */}
                 </div>
                 <div className="start-project-content">
                     <div className="start-btn-container">
