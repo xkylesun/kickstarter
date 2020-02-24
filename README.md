@@ -38,7 +38,7 @@ This site incorporates the following technologies / modules:
 ```Javascript 
   // util.js
       let callback = (e) => {
-          let ele = e.target.scrollingElement
+          let ele = e.target.scrollingElement;
           if (ele.scrollHeight - ele.scrollTop === ele.clientHeight) {
               this.loadMore();
           }
@@ -58,23 +58,6 @@ This site incorporates the following technologies / modules:
       .includes(:creator, :pledges, image_attachment: :blob)
       .page(page).per(limit)
     @last_page = @projects.page(page).per(limit).last_page? || @projects.page(page).per(limit).out_of_range?
-```
-* User Input Validation
-
-  In addition to the validation on Rails Models and PostgreSQL database, input validation is also implemented on the frontend to ensure the user fills out all required fields before sending the form to the database, thus reducing unnecessary data transferring and improving the integrity of the database. 
-
-  Upon submitting the form, a query will run to collect all HTML elements sharing the class name for required fields and check if any input has black value.
-
-```Javascript
-      let checklist = Array.from(document.getElementsByClassName(eleId));
-      let completed = true;
-      for (let i = 0; i < checklist.length; i++) {
-          if (!checklist[i].value) {
-              checklist[i].classList.add("unfilled");
-              completed = false;
-          }
-      }
-      return completed;
 ```
 
 ## Acknowledgement
