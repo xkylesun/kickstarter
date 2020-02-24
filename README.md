@@ -60,5 +60,9 @@ This site incorporates the following technologies / modules:
     @last_page = @projects.page(page).per(limit).last_page? || @projects.page(page).per(limit).out_of_range?
 ```
 
+  Infinite Scroll Demo: 
+  
+  ![infinite-scroll-demo](https://lh3.googleusercontent.com/uqTDX8dqdHYKuMahrplyZWORl8Qos-dWqpwwbdYhF-LXDSIqptAktpHAQ6TulXIhC7Xyd-VZsftnnFPTdITb8Fx6bZ2yQ3L1F7sCD_bZmqii4A_Mymf3_bP94KLjOvRQbWR1MbQyYgWFeyiEmttAetXBDJpxGgVPTvt6SBNc1XefA0_ywgTXOBj3AosYOza0SMdAvDQ5-tZswmQ0crA54yGb7j5o8G9enBZR1hviBHcRHEjH6FybMWi-F3LjUZTfUYzsOdkfunbu-Ae7zAa_vOovDX-uTmtKtW0BWLRnIMVVzPCoPBItE3Q5M-mcZglVFeNADSfRuprz_rvAbL1rIo1tC4owIBcsx8gtvkJ2pFCpaTEE25XcV63EQBmp7Z517kxbug3dnxAHN6crqH4nBcT4o20xNHSQeUaVjF3_kT3n_KzFtphsiiIre0Iq_9I5NhZ3hnHg7kiSnOZhbNC2TSTzSCGB6KKkLYN6bmA4Vetw13nMadZkQmtWwbnpz3oJEu0ZYDBLJyeQx_D60kc1q5w8SxsXtu28bRuXcDi1POeCAVNXVzDVfZNhWExI04KJdUwLHBHrQAgeQ8R03E0LGJRc1tcfFUEKqNc3z1NWypjna46qJAOojBHKkIQwp663FhdcwSvMSRi91KVNX8IW9rf_GgTX02kuzZqL3SdzWg6rNa9bBiGCsA=w1044-h694-no)
+
 ## Acknowledgement
 Page layout and design inspired by [Kickstarter](https://www.kickstarter.com/)
