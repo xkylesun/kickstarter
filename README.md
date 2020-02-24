@@ -23,9 +23,10 @@ This site incorporates the following technologies / modules:
       }
 ```
 
-   Regular expression is used within the SQL query to filter projects that meet the user's search criteria.
-    
-    
+* Regex
+
+    Regular expression is used within the SQL query to filter projects that meet the user's search criteria.
+
 ```ruby
     # projects_controller.rb
       regex = "%#{search}%"
@@ -64,7 +65,7 @@ This site incorporates the following technologies / modules:
 
   Infinite Scroll Demo: 
   
-  ![infinite-scroll-demo](https://lh3.googleusercontent.com/uqTDX8dqdHYKuMahrplyZWORl8Qos-dWqpwwbdYhF-LXDSIqptAktpHAQ6TulXIhC7Xyd-VZsftnnFPTdITb8Fx6bZ2yQ3L1F7sCD_bZmqii4A_Mymf3_bP94KLjOvRQbWR1MbQyYgWFeyiEmttAetXBDJpxGgVPTvt6SBNc1XefA0_ywgTXOBj3AosYOza0SMdAvDQ5-tZswmQ0crA54yGb7j5o8G9enBZR1hviBHcRHEjH6FybMWi-F3LjUZTfUYzsOdkfunbu-Ae7zAa_vOovDX-uTmtKtW0BWLRnIMVVzPCoPBItE3Q5M-mcZglVFeNADSfRuprz_rvAbL1rIo1tC4owIBcsx8gtvkJ2pFCpaTEE25XcV63EQBmp7Z517kxbug3dnxAHN6crqH4nBcT4o20xNHSQeUaVjF3_kT3n_KzFtphsiiIre0Iq_9I5NhZ3hnHg7kiSnOZhbNC2TSTzSCGB6KKkLYN6bmA4Vetw13nMadZkQmtWwbnpz3oJEu0ZYDBLJyeQx_D60kc1q5w8SxsXtu28bRuXcDi1POeCAVNXVzDVfZNhWExI04KJdUwLHBHrQAgeQ8R03E0LGJRc1tcfFUEKqNc3z1NWypjna46qJAOojBHKkIQwp663FhdcwSvMSRi91KVNX8IW9rf_GgTX02kuzZqL3SdzWg6rNa9bBiGCsA=w1044-h694-no)
+  ![infinite-scroll-demo](https://lh3.googleusercontent.com/Fjeh1K-J3Rou00FNM1mNSRxl45kSfrT5IE2Eqxq5ms4VIA7t6Gn50XqcNkREgfef1xRZfZXdf2qjDJdX7IFCkMZWTVy5iOvs3HwJL_zCsDHlFqT6HBLv4ikZhkUXaf5WQ6Q8S2iYks7QCkr1tFr1QTR134QhmpepULnHQUDHxv_Z-WyeMi7y5kJ7_0DnvqjsqKRfukAP5kvTN-PTa25vrm9ikyoMaz7ye4nKan-M3mO8CbgDMETNP02kEYvIIHq_CFz5AChBhGjMvpOOA8CIfUSYSlf2BRxaF6kU1jgaW5o4kTEwFmOG4HQamYHaFXq-GZwMjhPbiHsvIBMRu4AJW-3GFT1FQGXl47aX5n_JXgK7lC7eXr0B7yWvwA115AGibFH21D4rYflIxwFcc5wW_3TTMay0mIky2p54IwbqIbOm-lLZI2Ks7FecluUWNKEzA7Ba2YmpDGGsguDEaXpiPyr0dLrFUKyDCk8H-keoaDNBDn6T_LaeMT2R1-9owY2bome8PPWLGJ7yl7C-meHPTefzNWxQxI104PRPH1mTQMX6kZhF1M37cLg6ePmGPI61QWplNI6sSZFpSL-ngKUGbMTl9ZtHmQmncCrrUwDOZWXI3HFJ8Cwu-gcbmKhxmOvZTbxgxjrHnTprzMIZeMe0Sokc8OVYomemNnnG3O_9ykN-XTh0EJpyeA=w330-h220-no)
 
 ## Acknowledgement
 Page layout and design inspired by [Kickstarter](https://www.kickstarter.com/)
