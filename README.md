@@ -22,7 +22,8 @@ This site incorporates the following technologies / modules:
           this.props.history.push(`/discover/ref=search&term=${searchTerm}`);
       }
 ```
-    A simple regular expression is used within the SQL query to filter projects that meet the user's search criteria.
+Regular expression is used within the SQL query to filter projects that meet the user's search criteria.
+    
     
 ```ruby
     # projects_controller.rb
