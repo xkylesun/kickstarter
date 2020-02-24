@@ -1,15 +1,7 @@
 # Jumpstarter - a Kickstarter clone
 [Link to Live Site](https://jumpstarter-ks.herokuapp.com/?#/)
-
-## Features
-This site allows user to:
-* Create a new account or login to an existing account
-* Create, update, or delete projects
-* Support project ideas by backing other people's projects
-* Search for project based on the project title
-* Explore projects within different project categories
   
-## Build Process
+## Technologies
 This site incorporates the following technologies / modules:
 * React + Redux for frontend rendering / navigating
 * Rails for backend API and transferring data in JSON format
