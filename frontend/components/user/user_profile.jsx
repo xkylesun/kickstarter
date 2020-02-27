@@ -15,19 +15,22 @@ export default class UserProfile extends React.Component{
             this.props.history.push("/login");
         }
 
-        if (targetId && currentUserId && targetId === currentUserId){
-            this.props.history.push("/profile/")
-        } else if (targetId && currentUserId && targetId !== currentUserId){
+        if (targetId && targetId !== currentUserId){
             this.props.fetchUser(targetId)
                 .then(
                     res => {
-                        if (!res.payload.user.id){
+                        if (!res.payload.user.id) {
                             this.props.history.push("/user-not-found")
                         }
                     }
                 )
+        }
+
+        if (targetId && targetId === currentUserId){
+            this.props.history.push("/profile/")
         } 
-        else {
+
+        if (!targetId && currentUserId){
             this.props.fetchUser(currentUserId);
         }
     }

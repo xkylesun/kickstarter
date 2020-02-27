@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import startVideo from "../../../app/assets/videos/start-video.mp4";
+// import startVideo from "../../../app/assets/videos/start-video.mp4";
 // import bgVideo from "assets/videos/test.mp4";
 
 export default class StartProject extends Component {
