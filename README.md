@@ -1,15 +1,7 @@
 # Jumpstarter - a Kickstarter clone
 [Link to Live Site](https://jumpstarter-ks.herokuapp.com/?#/)
-
-## Features
-This site allows user to:
-* Create a new account or login to an existing account
-* Create, update, or delete projects
-* Support project ideas by backing other people's projects
-* Search for project based on the project title
-* Explore projects within different project categories
   
-## Build Process
+## Technologies
 This site incorporates the following technologies / modules:
 * React + Redux for frontend rendering / navigating
 * Rails for backend API and transferring data in JSON format
@@ -30,8 +22,11 @@ This site incorporates the following technologies / modules:
           this.props.history.push(`/discover/ref=search&term=${searchTerm}`);
       }
 ```
-    A simple regular expression is used within the SQL query to filter projects that meet the user's search criteria.
-    
+
+* Regex
+
+    Regular expression is used within the SQL query to filter projects that meet the user's search criteria.
+
 ```ruby
     # projects_controller.rb
       regex = "%#{search}%"
@@ -46,7 +41,7 @@ This site incorporates the following technologies / modules:
 ```Javascript 
   // util.js
       let callback = (e) => {
-          let ele = e.target.scrollingElement
+          let ele = e.target.scrollingElement;
           if (ele.scrollHeight - ele.scrollTop === ele.clientHeight) {
               this.loadMore();
           }
@@ -67,23 +62,10 @@ This site incorporates the following technologies / modules:
       .page(page).per(limit)
     @last_page = @projects.page(page).per(limit).last_page? || @projects.page(page).per(limit).out_of_range?
 ```
-* User Input Validation
 
-  In addition to the validation on Rails Models and PostgreSQL database, input validation is also implemented on the frontend to ensure the user fills out all required fields before sending the form to the database, thus reducing unnecessary data transferring and improving the integrity of the database. 
-
-  Upon submitting the form, a query will run to collect all HTML elements sharing the class name for required fields and check if any input has black value.
-
-```Javascript
-      let checklist = Array.from(document.getElementsByClassName(eleId));
-      let completed = true;
-      for (let i = 0; i < checklist.length; i++) {
-          if (!checklist[i].value) {
-              checklist[i].classList.add("unfilled");
-              completed = false;
-          }
-      }
-      return completed;
-```
+  Infinite Scroll Demo: 
+  
+  ![infinite-scroll-demo](https://lh3.googleusercontent.com/Fjeh1K-J3Rou00FNM1mNSRxl45kSfrT5IE2Eqxq5ms4VIA7t6Gn50XqcNkREgfef1xRZfZXdf2qjDJdX7IFCkMZWTVy5iOvs3HwJL_zCsDHlFqT6HBLv4ikZhkUXaf5WQ6Q8S2iYks7QCkr1tFr1QTR134QhmpepULnHQUDHxv_Z-WyeMi7y5kJ7_0DnvqjsqKRfukAP5kvTN-PTa25vrm9ikyoMaz7ye4nKan-M3mO8CbgDMETNP02kEYvIIHq_CFz5AChBhGjMvpOOA8CIfUSYSlf2BRxaF6kU1jgaW5o4kTEwFmOG4HQamYHaFXq-GZwMjhPbiHsvIBMRu4AJW-3GFT1FQGXl47aX5n_JXgK7lC7eXr0B7yWvwA115AGibFH21D4rYflIxwFcc5wW_3TTMay0mIky2p54IwbqIbOm-lLZI2Ks7FecluUWNKEzA7Ba2YmpDGGsguDEaXpiPyr0dLrFUKyDCk8H-keoaDNBDn6T_LaeMT2R1-9owY2bome8PPWLGJ7yl7C-meHPTefzNWxQxI104PRPH1mTQMX6kZhF1M37cLg6ePmGPI61QWplNI6sSZFpSL-ngKUGbMTl9ZtHmQmncCrrUwDOZWXI3HFJ8Cwu-gcbmKhxmOvZTbxgxjrHnTprzMIZeMe0Sokc8OVYomemNnnG3O_9ykN-XTh0EJpyeA=w1044-h694-no)
 
 ## Acknowledgement
 Page layout and design inspired by [Kickstarter](https://www.kickstarter.com/)
