@@ -12,7 +12,6 @@ export default class CreatedProjects extends Component {
     }
 
     render() {
-        // console.dir(this.props)
         return (
             <div className="created-projects-frame">
                 <div className="created-projects-subframe">

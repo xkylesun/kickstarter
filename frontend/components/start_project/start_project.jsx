@@ -26,7 +26,6 @@ export default class StartProject extends Component {
     }
 
     render() {
-        console.dir(startVideo)
         return (
             <div className="start-project-frame">
                 <div className="start-project-background">

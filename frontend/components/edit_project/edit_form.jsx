@@ -32,7 +32,6 @@ export default class EditForm extends React.Component {
         this.props.fetchProjectDraft(this.props.match.params.projectId)
             .then(
                 (res) => {
-                    // console.dir(res)
                     if (res.payload.project.creatorId !== this.props.currentUser.id){
                         this.props.history.push("/user-not-authorized")
                     } else {
