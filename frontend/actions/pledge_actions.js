@@ -26,12 +26,12 @@ const receivePayment = payload => {
     }
 }
 
-export const createPledge = pledge => dispatch => (
-    PledgeUtil.createPledge(pledge).then(
-        pledge => dispatch(receivePledge(pledge)),
-        errors => dispatch(receiveErrors(errors))
-    )
-);
+export const createPledge = pledge => dispatch => {
+    return PledgeUtil.createPledge(pledge).then(
+            pledge => dispatch(receivePledge(pledge)),
+            errors => dispatch(receiveErrors(errors))
+        )
+};
 
 // export const updatePledge = pledge => dispatch => (
 //     PledgeUtil.updatePledge(pledge).then(
