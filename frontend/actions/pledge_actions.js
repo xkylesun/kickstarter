@@ -47,9 +47,9 @@ export const payPledge = id => dispatch => {
     )
 };
 
-export const fetchPledge = id => dispatch => (
-    PledgeUtil.fetchPledge(id).then(
+export const fetchPledge = id => dispatch => {
+    return PledgeUtil.fetchPledge(id).then(
         pledge => dispatch(receivePledge(pledge)),
         errors => dispatch(receiveErrors(errors))
     )
-);
+};
