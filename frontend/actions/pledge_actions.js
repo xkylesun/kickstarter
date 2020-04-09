@@ -40,12 +40,12 @@ export const createPledge = pledge => dispatch => {
 //     )
 // );
 
-export const payPledge = id => dispatch => (
-    PledgeUtil.payPledge(id).then(
+export const payPledge = id => dispatch => {
+    return PledgeUtil.payPledge(id).then(
         (payload) => dispatch(receivePayment(payload)),
         errors => dispatch(receiveErrors(errors))
     )
-);
+};
 
 export const fetchPledge = id => dispatch => (
     PledgeUtil.fetchPledge(id).then(
