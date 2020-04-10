@@ -90,15 +90,19 @@ export const createProject = formData => dispatch => {
         );
 };
 
-export const updateProject = ({formData, projectId}) => dispatch => (
+export const updateProject = ({formData, projectId}) => dispatch => {
+    return ProjectUtil.updateProject(formData, projectId)
+        .then(
+            payload => dispatch(receiveProject(payload)),
+            errors => dispatch(receiveErrors(errors))
+        );
+};
 
-);
-
-export const deleteProject = projectId => dispatch => (
-    ProjectUtil.deleteProject(projectId)
+export const deleteProject = projectId => dispatch => {
+    return ProjectUtil.deleteProject(projectId)
         .then(
             projectId => dispatch(removeProject(projectId)),
             errors => dispatch(receiveErrors(errors))
-        )
-);
+        );
+};
 
