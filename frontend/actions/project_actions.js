@@ -66,13 +66,13 @@ export const fetchMoreProjects = (filters) => dispatch => {
         )
 };
 
-export const fetchProject = projectId => dispatch => (
-    ProjectUtil.fetchProject(projectId)
+export const fetchProject = projectId => dispatch => {
+    return ProjectUtil.fetchProject(projectId)
         .then(
             payload => dispatch(receiveProject(payload)),
             errors => dispatch(receiveErrors(errors))
         )
-);
+};
 
 export const fetchProjectDraft = projectId => dispatch => (
     ProjectUtil.fetchProjectDraft(projectId)
