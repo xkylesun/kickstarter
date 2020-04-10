@@ -74,13 +74,13 @@ export const fetchProject = projectId => dispatch => {
         )
 };
 
-export const fetchProjectDraft = projectId => dispatch => (
-    ProjectUtil.fetchProjectDraft(projectId)
+export const fetchProjectDraft = projectId => dispatch => {
+    return ProjectUtil.fetchProjectDraft(projectId)
         .then(
             payload => dispatch(receiveProjectDraft(payload)),
             errors => dispatch(receiveErrors(errors))
         )
-);
+};
 
 export const createProject = formData => dispatch => (
     ProjectUtil.createProject(formData)
