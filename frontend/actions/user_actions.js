@@ -10,12 +10,12 @@ const receiveUser = payload => {
     };
 };
 
-export const fetchUser = userId => dispatch => (
-    UserUtil.fetchUser(userId)
+export const fetchUser = userId => dispatch => {
+    return UserUtil.fetchUser(userId)
         .then(
             payload => dispatch(receiveUser(payload)),
         )
-);
+};
 
 export const fetchCurrentUser = userId => dispatch => (
     UserUtil.fetchUser(userId)
