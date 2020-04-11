@@ -17,12 +17,12 @@ export const fetchUser = userId => dispatch => {
         )
 };
 
-export const fetchCurrentUser = userId => dispatch => (
-    UserUtil.fetchUser(userId)
+export const fetchCurrentUser = userId => dispatch => {
+    return UserUtil.fetchUser(userId)
         .then(
             user => dispatch(receiveCurrentUser(user)),
         )
-)
+}
 
 export const updateUser = ({formData, userId}) => dispatch => (
     UserUtil.updateUser(formData, userId)
