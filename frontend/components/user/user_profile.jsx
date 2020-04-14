@@ -93,11 +93,6 @@ export default class UserProfile extends React.Component{
                         />
                     </div>
 
-                    {/* <div className="project-bio">
-                        <p className="">{this.props.targetUser.biography}</p>
-                        <span>Edit</span>
-                    </div> */}
-
                     <div className="project-user-info">
                         <h2 className="profile-name">{this.props.targetUser.name}</h2>
                         <p className="profile-count">Backed {this.props.backedProjects.length} projects</p>
