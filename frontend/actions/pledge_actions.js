@@ -33,13 +33,6 @@ export const createPledge = pledge => dispatch => {
         )
 };
 
-// export const updatePledge = pledge => dispatch => (
-//     PledgeUtil.updatePledge(pledge).then(
-//         pledge => dispatch(receivePledge(pledge)),
-//         errors => dispatch(receiveErrors(errors))
-//     )
-// );
-
 export const payPledge = id => dispatch => {
     return PledgeUtil.payPledge(id).then(
         (payload) => dispatch(receivePayment(payload)),
