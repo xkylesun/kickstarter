@@ -47,10 +47,10 @@ export const fetchPledge = id => dispatch => {
     )
 };
 
-export const updatePledge = pledge => dispatch => (
-    PledgeUtil.updatePledge(pledge).then(
-        pledge => dispatch(receivePledge(pledge)),
-        errors => dispatch(receiveErrors(errors))
-    )
-);
+// export const updatePledge = pledge => dispatch => (
+//     PledgeUtil.updatePledge(pledge).then(
+//         pledge => dispatch(receivePledge(pledge)),
+//         errors => dispatch(receiveErrors(errors))
+//     )
+// );
 
