@@ -34,11 +34,3 @@ export const updateUser = ({formData, userId}) => dispatch => {
         )
 }
 
-// export const deleteUser = ({ formData, userId }) => dispatch => {
-//     return UserUtil.deleteUser(formData, userId)
-//         .then(
-//             user => {
-//                 "user deleted"
-//             }
-//         )
-// }
