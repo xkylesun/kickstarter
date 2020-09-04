@@ -107,7 +107,7 @@ export default class UserProfile extends React.Component{
                     </div>
                     <div className="backed-grid-container">
                     <ul className="backed-projects-grid">
-                        {this.props.backedProjects.map(project => {
+                        {this.props.backedProjects.filter(el => el !== undefined).map(project => {
                             let creator = this.props.creators[project.creatorId]
                             return (
                             <li key={project.id}>
