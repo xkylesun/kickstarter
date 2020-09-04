@@ -7,9 +7,16 @@ import { deleteProject } from "../../actions/project_actions";
 
 const mapStateToProps = (state, ownProps) => {
     let currentUser = state.session.currentUser;
+    let createdProjects = [];
+    if (state.entities.users[currentUser.id]){
+        // console.log(state.entities.users[currentUser.id].createdProjectIds)
+        createdProjects = selectProjects(state, state.entities.users[currentUser.id].createdProjectIds)
+            .filter(res => res !== undefined).sort((a, b) => b.id - a.id)
+    }
+
     return {
         currentUser: currentUser,
-        createdProjects: selectProjects(state, currentUser.createdProjectIds).filter(res => res !== undefined)
+        createdProjects: createdProjects
     };
 };
 

@@ -160,9 +160,15 @@
 }
 
 .logout-btn {
+    background-color: white;
     padding: 30px;
     border: none;
     font-size: 14px;
+}
+
+.logout-btn:hover {
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 .explore-dropdown{
@@ -201,6 +207,7 @@
     border: none;
     color: $text-dark-green;
     font-size: 20px;
+    background-color: inherit;
 }
 
 .ex-dropdown-item-list {

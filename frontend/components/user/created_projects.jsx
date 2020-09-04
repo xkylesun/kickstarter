@@ -9,7 +9,9 @@ export default class CreatedProjects extends Component {
     componentDidMount(){
         let id = this.props.currentUser.id;
         this.props.fetchUser(id);
+        // console.log(this.props)
     }
+
 
     render() {
         return (
